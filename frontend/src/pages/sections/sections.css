@@ -1,0 +1,65 @@
+.pop:hover {
+  background-color: #343a40;
+  transform: scale(1.05);
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.productCon {
+  width: 100%;
+  height: fit-content;
+}
+
+.productImage {
+  width: 100%;
+  height: 350px;
+}
+
+.catCon {
+  width: 100%;
+  margin: 0 auto;
+}
+
+.bestSellerCon {
+  width: 100%;
+  margin: 0 auto;
+}
+
+.fwidth {
+  width: 100%;
+}
+
+.socials {
+  transition: transform 0.2s ease-in-out;
+}
+.socials:hover {
+  transform: scale(1.2);
+}
+
+.s1:hover {
+  color: #0077b5;
+} /* LinkedIn Blue */
+.s2:hover {
+  color: #333;
+} /* GitHub */
+.s3:hover {
+  color: #ff0000;
+} /* YouTube */
+.s4:hover {
+  color: #c13584;
+} /* Instagram */
+
+.brandCon {
+  max-width: 600px; /* or any desired max-width */
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+
+@media (max-width: 576px) {
+  .catCon img {
+    width: 100px;
+    height: 100px;
+  }
+}
