@@ -18,8 +18,10 @@ const Navbar = (props) => {
                 className="form-select d-none d-lg-block rounded-l"
                 style={{ maxWidth: "120px" }}
               >
-                <option value="apple">Computers</option>
-                <option value="banana">Phones</option>
+                <option value="computers">Computers</option>
+                <option value="phones">Phones</option>
+                <option value="speakers">Speakers</option>
+                <option value="accessories">Accessories</option>
               </select>
 
               <input
