@@ -9,15 +9,14 @@ import { useParams } from "react-router-dom";
 import Footer from "./components/Footer";
 
 const Home = (props) => {
-  const { parameter } = useParams();
-  console.log(parameter);
+const { products } = props
 
   return (
     <>
       <Navbar />
       <Banner />
       <Category />
-      <BestSeller />
+      <BestSeller productsProp={products}/>
       <Brands />
       <Footer />
     </>

@@ -15,7 +15,7 @@ import brandLogo12 from "../../assets/Brand/razer.png";
 const Brands = () => {
   return (
     <div className="container-fluid mt-5 text-bg-dark p-4 pb-5">
-      <h2 className="mb-3 mb-md-4 text-center">Leading Brands: Best Quality</h2>
+      <h2 className="mb-4 mb-md-5 text-center">Leading Brands Guaranteed Quality</h2>
       <div className="row gx-2 gy-2 text-center brandCon px-2 mw-50">
         <div className="col-6 col-md-4 col-lg-3">
           <div className="bg-light pop d-flex justify-content-center align-items-center p-3 rounded w-100 h-100">
