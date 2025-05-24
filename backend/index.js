@@ -2,7 +2,12 @@ const express = require("express");
 const database = require("./database.js");
 require("dotenv").config();
 const cors = require("cors");
-const { category_filter, allProducts, brand_filter } = require("./sql.js");
+let {
+  category_filter,
+  allProducts,
+  brand_filter,
+  multiParams,
+} = require("./sql.js");
 
 const port = process.env.PORT;
 const app = express();
@@ -28,7 +33,8 @@ app.get("/", async (req, res) => {
   }
 });
 
-// Filters
+
+// Category Filter
 app.get("/filter/category/:parameter", async (req, res) => {
   try {
     const [filteredProducts] = await database.query(category_filter, [
@@ -42,6 +48,7 @@ app.get("/filter/category/:parameter", async (req, res) => {
   }
 });
 
+// Brand Filter
 app.get("/filter/brand/:parameter", async (req, res) => {
   try {
     const [filteredProducts] = await database.query(brand_filter, [
@@ -74,8 +81,33 @@ app.get("/search/:parameter", async (req, res) => {
   }
 });
 
+// Multi Filter
+app.get("/filter/multi/:brand/:category/:range", async (req, res) => {
+  const { brand, category, range } = req.params;
+  let sql = multiParams;
+  const params = [];
 
-
+  if (brand !== "none") {
+    sql += " AND b.name = ?";
+    params.push(brand);
+  }
+  if (category !== "none") {
+    sql += " AND c.name = ?";
+    params.push(category);
+  }
+  if (range !== "none") {
+    sql += " AND p.price < ?";
+    params.push(range);
+  }
+  try {
+    const [filteredProducts] = await database.query(sql, params);
+    res.json(filteredProducts);
+    console.log(filteredProducts);
+  } catch (error) {
+    console.error(error);
+    res.status(500).send("Error fetching filtered products");
+  }
+});
 
 app.listen(port, (err) => {
   if (err) console.log(err);

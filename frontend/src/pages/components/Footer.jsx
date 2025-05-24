@@ -3,7 +3,7 @@ import { FaLinkedin, FaYoutube, FaInstagram } from "react-icons/fa";
 
 const Footer = () => {
   return (
-    <footer className="container-fluid mx-0 p-3 text-bg-dark mt-5 d-flex flex-column align-items-center flex-lg-row justify-content-lg-around">
+    <footer className="container-fluid mx-0 p-3 text-bg-dark mt-5 d-flex flex-column align-items-center flex-lg-row justify-content-lg-around position-absolute bottom-0">
       <div className="mb-2">
         <a
           href="https://www.linkedin.com/in/nickelcy-francois-7bba72366/"

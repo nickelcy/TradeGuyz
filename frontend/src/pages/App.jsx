@@ -8,6 +8,7 @@ const serverUrl = import.meta.env.VITE_SERVER_URL;
 
 const App = () => {
   const [products, setProducts] = useState([]);
+  
 
   useEffect(() => {
     axios
@@ -20,16 +21,21 @@ const App = () => {
     <Routes>
       <Route path="/" element={<Home products={products} />} />
       <Route
-        path="/filter/category/:parameter"
-        element={<Filter location={"/filter"} filterType={"category"} />}
+        path="/filter/brand/:parameter1"
+        element={<Filter location={"/filter/brand"} src={"brandFilter"} />}
       />
       <Route
-        path="/filter/brand/:parameter"
-        element={<Filter location={"/filter"} filterType={"brand"} />}
+        path="/filter/category/:parameter1"
+        element={<Filter location={"/filter/category"} src={"categoryFilter"} />}
       />
       <Route
-        path="/search/:parameter"
-        element={<Filter location={""} filterType={"search"} />}
+        path="/search/:parameter1"
+        element={<Filter location={"/search"} src={"search"} />}
+      />
+      <Route
+        // brand category price
+        path="/filter/multi/:parameter1/:parameter2/:parameter3"
+        element={<Filter location={"/filter/multi"} src={"multiFilter"} />}
       />
     </Routes>
   );

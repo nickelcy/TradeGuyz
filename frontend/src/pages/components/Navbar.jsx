@@ -35,30 +35,14 @@ const Navbar = (props) => {
                 <option value="" disabled>
                   Select Category
                 </option>
-                <option value="Computers">Computers</option>
+                <option value="Laptops">Laptops</option>
                 <option value="Phones">Phones</option>
                 <option value="Speakers">Speakers</option>
                 <option value="Accessories">Accessories</option>
               </select>
             </div>
 
-            {/* <form className="flex-grow-1" role="search">
-              <div className="input-group w-100">
-                <input
-                  className="form-control"
-                  type="search"
-                  placeholder="Search"
-                />
-                <button className="btn btn-light" type="submit">
-                  <CiSearch />
-                </button>
-              </div>
-            </form> */}
-            
             <Search />
-
-
-
           </div>
 
           {/* Cart Icon */}

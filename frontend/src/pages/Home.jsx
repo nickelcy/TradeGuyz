@@ -12,14 +12,14 @@ const Home = (props) => {
 const { products } = props
 
   return (
-    <>
+    <div className="position-relative " style={{ paddingBottom: "7rem" }}>
       <Navbar />
       <Banner />
       <Category />
-      <BestSeller productsProp={products}/>
+      <BestSeller productsProp={products} />
       <Brands />
       <Footer />
-    </>
+    </div>
   );
 };
 export default Home;
