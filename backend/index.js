@@ -13,14 +13,14 @@ const port = process.env.PORT;
 const app = express();
 app.use(express.json());
 
-app.use(
-  cors({
-    origin: process.env.CLIENT,
-    methods: ["GET", "POST"],
-    // credentials: true
-  })
-);
-// app.use(cors());
+// app.use(
+//   cors({
+//     origin: process.env.CLIENT,
+//     methods: ["GET", "POST"],
+//     // credentials: true
+//   })
+// );
+app.use(cors());
 
 // Get all products sends it to client
 app.get("/", async (req, res) => {
