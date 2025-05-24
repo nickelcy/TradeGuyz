@@ -1,6 +1,7 @@
 import ProductCard from "../components/ProductCard";
 import { FiLoader } from "react-icons/fi";
 import { useEffect, useState } from "react";
+import ProductCardsMap from "../components/ProductCardsMap";
 
 const BestSeller = ({ productsProp }) => {
   const [products, setProducts] = useState([]);
@@ -8,7 +9,7 @@ const BestSeller = ({ productsProp }) => {
 
   useEffect(() => {
     if (Array.isArray(productsProp) && productsProp.length > 0) {
-      setProducts(productsProp);
+      setProducts(productsProp.slice(0, 12));
       setLoading(false);
     }
   }, [productsProp]);
@@ -26,17 +27,7 @@ const BestSeller = ({ productsProp }) => {
   return (
     <div className="container mt-5">
       <h2 className="mb-0 mb-md-2 text-center">BEST SELLERS</h2>
-      <div className="row g-5 text-center bestSellerCon">
-        {products.slice(0, 20).map((product, index) => (
-          <div className="col-12 col-md-6 col-lg-4" key={index}>
-            <ProductCard
-              name={product.name}
-              img={product.imgUrl}
-              price={product.price}
-            />
-          </div>
-        ))}
-      </div>
+      <ProductCardsMap productsArr={products} />
     </div>
   );
 };

@@ -21,11 +21,15 @@ const App = () => {
       <Route path="/" element={<Home products={products} />} />
       <Route
         path="/filter/category/:parameter"
-        element={<Filter filterType={"category"} />}
+        element={<Filter location={"/filter"} filterType={"category"} />}
       />
       <Route
         path="/filter/brand/:parameter"
-        element={<Filter filterType={"brand"} />}
+        element={<Filter location={"/filter"} filterType={"brand"} />}
+      />
+      <Route
+        path="/search/:parameter"
+        element={<Filter location={""} filterType={"search"} />}
       />
     </Routes>
   );
