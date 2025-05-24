@@ -58,7 +58,8 @@ const Filter = ({ location, src }) => {
         <GroupedFilters />
         <div className="container text-start mt-3 ">
           <h1>
-            Showing {products.length} Results for {parameter1}:
+            Showing {products.length} Results
+            {src == "multiFilter" ? "" : ` for ${parameter1}`}:
           </h1>
           <ProductCardsMap productsArr={products} />
         </div>
@@ -75,7 +76,9 @@ const Filter = ({ location, src }) => {
       <Navbar />
       <GroupedFilters />
       <div className="container text-center mt-3">
-        <h1 className="">No Results for {parameter1}</h1>
+        <h1 className="">
+          No Results{src == "multiFilter" ? "" : ` for ${parameter1}`}
+        </h1>
       </div>
       <Footer />
     </div>
