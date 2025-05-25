@@ -63,6 +63,14 @@
 
 }
 
+@media (max-width: 350px)  {
+  .RC-vs {
+    display: flex;
+    flex-direction: column !important;
+  }
+  
+}
+
 @keyframes slide {
   0% {
     transform: translateX(0);

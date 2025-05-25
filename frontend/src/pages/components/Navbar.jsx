@@ -1,11 +1,19 @@
 import { Link } from "react-router-dom";
-import { CiSearch } from "react-icons/ci";
 import { BsCart2 } from "react-icons/bs";
 import { useNavigate } from "react-router-dom";
 import Search from "./Search";
+import { useEffect, useState } from "react";
 
-const Navbar = (props) => {
+const Navbar = ({ cart }) => {
   const navigate = useNavigate();
+  const [numberOfProducts, setNumberOfProducts] = useState(0);
+
+  useEffect(() => {
+    setNumberOfProducts(cart.length);
+  }, [cart]);
+
+  // console.log(cart)
+  
 
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
@@ -46,10 +54,10 @@ const Navbar = (props) => {
           </div>
 
           {/* Cart Icon */}
-          <Link to="/cart" className="position-relative text-light">
-            <BsCart2 size={24} />
+          <Link to="/myCart" className="position-relative text-light">
+            <BsCart2 size={30} />
             <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-              0
+              {numberOfProducts}
             </span>
           </Link>
         </div>

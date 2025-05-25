@@ -1,7 +1,7 @@
 import ProductCard from "./ProductCard";
 import {useState, useEffect} from "react"
 
-const ProductCardsMap = ({ productsArr, setClick, setChosenProduct }) => {
+const ProductCardsMap = ({ productsArr, setClick, setChosenProduct, addToCart }) => {
 
   return (
     <div className="row g-5 text-center bestSellerCon">
@@ -14,6 +14,7 @@ const ProductCardsMap = ({ productsArr, setClick, setChosenProduct }) => {
             setClick={setClick}
             setChosenProduct={setChosenProduct}
             thisProduct={product}
+            addToCart={addToCart}
           />
         </div>
       ))}

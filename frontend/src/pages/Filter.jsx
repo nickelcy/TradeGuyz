@@ -8,13 +8,18 @@ import ProductCardsMap from "./components/ProductCardsMap";
 import ProductPopUp from "./components/ProductPopUp";
 const server = import.meta.env.VITE_SERVER_URL;
 
-const Filter = ({ location, src }) => {
+const Filter = ({
+  location,
+  src,
+  addToCart,
+  cart,
+  chosenProduct,
+  setChosenProduct,
+}) => {
   const { parameter1, parameter2, parameter3 } = useParams();
   const [products, setProducts] = useState([]);
   const [result, setResult] = useState(false);
-
   const [clicked, setClick] = useState(false);
-  const [chosenProduct, setChosenProduct] = useState(false);
 
   useEffect(() => {
     if (src == "multiFilter") {
@@ -55,20 +60,20 @@ const Filter = ({ location, src }) => {
   if (result) {
     return (
       <div
-      className="position-relative h-100"
-      style={{ paddingBottom: "7rem", minHeight: "100vh" }}
+        className="position-relative h-100"
+        style={{ paddingBottom: "7rem", minHeight: "100vh" }}
       >
-      <ProductPopUp
-        clicked={clicked}
-        setClick={setClick}
-        chosenProduct={chosenProduct}
-      />
-        <Navbar />
-          <ProductPopUp
-            clicked={clicked}
-            setClick={setClick}
-            chosenProduct={chosenProduct}
-          />
+        <ProductPopUp
+          clicked={clicked}
+          setClick={setClick}
+          chosenProduct={chosenProduct}
+        />
+        <Navbar cart={cart} />
+        <ProductPopUp
+          clicked={clicked}
+          setClick={setClick}
+          chosenProduct={chosenProduct}
+        />
         <GroupedFilters />
         <div className="container text-start mt-3 ">
           <h1>
@@ -79,6 +84,7 @@ const Filter = ({ location, src }) => {
             productsArr={products}
             setClick={setClick}
             setChosenProduct={setChosenProduct}
+            addToCart={addToCart}
           />
         </div>
         <Footer />
@@ -91,7 +97,7 @@ const Filter = ({ location, src }) => {
       className="position-relative "
       style={{ paddingBottom: "7rem", minHeight: "100vh" }}
     >
-      <Navbar />
+      <Navbar cart={cart} />
       <GroupedFilters />
       <div className="container text-center mt-3">
         <h1 className="">

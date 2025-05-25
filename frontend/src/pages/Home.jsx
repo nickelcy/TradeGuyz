@@ -8,15 +8,13 @@ import "./sections/sections.css";
 import { useParams } from "react-router-dom";
 import Footer from "./components/Footer";
 
-const Home = (props) => {
-const { products } = props
-
+const Home = ({ products, addToCart, cart }) => {
   return (
     <div className="position-relative " style={{ paddingBottom: "7rem" }}>
-      <Navbar />
+      <Navbar cart={cart} />
       <Banner />
       <Category />
-      <BestSeller productsProp={products} />
+      <BestSeller productsProp={products} addToCart={addToCart} />
       <Brands />
       <Footer />
     </div>

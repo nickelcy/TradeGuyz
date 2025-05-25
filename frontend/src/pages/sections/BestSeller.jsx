@@ -4,11 +4,11 @@ import { useEffect, useState } from "react";
 import ProductCardsMap from "../components/ProductCardsMap";
 import ProductPopUp from "../components/ProductPopUp";
 
-const BestSeller = ({ productsProp }) => {
+const BestSeller = ({ productsProp, addToCart }) => {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [clicked, setClick] = useState(false);
-  const [chosenProduct , setChosenProduct] = useState(false);
+  const [chosenProduct , setChosenProduct] = useState([]);
 
   useEffect(() => {
     if (Array.isArray(productsProp) && productsProp.length > 0) {
@@ -29,13 +29,20 @@ const BestSeller = ({ productsProp }) => {
 
   return (
     <>
-      <ProductPopUp clicked={clicked} setClick={setClick} chosenProduct={chosenProduct} />
+      <ProductPopUp
+        clicked={clicked}
+        setClick={setClick}
+        chosenProduct={chosenProduct}
+        setChosenProduct={setChosenProduct}
+        addToCart={addToCart}
+      />
       <div className="container mt-5">
         <h2 className="mb-0 mb-md-2 text-center">BEST SELLERS</h2>
         <ProductCardsMap
           productsArr={products}
           setClick={setClick}
           setChosenProduct={setChosenProduct}
+          addToCart={addToCart}
         />
       </div>
     </>
