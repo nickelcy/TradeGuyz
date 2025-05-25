@@ -39,7 +39,7 @@ const Footer = () => {
         </a>
       </div>
       <p className="text-center px-3 small mb-0">
-        &copy; 2025. Design by Nickelcy Francois
+       Copyright&copy; 2025. Design by Nickelcy Francois
       </p>
     </footer>
   );

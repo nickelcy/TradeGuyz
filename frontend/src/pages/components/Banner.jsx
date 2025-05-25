@@ -7,16 +7,16 @@ const Banner = (props) => {
   return (
     <div className="slider">
       <div className="slides">
-        <a href="/filter/category/speakers">
+        <a href="/filter/category/Speakers">
           <img src={banner1} alt="banner" className="slide" />
         </a>
-        <a href="/filter/category/computer">
+        <a href="/filter/category/Laptops">
           <img src={banner2} alt="banner" className="slide" />
         </a>
-        <a href="/filter/category/phone">
+        <a href="/filter/category/Phones">
           <img src={banner3} alt="banner" className="slide" />
         </a>
-        <a href="/filter/category/accessories">
+        <a href="/filter/category/Accessories">
           <img src={banner4} alt="banner" className="slide" />
         </a>
       </div>

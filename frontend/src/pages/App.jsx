@@ -8,6 +8,7 @@ const serverUrl = import.meta.env.VITE_SERVER_URL;
 
 const App = () => {
   const [products, setProducts] = useState([]);
+  const [ cart, addtoCart ] = useState([])
   
 
   useEffect(() => {

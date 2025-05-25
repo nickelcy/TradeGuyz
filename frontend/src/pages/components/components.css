@@ -4,12 +4,11 @@
   position: relative;
   max-height: 70vh;
   min-height: 35vh;
+  background-color: #0d1117;
 }
 
 .slides {
   display: flex;
-  width: 400%;
-  width: 100vw;
   animation: slide 10s infinite;
 }
 
@@ -17,17 +16,13 @@
   width: 100vw;
   max-height: 70vh;
   min-height: 35vh;
-  flex-shrink: 0;
-}
-
-.slide img {
-  width: 100%;
   object-fit: cover;
 }
 
 .slides:hover {
   animation-play-state: paused;
   cursor: pointer;
+  opacity: 80%;
 }  
 
 .s2 {
@@ -44,6 +39,29 @@
   ;
 }
 
+.darken:hover {
+  opacity: 75%;
+}
+
+@media (min-width: 576px) {
+  .my-btn-sm {
+    top: 0 !important;
+    bottom: auto !important;
+  }
+}
+
+@media (min-width: 768px) {
+  .img-h {
+    max-height: 50vh !important;
+  }
+}
+
+.productImage {
+  object-fit: cover;
+  width: 100%;
+  height: 350px;
+
+}
 
 @keyframes slide {
   0% {

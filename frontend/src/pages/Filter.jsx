@@ -5,12 +5,16 @@ import GroupedFilters from "./components/GroupedFilters";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import ProductCardsMap from "./components/ProductCardsMap";
+import ProductPopUp from "./components/ProductPopUp";
 const server = import.meta.env.VITE_SERVER_URL;
 
 const Filter = ({ location, src }) => {
   const { parameter1, parameter2, parameter3 } = useParams();
   const [products, setProducts] = useState([]);
   const [result, setResult] = useState(false);
+
+  const [clicked, setClick] = useState(false);
+  const [chosenProduct, setChosenProduct] = useState(false);
 
   useEffect(() => {
     if (src == "multiFilter") {
@@ -51,17 +55,31 @@ const Filter = ({ location, src }) => {
   if (result) {
     return (
       <div
-        className="position-relative h-100"
-        style={{ paddingBottom: "7rem", minHeight: "100vh" }}
+      className="position-relative h-100"
+      style={{ paddingBottom: "7rem", minHeight: "100vh" }}
       >
+      <ProductPopUp
+        clicked={clicked}
+        setClick={setClick}
+        chosenProduct={chosenProduct}
+      />
         <Navbar />
+          <ProductPopUp
+            clicked={clicked}
+            setClick={setClick}
+            chosenProduct={chosenProduct}
+          />
         <GroupedFilters />
         <div className="container text-start mt-3 ">
           <h1>
             Showing {products.length} Results
             {src == "multiFilter" ? "" : ` for ${parameter1}`}:
           </h1>
-          <ProductCardsMap productsArr={products} />
+          <ProductCardsMap
+            productsArr={products}
+            setClick={setClick}
+            setChosenProduct={setChosenProduct}
+          />
         </div>
         <Footer />
       </div>
