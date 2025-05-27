@@ -45,7 +45,9 @@ const App = () => {
         path="/payment"
         element={<Payment cart={cart} addToCart={addToCart} />}
       />
-      <Route path="/admin" element={<Admin />}></Route>
+      <Route path="/admin" element={<Admin />}>
+      
+      </Route>
     </Routes>
   );
 };
