@@ -1,11 +1,11 @@
 import { Route, Routes } from "react-router-dom";
 import Home from "./Home";
-import Filter from "./Filter";
 import MyCart from "./MyCart";
 import axios from "axios";
 import { useState, useEffect } from "react";
 import Payment from "./Payment";
 import FilterRoutes from "./components/routes/FilterRoutes";
+import Admin from "./Admin";
 
 const serverUrl = import.meta.env.VITE_SERVER_URL;
 
@@ -33,7 +33,7 @@ const App = () => {
         element={<Home products={products} addToCart={addToCart} cart={cart} />}
       />
 
-      <>{FilterRoutes({ addToCart, cart, chosenProduct, setChosenProduct })}</>
+      {FilterRoutes({ addToCart, cart, chosenProduct, setChosenProduct })}
 
       <Route
         // brand category price
@@ -45,6 +45,7 @@ const App = () => {
         path="/payment"
         element={<Payment cart={cart} addToCart={addToCart} />}
       />
+      <Route path="/admin" element={<Admin />}></Route>
     </Routes>
   );
 };
