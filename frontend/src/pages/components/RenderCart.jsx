@@ -13,7 +13,7 @@ const RenderCart = ({ cart, addToCart, grandTotal }) => {
 
   const handleCheckout = () => {
     // alert("Proceeding to checkout...");
-    navigate("/myCart/payment");
+    navigate("/payment");
     // Add your checkout logic here
   };
 

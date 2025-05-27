@@ -54,7 +54,7 @@ const Navbar = ({ cart }) => {
           </div>
 
           {/* Cart Icon */}
-          <Link to="/myCart" className="position-relative text-light">
+          <Link to="/cart" className="position-relative text-light">
             <BsCart2 size={30} />
             <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
               {numberOfProducts == 0? "": numberOfProducts}

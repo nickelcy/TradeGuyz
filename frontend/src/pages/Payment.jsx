@@ -18,7 +18,7 @@ const Payment = ({ cart, addToCart }) => {
       "Your order was successful! Our team will begin processing it shortly. Delivery is expected to be finalized within approximately 3 weeks."
     );
     localStorage.setItem("guest", JSON.stringify(guest));
-    navigate("/myCart");
+    navigate("/cart");
   };
 
   // console.log(guest, collectionDetails, paymentMethod, {

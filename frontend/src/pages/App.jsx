@@ -5,6 +5,7 @@ import MyCart from "./MyCart";
 import axios from "axios";
 import { useState, useEffect } from "react";
 import Payment from "./Payment";
+import FilterRoutes from "./components/routes/FilterRoutes";
 
 const serverUrl = import.meta.env.VITE_SERVER_URL;
 
@@ -31,69 +32,18 @@ const App = () => {
         path="/"
         element={<Home products={products} addToCart={addToCart} cart={cart} />}
       />
-      <Route
-        path="/filter/brand/:parameter1"
-        element={
-          <Filter
-            location={"/filter/brand"}
-            src={"brandFilter"}
-            addToCart={addToCart}
-            cart={cart}
-            chosenProduct={chosenProduct}
-            setChosenProduct={setChosenProduct}
-          />
-        }
-      />
-      <Route
-        path="/filter/category/:parameter1"
-        element={
-          <Filter
-            location={"/filter/category"}
-            src={"categoryFilter"}
-            addToCart={addToCart}
-            cart={cart}
-            chosenProduct={chosenProduct}
-            setChosenProduct={setChosenProduct}
-          />
-        }
-      />
-      <Route
-        path="/search/:parameter1"
-        element={
-          <Filter
-            location={"/search"}
-            src={"search"}
-            addToCart={addToCart}
-            cart={cart}
-            chosenProduct={chosenProduct}
-            setChosenProduct={setChosenProduct}
-          />
-        }
-      />
-      <Route
-        // brand category price
-        path="/filter/multi/:parameter1/:parameter2/:parameter3"
-        element={
-          <Filter
-            location={"/filter/multi"}
-            src={"multiFilter"}
-            addToCart={addToCart}
-            cart={cart}
-            chosenProduct={chosenProduct}
-            setChosenProduct={setChosenProduct}
-          />
-        }
-      />
-      <Route
-        // brand category price
-        path="/MyCart"
-        element={<MyCart cart={cart} addToCart={addToCart} />}
 
+      <>{FilterRoutes({ addToCart, cart, chosenProduct, setChosenProduct })}</>
+
+      <Route
+        // brand category price
+        path="/cart"
+        element={<MyCart cart={cart} addToCart={addToCart} />}
       />
       <Route
         // brand category price
-        path="/MyCart/payment"
-        element={<Payment cart={cart} addToCart={addToCart}  />}
+        path="/payment"
+        element={<Payment cart={cart} addToCart={addToCart} />}
       />
     </Routes>
   );

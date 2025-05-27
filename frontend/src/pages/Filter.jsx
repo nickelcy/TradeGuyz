@@ -22,7 +22,7 @@ const Filter = ({
   const [clicked, setClick] = useState(false);
 
   useEffect(() => {
-    if (src == "multiFilter") {
+    if (src == "multiFilter" ) {
       axios
         .get(
           `${server}${location}${parameter1 ? `/${parameter1}` : "/none"}${
