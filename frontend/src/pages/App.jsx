@@ -4,6 +4,7 @@ import Filter from "./Filter";
 import MyCart from "./MyCart";
 import axios from "axios";
 import { useState, useEffect } from "react";
+import Payment from "./Payment";
 
 const serverUrl = import.meta.env.VITE_SERVER_URL;
 
@@ -87,6 +88,12 @@ const App = () => {
         // brand category price
         path="/MyCart"
         element={<MyCart cart={cart} addToCart={addToCart} />}
+
+      />
+      <Route
+        // brand category price
+        path="/MyCart/payment"
+        element={<Payment cart={cart} addToCart={addToCart}  />}
       />
     </Routes>
   );

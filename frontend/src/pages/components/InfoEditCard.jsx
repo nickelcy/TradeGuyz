@@ -67,12 +67,12 @@ const InfoEditCard = ({
             {/* value */}
             <h3 className="col-6 ">{formatPrice(chosenProduct.price)}</h3>
             {/* increment */}
-            <div className="col-6 d-flex justify-content-end ">
+            <div className="col-6 d-flex justify-content-end custom-justify">
               <div className="input-group " style={{ maxWidth: "150px" }}>
                 <button
                   disabled={quantity <= 1}
                   onClick={() => updateQuantity("decrement")}
-                  className="btn btn-light "
+                  className="btn btn-secondary "
                 >
                   <FaMinus size={10} />
                 </button>
@@ -90,7 +90,7 @@ const InfoEditCard = ({
                 />
                 <button
                   onClick={() => updateQuantity("increment")}
-                  className="btn btn-light"
+                  className="btn btn-secondary"
                 >
                   <MdAdd size={20} />
                 </button>

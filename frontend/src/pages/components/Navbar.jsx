@@ -57,7 +57,7 @@ const Navbar = ({ cart }) => {
           <Link to="/myCart" className="position-relative text-light">
             <BsCart2 size={30} />
             <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-              {numberOfProducts}
+              {numberOfProducts == 0? "": numberOfProducts}
             </span>
           </Link>
         </div>

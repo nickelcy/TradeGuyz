@@ -1,15 +1,13 @@
 import { useNavigate } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import RenderCart from "./components/RenderCart";
-import { formatPrice } from "./components/helpers";
+import { formatPrice, calculateGrandTotal } from "./components/helpers";
+import { useEffect } from "react"
 
-const MyCart = ({ cart, addToCart }) => {
+const MyCart = ({ cart, addToCart, setMonetaryTotal }) => {
   const navigate = useNavigate();
 
-  const grandTotal = cart.reduce(
-    (total, item) => total + item.price * (item.quantity || 1),
-    0
-  );
+  const grandTotal = calculateGrandTotal(cart);
 
   return (
     <>
@@ -19,7 +17,7 @@ const MyCart = ({ cart, addToCart }) => {
           ← Back to Home
         </button>
       </div>
-      <RenderCart cart={cart} addToCart={addToCart} grandTotal={grandTotal}/>
+      <RenderCart cart={cart} addToCart={addToCart} grandTotal={grandTotal} />
     </>
   );
 };

@@ -50,10 +50,24 @@
   }
 }
 
-@media (min-width: 768px) {
-  .img-h {
-    max-height: 50vh !important;
+.img-h {
+
+  max-height: 45vh !important;
+  background-color: #0d1117;
+}
+
+@media (min-width: 576px) {
+  .custom-justify {
+    justify-content: flex-end !important;
   }
+}
+
+
+.popUp-Con-h {
+  /* background-color: ; */
+  height: 80vh;
+  transform: translateY(4%);
+  max-width: 800px;
 }
 
 .productImage {
@@ -68,7 +82,11 @@
     display: flex;
     flex-direction: column !important;
   }
-  
+}
+@media (min-width: 576px) {
+  .w-sm-25 {
+    width: 25% !important;
+  }
 }
 
 @keyframes slide {

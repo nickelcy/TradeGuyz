@@ -15,7 +15,7 @@ const ProductPopUp = ({
         clicked ? "d-block" : "d-none"
       }`}
     >
-      <div className="position-relative container-fluid bg-dark container-md text-white p-4 z-3 h-75  ">
+      <div className="position-relative container-fluid bg-dark container-md text-white p-4 z-3 popUp-Con-h rounded  ">
         <button
           className="btn btn-danger opacity-100 position-absolute bottom-0 top-sm-0  mb-sm-0 end-0 m-2 me-4 d-flex align-items-center justify-content-center my-btn-sm z-3"
           onClick={() => setClick(false)}
@@ -34,7 +34,7 @@ const ProductPopUp = ({
               <a href={chosenProduct.imgUrl}>
                 <img
                   className="rounded w-100 img-h darken"
-                  style={{ maxHeight: "40vh", objectFit: "cover" }}
+                  style={{ objectFit: "contain" }}
                   src={chosenProduct.imgUrl}
                   alt={chosenProduct.product_name}
                 />

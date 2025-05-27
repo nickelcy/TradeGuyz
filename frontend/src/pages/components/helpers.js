@@ -42,3 +42,15 @@ export const formatPrice = (price) => {
     currency: "USD",
   }).format(price);
 };
+/**
+ * Calculates the grand total cost of items in a cart.
+ *
+ * @param {Array} cart - Array of cart items, each with `price` and optional `quantity`.
+ * @returns {number} The total cost of all items in the cart.
+ */
+export const calculateGrandTotal = (cart) => {
+  return cart.reduce(
+    (total, item) => total + item.price * (item.quantity || 1),
+    0
+  );
+};
