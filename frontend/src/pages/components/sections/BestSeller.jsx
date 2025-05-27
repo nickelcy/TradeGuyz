@@ -1,8 +1,7 @@
-import ProductCard from "../components/ProductCard";
 import { FiLoader } from "react-icons/fi";
 import { useEffect, useState } from "react";
-import ProductCardsMap from "../components/ProductCardsMap";
-import ProductPopUp from "../components/ProductPopUp";
+import ProductCardsMap from "../ProductCardsMap";
+import ProductPopUp from "../ProductPopUp";
 
 const BestSeller = ({ productsProp, addToCart }) => {
   const [products, setProducts] = useState([]);

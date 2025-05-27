@@ -1,16 +1,16 @@
-import BrandCard from "../components/BrandCard";
-import brandLogo1 from "../../assets/Brand/apple.png";
-import brandLogo2 from "../../assets/Brand/samsung.png";
-import brandLogo3 from "../../assets/Brand/sony.png";
-import brandLogo4 from "../../assets/Brand/dell.png";
-import brandLogo5 from "../../assets/Brand/hp.png";
-import brandLogo6 from "../../assets/Brand/lenovo.png";
-import brandLogo7 from "../../assets/Brand/microsoft.png";
-import brandLogo8 from "../../assets/Brand/logitech.png";
-import brandLogo9 from "../../assets/Brand/bose.png";
-import brandLogo10 from "../../assets/Brand/jbl.png";
-import brandLogo11 from "../../assets/Brand/google.png";
-import brandLogo12 from "../../assets/Brand/razer.png";
+import BrandCard from "../../components/BrandCard";
+import brandLogo1 from "../../../assets/Brand/apple.png";
+import brandLogo2 from "../../../assets/Brand/samsung.png";
+import brandLogo3 from "../../../assets/Brand/sony.png";
+import brandLogo4 from "../../../assets/Brand/dell.png";
+import brandLogo5 from "../../../assets/Brand/hp.png";
+import brandLogo6 from "../../../assets/Brand/lenovo.png";
+import brandLogo7 from "../../../assets/Brand/microsoft.png";
+import brandLogo8 from "../../../assets/Brand/logitech.png";
+import brandLogo9 from "../../../assets/Brand/bose.png";
+import brandLogo10 from "../../../assets/Brand/jbl.png";
+import brandLogo11 from "../../../assets/Brand/google.png";
+import brandLogo12 from "../../../assets/Brand/razer.png";
 
 const Brands = () => {
   return (

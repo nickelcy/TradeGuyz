@@ -1,10 +1,10 @@
 import Banner from "./components/Banner";
 import Navbar from "./components/Navbar";
-import Category from "./sections/Category";
-import BestSeller from "./sections/BestSeller";
+import Category from "./components/sections/Category";
+import BestSeller from "./components/sections/BestSeller";
 import "./components/components.css";
-import Brands from "./sections/Brands";
-import "./sections/sections.css";
+import Brands from "./components/sections/Brands";
+import "./components/sections/sections.css";
 import { useParams } from "react-router-dom";
 import Footer from "./components/Footer";
 

@@ -21,9 +21,9 @@ const Payment = ({ cart, addToCart }) => {
     navigate("/myCart");
   };
 
-  console.log(guest, collectionDetails, paymentMethod, {
-    total: formatPrice(calculateGrandTotal(cart)),
-  });
+  // console.log(guest, collectionDetails, paymentMethod, {
+  //   total: formatPrice(calculateGrandTotal(cart)),
+  // });
 
   return (
     <div

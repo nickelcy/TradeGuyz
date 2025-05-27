@@ -1,13 +1,12 @@
-import CatCard from "../components/CatCard";
-import catImage1 from "../../assets/Category/phone.jpg";
-import catImage2 from "../../assets/Category/laptop.jpg";
-import catImage3 from "../../assets/Category/tablet.jpg";
-import catImage4 from "../../assets/Category/headphone.jpg";
-import catImage5 from "../../assets/Category/games.jpg";
-import catImage6 from "../../assets/Category/watch.jpg";
-import catImage7 from "../../assets/Category/camera.jpg";
-import catImage8 from "../../assets/Category/monitor.jpg";
-
+import CatCard from "../../components/CatCard";
+import catImage1 from "../../../assets/Category/phone.jpg";
+import catImage2 from "../../../assets/Category/laptop.jpg";
+import catImage3 from "../../../assets/Category/tablet.jpg";
+import catImage4 from "../../../assets/Category/headphone.jpg";
+import catImage5 from "../../../assets/Category/games.jpg";
+import catImage6 from "../../../assets/Category/watch.jpg";
+import catImage7 from "../../../assets/Category/camera.jpg";
+import catImage8 from "../../../assets/Category/monitor.jpg";
 const Category = () => {
   return (
     <div className="container mt-5">
