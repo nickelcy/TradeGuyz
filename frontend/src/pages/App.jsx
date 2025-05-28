@@ -5,7 +5,6 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import Payment from "./Payment";
 import FilterRoutes from "./components/routes/FilterRoutes";
-import Admin from "./Admin";
 
 const serverUrl = import.meta.env.VITE_SERVER_URL;
 
@@ -45,9 +44,6 @@ const App = () => {
         path="/payment"
         element={<Payment cart={cart} addToCart={addToCart} />}
       />
-      <Route path="/admin" element={<Admin />}>
-      
-      </Route>
     </Routes>
   );
 };
