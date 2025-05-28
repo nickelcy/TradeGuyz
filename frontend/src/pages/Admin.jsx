@@ -1,4 +1,4 @@
-import Login from "./components/admin/Login";
+import Login from "./components/admin/Login.jsx";
 
 const Admin = (props) => {
   return (
