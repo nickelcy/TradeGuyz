@@ -1,4 +1,4 @@
-import { IoCloseCircle } from "react-icons/io5";
+import { MdOutlineFullscreenExit } from "react-icons/md";
 import "./components.css";
 import InfoEditCard from "./InfoEditCard.jsx";
 
@@ -15,11 +15,13 @@ const ProductPopUp = ({ clicked, setClick, chosenProduct, addToCart }) => {
         style={{ maxWidth: "1080px", maxHeight: "1090px" }}
       >
         <button
-          className="btn btn-danger position-absolute bottom-0 end-0 m-2 text-center btn-to-w-576 z-3"
-          style={{ maxWidth: "50px" }}
+          className="btn btn-danger position-absolute bottom-0 end-0 m-2 p-0 text-center btn-to-w-576 z-3"
+          style={{ maxWidth: "50px", maxHeight: "30px", minHeight: "30px" }}
           onClick={() => setClick(false)}
         >
-          <IoCloseCircle size={20} />
+          <div className="container-fluid h-100 d-flex justify-content-center align-items-center">
+            <MdOutlineFullscreenExit size={20} />
+          </div>
         </button>
         <div className="col-12 col-lg-6 h-50 p-0 m-0 heightOn-lg overflow-hidden position-relative img-con">
           <p className="position-absolute text-bg-dark p-1 px-2">
@@ -44,6 +46,9 @@ const ProductPopUp = ({ clicked, setClick, chosenProduct, addToCart }) => {
           />
           <h3>Description</h3>
           <p>
+            <b>{chosenProduct.description}</b>
+          </p>
+          <p>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat
             deserunt aut earum delectus esse numquam sequi quidem, libero ex
             mollitia, rerum dolore commodi atque aliquid vitae nesciunt
@@ -52,7 +57,7 @@ const ProductPopUp = ({ clicked, setClick, chosenProduct, addToCart }) => {
             odio iste nisi veniam sapiente aperiam. Deleniti ad nostrum
             voluptatibus quae laudantium id reprehenderit voluptatem quidem ipsa
             suscipit, accusamus ut aliquam error alias et quisquam quo nisi
-            magnam eum. Odit incidunt doloribus dolores magni, tempore
+            magnam eum. Odit incidunt doloribus dolores magni, tempore``
             accusamus?
           </p>
         </div>
