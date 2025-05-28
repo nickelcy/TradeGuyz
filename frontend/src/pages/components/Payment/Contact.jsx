@@ -110,7 +110,7 @@ const Contact = ({ setGuest }) => {
             <label htmlFor="telephone">Telephone (Example: 687-1016)</label>
           </div>
         </div>
-        <div className="form-text text-muted px-2">
+        <div className="form-text text-light px-2">
           Your information will only be used to contact you and will not be
           shared with others.
         </div>

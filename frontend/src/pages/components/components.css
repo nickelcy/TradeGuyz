@@ -44,15 +44,19 @@
 }
 
 @media (min-width: 576px) {
-  .my-btn-sm {
+  .btn-to-w-576 {
     top: 0 !important;
     bottom: auto !important;
   }
 }
 
-.img-h {
+@media (min-width: 992px) {
+  .heightOn-lg{
+    height: 100% !important;
+  }
+}
 
-  max-height: 45vh !important;
+.img-con {
   background-color: #0d1117;
 }
 

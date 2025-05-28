@@ -16,7 +16,7 @@ const Navbar = ({ cart }) => {
   
 
   return (
-    <nav className="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+    <nav className="navbar navbar-expand-lg navbar-dark bg-dark sticky-top z-1">
       <div className="container d-flex f-space-between">
         <Link className="navbar-brand" to="/">
           Electron

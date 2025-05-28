@@ -21,18 +21,14 @@ const Payment = ({ cart, addToCart }) => {
     navigate("/cart");
   };
 
-  // console.log(guest, collectionDetails, paymentMethod, {
-  //   total: formatPrice(calculateGrandTotal(cart)),
-  // });
-
   return (
     <div
-      className="d-flex flex-row justify-content-center align-items-center "
+      className="d-flex flex-row justify-content-center align-items-center p-0 m-0"
       style={{ height: "100vh", width: "100vw" }}
     >
       <form
-        className="container text-bg-light px-5 rounded overflow-y-auto"
-        style={{ maxWidth: "550px", minHeight: "95vh" }}
+        className="container text-bg-dark px-5 mx-2 rounded overflow-y-auto shadow-lg"
+        style={{ maxWidth: "550px", maxHeight: "95vh" }}
         onSubmit={submitForm}
       >
         <Contact setGuest={setGuest} />

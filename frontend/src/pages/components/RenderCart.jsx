@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import InfoEditCard from "./InfoEditCard";
+import CartCard from "./CartCard"
 import { formatPrice } from "./helpers";
 
 const RenderCart = ({ cart, addToCart, grandTotal }) => {
@@ -21,7 +21,7 @@ const RenderCart = ({ cart, addToCart, grandTotal }) => {
     <>
       <div className="row d-flex flex-column justify-content-center align-items-center p-0 m-0 gy-3">
         {cart.map((product, index) => (
-          <InfoEditCard
+          <CartCard
             chosenProduct={product}
             newBtnTxt={"remove"}
             btnStyle={"btn-danger"}

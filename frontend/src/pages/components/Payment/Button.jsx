@@ -5,7 +5,7 @@ const Button = ({ cart }) => {
   const navigate = useNavigate();
 
   return (
-    <div className="mt-5 mb-4">
+    <div className="mt-0 mb-4">
       <div className="row mt-1 mb-1">
         <div className="col-12 d-flex flex-row flex-sm-row justify-content-between ">
           <h4>Total:</h4>

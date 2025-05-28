@@ -105,15 +105,15 @@ const GroupedFilters = () => {
 
         {/* Buttons */}
         <div className="col-12 d-flex justify-content-center gap-3 pt-2">
-          <button type="submit" className="btn btn-outline-success">
-            Apply Filter
-          </button>
           <button
             type="button"
             className="btn btn-outline-danger"
             onClick={toggleFilters}
           >
             {showFilters ? "Hide Filter" : "Show Filter"}
+          </button>
+          <button type="submit" className="btn btn-outline-success">
+            Apply Filter
           </button>
         </div>
       </div>

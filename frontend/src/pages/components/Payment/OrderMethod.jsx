@@ -11,7 +11,7 @@ const OrderMethod = ({ setCollectionDetails }) => {
   }, [collectionMethod, address]);
 
   return (
-    <div className="row mt-5">
+    <div className="row mt-3">
       <div className="col-12">
         <h2>Order Method</h2>
         {/* --------------------------------------------------------- */}
@@ -64,7 +64,7 @@ const OrderMethod = ({ setCollectionDetails }) => {
               />
               <label htmlFor="address">Delivery Address</label>
             </div>
-            <small className="form-text text-muted px-2">
+            <small className="form-text text-light px-2">
               Delivery is only available in Georgetown, Guyana.
             </small>
           </>
@@ -72,7 +72,7 @@ const OrderMethod = ({ setCollectionDetails }) => {
           <></>
         )}
         {collectionMethod == "pickup" ? (
-          <div className="form-text text-muted mt-0 px-2">
+          <div className="form-text text-light mt-0 px-2">
             Pickup is only available in Georgetown, Guyana. A convenient pickup
             location will be arranged with you after your order is processed.
           </div>

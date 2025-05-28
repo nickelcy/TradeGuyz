@@ -24,7 +24,7 @@ export const handleAddToCart = (chosenProduct, addToCart, quantity) => {
     }
 
     localStorage.setItem("cart", JSON.stringify(updatedCart));
-    console.log(updatedCart)
+    // console.log(updatedCart)
     return updatedCart;
   }
 );

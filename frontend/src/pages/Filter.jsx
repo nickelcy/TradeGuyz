@@ -69,11 +69,6 @@ const Filter = ({
           chosenProduct={chosenProduct}
         />
         <Navbar cart={cart} />
-        <ProductPopUp
-          clicked={clicked}
-          setClick={setClick}
-          chosenProduct={chosenProduct}
-        />
         <GroupedFilters />
         <div className="container text-start mt-3 ">
           <h1>
