@@ -1,6 +1,6 @@
 import Login from "./components/admin/Login"
 
-const Admin = (props) => {
+const Login = (props) => {
   return (
     <div
       className="row m-0 d-flex justify-content-center align-items-center  text-bg-dark "
@@ -10,4 +10,4 @@ const Admin = (props) => {
     </div>
   );
 };
-export default Admin;
+export default Login;
