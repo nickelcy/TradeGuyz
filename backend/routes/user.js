@@ -1,6 +1,11 @@
 import express from "express";
 const router = express.Router();
-import { getUser, getOrdersById, insertUser } from "../utils/sql.js";
+import {
+  getUser,
+  getOrdersById,
+  insertUser,
+  setUserActivity,
+} from "../utils/sql.js";
 import database from "../utils/database.js";
 import bcrypt from "bcrypt";
 import env from "dotenv";
@@ -70,11 +75,19 @@ router.post("/login", async (req, res) => {
     }
   } catch (error) {
     res.status(500).json({ message: "Internal server error!" });
+    console.log(error);
   }
 });
 
-router.get("/logout", async (req, res) => {
-  removeToken(res, "user_token");
+router.get("/logout", authenticateToken("user_token"), async (req, res) => {
+  try {
+    const [result] = await database.query(setUserActivity, req.user.uid);
+    console.log(result);
+    removeToken(res, "user_token");
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ message: "Internal server error!" });
+  }
 });
 
 export default router;

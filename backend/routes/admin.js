@@ -1,6 +1,6 @@
 import express from "express";
 const router = express.Router();
-import { getAdmin } from "../utils/sql.js";
+import { getAdmin, setAdminActivity, newProduct } from "../utils/sql.js";
 import database from "../utils/database.js";
 import bcrypt from "bcrypt";
 import env from "dotenv";
@@ -14,6 +14,31 @@ router.get("/", authenticateToken("token"), (req, res) => {
   res.json({ message: "You are authorized!" });
 });
 
+router.post("/upload", authenticateToken("token"), async (req, res) => {
+  try {
+    const { name, price, description, category, brand, tags, media } = req.body;
+    const { aid, role } = req.user;
+    const data = [
+      name,
+      price,
+      description,
+      category,
+      brand,
+      JSON.stringify(tags),
+      "official",
+      aid,
+      role,
+      JSON.stringify(media),
+    ];
+    const [result] = await database.query(newProduct, data);
+    console.log(result);
+    res.status(201).send("Product created");
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Internal server error" });
+  }
+});
+
 router.post("/login", async (req, res) => {
   const username = req.body.username;
   const password = req.body.password;
@@ -23,7 +48,6 @@ router.post("/login", async (req, res) => {
       const isMatch = await bcrypt.compare(password, admin[0].password);
 
       if (isMatch) {
-        
         const payload = { aid: admin[0].aid, role: admin[0].role };
         const token = jwt.sign(payload, process.env.ACCESS_SECRET, {
           expiresIn: "1h",
@@ -45,13 +69,19 @@ router.post("/login", async (req, res) => {
     }
   } catch (error) {
     res.status(500).json({ message: "Internal server error!" });
+    console.log(error);
   }
 });
 
-router.get("/logout", async (req, res) => {
-  removeToken(res, "token")
+router.get("/logout", authenticateToken("token"), async (req, res) => {
+  try {
+    const [result] = await database.query(setAdminActivity, [req.user.aid]);
+    removeToken(res, "token");
+    console.log(result);
+  } catch (error) {
+    res.status(500).json({ message: "Internal server error!" });
+    console.log(error);
+  }
 });
-
-
 
 export default router;

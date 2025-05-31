@@ -96,6 +96,16 @@ INSERT INTO b8w1gajprsr1nxd2mryd.user (
 ) VALUES (?, ?, ?, ?, ?, ?);
 `;
 
+export const setAdminActivity = `CALL setAdminActivity(?)`
+export const setUserActivity = `CALL setUserActivity(?)`
+export const setSellerActivity = `CALL setSellerActivity(?)`
+
+export const newProduct = `
+INSERT INTO products(name, price, description, category, brand, tags, productType, creatorId, creatorRole, media)
+VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
+
+`;
+
 
 
   
