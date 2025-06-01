@@ -24,6 +24,7 @@ app.use(express.json());
 const allowedOrigins = [
   "http://localhost:5173",
   "https://fd2f-190-80-50-108.ngrok-free.app",
+  "https://683cd042f84796b445b4c39b--testdeployfrontend.netlify.app",
 ];
 
 app.use(
