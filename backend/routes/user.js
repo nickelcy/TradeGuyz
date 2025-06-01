@@ -41,8 +41,22 @@ router.post("/register", userExists, async (req, res) => {
 });
 
 router.get("/orders", authenticateToken("user_token"), async (req, res) => {
-  const [orders] = await database.query(getOrdersById, [req.user.uid]);
-  res.json(orders);
+  try {
+    const [orders] = await database.query(getOrdersById, [req.user.uid]);
+    res.status(200).json(orders);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Internal server error" });
+  }
+});
+
+router.get("/mk-order", authenticateToken("user_token"), async (req, res) => {
+  // pid quantity uid collection address paymentMethod 
+  const orderDetails = req.body[1]; // everything other than pid and uid
+  const products = req.body[2]; // List of ordered products mainly pid
+
+
+
 });
 
 router.post("/login", async (req, res) => {
