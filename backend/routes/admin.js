@@ -55,7 +55,7 @@ router.post("/login", async (req, res) => {
 
         res.cookie("token", token, {
           httpOnly: true,
-          secure: process.enc.COOKIE_SECURE, // Set to false if not using HTTPS locally
+          secure: process.env.COOKIE_SECURE, // Set to false if not using HTTPS locally
           sameSite: process.env.COOKIE_SAME_SITE,
           maxAge: 3600000,
         });
