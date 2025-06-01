@@ -14,9 +14,27 @@ const app = express();
 
 app.use(express.json());
 
+// app.use(
+//   cors({
+//     origin: process.env.CLIENT, // Must match frontend origin exactly
+//     credentials: true,
+//   })
+// );
+
+const allowedOrigins = [
+  "http://localhost:5173",
+  "https://fd2f-190-80-50-108.ngrok-free.app",
+];
+
 app.use(
   cors({
-    origin: process.env.CLIENT, // Must match frontend origin exactly
+    origin: function (origin, callback) {
+      if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, origin);
+      } else {
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
     credentials: true,
   })
 );
