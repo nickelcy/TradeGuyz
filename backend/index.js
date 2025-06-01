@@ -20,8 +20,8 @@ app.use(
     credentials: true,
   })
 );
-app.use(cookieParser());
 
+app.use(cookieParser());
 app.use("/admin", admin);
 app.use("/user", user);
 app.use("/seller", seller);
