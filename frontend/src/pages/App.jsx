@@ -5,6 +5,13 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import Payment from "./Payment";
 import FilterRoutes from "./components/routes/FilterRoutes";
+import LandingPage from "./LandingPage";
+import Admin from "./Admin";
+import AdminDashboard from "./components/admin/AdminDashboard";
+import AdminLogin from "./components/admin/AdminLogin";
+import UserLogin from "./components/user/UserLogin"
+import User from "./User";
+// import { MdDashboard } from "react-icons/md";
 
 const serverUrl = import.meta.env.VITE_SERVER_URL;
 
@@ -16,34 +23,41 @@ const App = () => {
   // console.log(cart);
   // localStorage.removeItem('cart')
 
-  useEffect(() => {
-    const storedCart = JSON.parse(localStorage.getItem("cart") || "[]");
-    addToCart(storedCart);
-    axios
-      .get(`${serverUrl}`)
-      .then((response) => setProducts(response.data))
-      .catch((error) => console.log(error));
-  }, []);
-
   return (
     <Routes>
+      <Route path="/" element={<LandingPage />} />
       <Route
-        path="/"
-        element={<Home products={products} addToCart={addToCart} cart={cart} />}
+        path="/:code"
+        element={
+          <Home
+            products={products}
+            addToCart={addToCart}
+            cart={cart}
+            setProducts={setProducts}
+          />
+        }
       />
 
       {FilterRoutes({ addToCart, cart, chosenProduct, setChosenProduct })}
 
       <Route
-        // brand category price
         path="/cart"
         element={<MyCart cart={cart} addToCart={addToCart} />}
       />
-      <Route
-        // brand category price
+      {/* <Route
         path="/payment"
         element={<Payment cart={cart} addToCart={addToCart} />}
-      />
+      /> */}
+
+      <Route path="/user/login" element={<UserLogin />} />
+      <Route path="/payment" element={<User />}>
+        <Route index element={<Payment cart={cart} addToCart={addToCart} />} />
+      </Route>
+
+      <Route path="/admin/login" element={<AdminLogin />} />
+      <Route path="/admin" element={<Admin />}>
+        <Route index element={<AdminDashboard />} />
+      </Route>
     </Routes>
   );
 };

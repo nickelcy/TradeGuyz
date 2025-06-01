@@ -29,7 +29,7 @@ const ProductCard = (props) => {
             });
           }}
         >
-          <img src={img} alt={name} className="productImage pt-2" />
+          <img src={img[0]} alt={name} className="productImage pt-2" />
           <h4 className="ps-2 mt-3 text-start m-0">{name}</h4>
           <h5 className="ps-2 mt-3 text-start mb-4">
             Price:&nbsp;{formatPrice(price)}

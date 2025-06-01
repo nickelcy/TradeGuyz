@@ -18,18 +18,18 @@ const Navbar = ({ cart }) => {
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark sticky-top z-1">
       <div className="container d-flex f-space-between">
-        <Link className="navbar-brand" to="/">
-          Electron
+        <Link className="navbar-brand me-5" to="/">
+          Locally
         </Link>
 
         <div className="d-flex align-items-center flex-grow-1 ms-lg-3">
           {/* Search Form */}
-          <div className="d-flex flex-grow-1 align-items-center me-5 my-2 my-lg-3">
+          <div className="d-flex flex-grow-1 justify-content-center align-items-center me-2 me-lg-5 my-2 my-lg-3">
             <div
               className="d-none d-xl-block me-2 "
               style={{ maxWidth: "300px" }}
             >
-              <select
+              {/* <select
                 className="form-select"
                 onChange={(e) => {
                   const value = e.target.value;
@@ -47,7 +47,7 @@ const Navbar = ({ cart }) => {
                 <option value="Phones">Phones</option>
                 <option value="Speakers">Speakers</option>
                 <option value="Accessories">Accessories</option>
-              </select>
+              </select> */}
             </div>
 
             <Search />

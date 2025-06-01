@@ -1,7 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import CartCard from "./CartCard"
 import { formatPrice } from "./helpers";
-import { useEffect } from "react";
 
 const RenderCart = ({ cart, addToCart, grandTotal }) => {
   const navigate = useNavigate();
@@ -63,7 +62,7 @@ const RenderCart = ({ cart, addToCart, grandTotal }) => {
           </div>
         </div>
       ) : (
-        <div className="row m-0 d-flex justify-content-center">
+        <div className="row d-flex justify-content-center">
           <div className="col-6 text-center">
             <h1>No Items in Cart</h1>
           </div>

@@ -8,7 +8,7 @@ const PaymentMethod = ({ setPaymentMethod }) => {
   }, [payMethodDetails]);
 
   return (
-    <div className="row mt-3" style={{marginBottom: "2rem"}}>
+    <div className="row mt-3" style={{ marginBottom: "2rem" }}>
       <div className="col-12">
         <h2>Payment Method</h2>
         <div
@@ -17,15 +17,18 @@ const PaymentMethod = ({ setPaymentMethod }) => {
           aria-label="Payment Method"
         >
           <input
-            onChange={() => setPayMethodDetails({ payment: "visa" })}
+            onChange={() => setPayMethodDetails({ payment: "mmg" })}
             type="radio"
             className="btn-check"
             name="paymentMethod"
-            id="visa"
+            id="mmg"
             autoComplete="off"
-            disabled
+            // disabled
           />
-          <label className="btn btn-secondary w-50" htmlFor="visa">
+          <label
+            className="btn btn-outline-primary w-50 w-50"
+            htmlFor="mmg"
+          >
             MMG
           </label>
 
@@ -36,9 +39,9 @@ const PaymentMethod = ({ setPaymentMethod }) => {
             name="paymentMethod"
             id="visa"
             autoComplete="off"
-            disabled
+            // disabled
           />
-          <label className="btn btn-secondary w-50" htmlFor="visa">
+          <label className="btn btn-outline-primary w-50 w-50" htmlFor="visa">
             Visa
           </label>
 
@@ -49,14 +52,15 @@ const PaymentMethod = ({ setPaymentMethod }) => {
             name="paymentMethod"
             id="cash"
             autoComplete="off"
-            checked
+            defaultChecked
+            // checked
           />
           <label className="btn btn-outline-primary w-50" htmlFor="cash">
             Cash
           </label>
         </div>
         <div className="form-text text-light mt-0 px-2">
-          We Currently only accept cash payments.
+          <s>We Currently only accept cash payments.</s>
         </div>
       </div>
     </div>

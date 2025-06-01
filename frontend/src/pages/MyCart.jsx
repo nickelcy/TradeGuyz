@@ -9,11 +9,15 @@ const MyCart = ({ cart, addToCart, setMonetaryTotal }) => {
 
   const grandTotal = calculateGrandTotal(cart);
 
+  useEffect(()=> {
+  
+  },[cart])
+
   return (
     <>
       <Navbar cart={cart} />
       <div className="container mt-3">
-        <button className="btn btn-secondary" onClick={() => navigate("/")}>
+        <button className="btn btn-secondary" onClick={() => navigate("/ea")}>
           ← Back to Home
         </button>
       </div>

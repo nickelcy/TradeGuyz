@@ -9,7 +9,7 @@ const ProductCardsMap = ({ productsArr, setClick, setChosenProduct, addToCart })
         <div className="col-12 col-md-6 col-lg-4" key={index}>
           <ProductCard
             name={product.product_name}
-            img={product.imgUrl}
+            img={product.media}
             price={product.price}
             setClick={setClick}
             setChosenProduct={setChosenProduct}

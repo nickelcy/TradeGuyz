@@ -5,20 +5,39 @@ import OrderMethod from "./components/Payment/OrderMethod";
 import PaymentMethod from "./components/Payment/PaymentMethod";
 import { useNavigate } from "react-router-dom";
 import { calculateGrandTotal, formatPrice } from "./components/helpers";
+import { useEffect } from "react";
+import axios from "axios";
+const serverUrl = import.meta.env.VITE_SERVER_URL;
 
 const Payment = ({ cart, addToCart }) => {
   const navigate = useNavigate();
   const [guest, setGuest] = useState({});
   const [collectionDetails, setCollectionDetails] = useState({});
   const [paymentMethod, setPaymentMethod] = useState({});
+  const [order, setOrder] = useState([]);
+
+  useEffect(() => {
+    setOrder([guest, { ...collectionDetails, ...paymentMethod }, cart]);
+    console.log(order);
+  }, [guest, collectionDetails, paymentMethod, cart]);
 
   const submitForm = (e) => {
     e.preventDefault();
-    alert(
-      "Your order was successful! Our team will begin processing it shortly. Delivery is expected to be finalized within approximately 3 weeks."
-    );
-    localStorage.setItem("guest", JSON.stringify(guest));
-    navigate("/cart");
+    axios
+      .post(`${serverUrl}/user/mk-order`, order)
+      .then((res) => {
+        console.log(res.data);
+        alert(
+          "Your order was successful! Our team will begin processing it shortly. Delivery is expected to be finalized within approximately 3 weeks."
+        );
+        localStorage.setItem("guest", JSON.stringify(guest));
+        localStorage.removeItem("cart");
+        // navigate("/cart");
+      })
+      .catch((err) => {
+        console.error(err);
+        alert("Error processing payment.");
+      });
   };
 
   return (

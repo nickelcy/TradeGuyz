@@ -7,14 +7,21 @@ const BestSeller = ({ productsProp, addToCart }) => {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [clicked, setClick] = useState(false);
-  const [chosenProduct , setChosenProduct] = useState([]);
+  const [chosenProduct, setChosenProduct] = useState([]);
 
   useEffect(() => {
     if (Array.isArray(productsProp) && productsProp.length > 0) {
-      setProducts(productsProp.slice(0, 12));
+      setProducts(productsProp.slice(0, 9));
       setLoading(false);
     }
   }, [productsProp]);
+
+  // Developer Code
+  if (Array.isArray(products) && products.length !== 0) {
+    console.log("Best sellers:", products);
+  } else {
+    console.log("No best sellers yet...");
+  }
 
   if (loading) {
     return (

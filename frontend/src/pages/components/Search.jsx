@@ -14,7 +14,8 @@ const Search = () => {
   };
 
   return (
-    <form className="flex-grow-1" role="search" onSubmit={handleSearch}>
+    <form className="flex-grow-1" role="search" onSubmit={handleSearch}
+    style={{maxWidth: "500px"}}>
       <div className="input-group w-100">
         <input
           className="form-control"
