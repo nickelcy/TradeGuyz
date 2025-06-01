@@ -13,9 +13,10 @@ const port = process.env.PORT || 3000;
 const app = express();
 
 app.use(express.json());
+
 app.use(
   cors({
-    origin: "*",
+    origin: process.env.CLIENT, // Must match frontend origin exactly
     credentials: true,
   })
 );
