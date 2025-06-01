@@ -2,6 +2,8 @@ import { handleAddToCart, formatPrice } from "./helpers.js";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import IncrementBtn from "./IncrementBtn.jsx";
+import { IoMdLink } from "react-icons/io";
+const baseUrl = import.meta.env.VITE_THIS_BASE_URL;
 
 const InfoEditCard = ({
   chosenProduct,
@@ -24,8 +26,15 @@ const InfoEditCard = ({
     }
   };
 
+  const copyLink = ()=> {
+    const link = `${baseUrl}/getProduct/12`;
+    navigator.clipboard.writeText(link).then(() => {
+      alert("Link copied!");
+    });
+  }
+
   return (
-    <div className="row">
+    <div className="row ">
       {/* name */}
       <h2>{chosenProduct.product_name}</h2>
       {/* Row price increment */}
@@ -51,9 +60,17 @@ const InfoEditCard = ({
           onClick={() => {
             handleBtnATC(true);
           }}
-          className={`btn ${btnStyle} my-3`}
+          className={`btn ${btnStyle} ms-0 m-3`}
         >
           Buy Now
+        </button>
+        <button
+          onClick={copyLink}
+          className={`btn btn-primary my-3`}
+          //Toast here
+          
+        >
+          <IoMdLink />
         </button>
       </div>
     </div>

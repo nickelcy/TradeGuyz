@@ -18,11 +18,12 @@ const AdminLogin = () => {
         withCredentials: true,
       })
       .then((response) => {
-        alert(response?.data?.message || "Invalid Username or Password!");
+        console.log(response)
+        alert("Invalid Username or Password!");
         navigate("/admin");
       })
       .catch((error) => {
-        alert(JSON.parse(error.request.response).message);
+        alert(error);
         alert("Invalid Username or Password!");
       });
   };

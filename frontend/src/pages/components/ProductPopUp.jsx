@@ -33,7 +33,7 @@ const ProductPopUp = ({ clicked, setClick, chosenProduct, addToCart }) => {
       {/* CardContainer */}
       <div
         className="position-relative row bg-light w-100 h-75 mx-2 rounded bg-dark"
-        style={{ maxWidth: "1080px", maxHeight: "1090px" }}
+        style={{ maxWidth: "1080px", maxHeight: "650px" }}
       >
         <button
           className="btn btn-danger position-absolute bottom-0 end-0 m-2 p-0 text-center btn-to-w-576 z-3"
@@ -46,7 +46,7 @@ const ProductPopUp = ({ clicked, setClick, chosenProduct, addToCart }) => {
         </button>
 
         <div className="col-12 col-lg-6 h-50 p-0 m-0 heightOn-lg overflow-hidden position-relative img-con d-flex flex-column justify-content-center">
-          <p className="position-absolute text-bg-dark p-1 px-2">
+          <p className="position-absolute text-bg-dark p-1 px-2 top-0 z-1 rounded opacity-50">
             Click Image to View
           </p>
 
@@ -117,7 +117,7 @@ const ProductPopUp = ({ clicked, setClick, chosenProduct, addToCart }) => {
           </div>
         </div>
 
-        <div className="col-12 col-lg-6 h-50 overflow-y-auto heightOn-lg p-4">
+        <div className="col-12 col-lg-6 h-50 overflow-y-auto heightOn-lg p-4 ">
           <InfoEditCard
             chosenProduct={chosenProduct}
             newBtnTxt={null}
@@ -139,7 +139,6 @@ const ProductPopUp = ({ clicked, setClick, chosenProduct, addToCart }) => {
             voluptatibus quae laudantium id reprehenderit voluptatem quidem ipsa
             suscipit, accusamus ut aliquam error alias et quisquam quo nisi
             magnam eum. Odit incidunt doloribus dolores magni, tempore``
-            accusamus?
           </p>
         </div>
       </div>
