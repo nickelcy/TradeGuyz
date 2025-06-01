@@ -8,10 +8,6 @@ export const brand_filter = `
     where store = ? AND brand_name = ?;
 `;
 
-export const allProducts = `    
-    SELECT * FROM b8w1gajprsr1nxd2mryd.product_details
-    where store = ?;
-    `;
 
 export const multiParams = `
     SELECT * FROM b8w1gajprsr1nxd2mryd.product_details
@@ -27,6 +23,10 @@ export const addOrders = `
 
 
 
+export const allProducts = `    
+    SELECT * FROM b8w1gajprsr1nxd2mryd.mainProductDetails
+    where store_code = ?;
+    `;
     
 export const getAdmin = `
     SELECT * FROM b8w1gajprsr1nxd2mryd.admin

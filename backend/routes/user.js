@@ -50,7 +50,7 @@ router.get("/orders", authenticateToken("user_token"), async (req, res) => {
   }
 });
 
-router.get("/mk-order", authenticateToken("user_token"), async (req, res) => {
+router.post("/mk-order", authenticateToken("user_token"), async (req, res) => {
   // pid quantity uid collection address paymentMethod 
   const orderDetails = req.body[1]; // everything other than pid and uid
   const products = req.body[2]; // List of ordered products mainly pid
@@ -80,7 +80,7 @@ router.post("/login", async (req, res) => {
           maxAge: 3600000,
         });
 
-        res.json({ message: "Logged in successfully!" });
+        res.json({ message: "Logged in successfully!", user: {uid: user[0].uid, username: user[0].username}});
       } else {
         res.status(401).json({ message: "Invalid password!" });
       }

@@ -32,7 +32,7 @@ router.post("/upload", authenticateToken("token"), async (req, res) => {
     ];
     const [result] = await database.query(newProduct, data);
     console.log(result);
-    res.status(201).send("Product created");
+    res.status(201).json({ message: "Product created" });
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: "Internal server error" });
@@ -60,7 +60,10 @@ router.post("/login", async (req, res) => {
           maxAge: 3600000,
         });
 
-        res.json({ message: "Logged in successfully!" });
+        res.json({
+          message: "Logged in successfully!",
+          admin: { aid: admin[0].aid, username: admin[0].username },
+        });
       } else {
         res.status(401).json({ message: "Invalid password!" });
       }

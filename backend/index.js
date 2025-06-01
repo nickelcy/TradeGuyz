@@ -1,7 +1,6 @@
-import express, { json } from "express";
+import express from "express";
 import cors from "cors";
 import filters from "./routes/filters.js";
-import database from "./utils/database.js";
 import admin from "./routes/admin.js";
 import user from "./routes/user.js";
 import seller from "./routes/seller.js";
@@ -16,7 +15,7 @@ const app = express();
 app.use(express.json());
 app.use(
   cors({
-    origin: "http://localhost:5173",
+    origin: process.env.CLIENT,
     credentials: true,
   })
 );
@@ -30,6 +29,8 @@ app.use("/", filters);
 app.get("/", (req, res) => {
   res.send("Hello, form backend!");
 });
+
+// app.get("/:store")
 
 app.listen(port, (err) => {
   if (err) console.log(err);

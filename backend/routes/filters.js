@@ -14,8 +14,8 @@ const router = express.Router();
 router.get("/:store", async (req, res) => {
   try {
     const [products] = await database.query(allProducts, [req.params.store]);
-    const formatted = await formatArray(products);
-    res.json(formatted);
+    // const formatted = await formatArray(products);
+    res.json(products);
   } catch (error) {
     console.error(error);
     res.status(500).send("Server error");
