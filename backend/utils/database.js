@@ -1,9 +1,11 @@
 import { createPool } from "mysql2/promise";
-import dotenv from "dotenv";
-dotenv.config();
+import env from "dotenv";
+
+env.config({ path: `.env.development` });
+// env.config({ path: `.env.production` });
 
 const pool = createPool({
-  uri: process.env.DB_URI
+  uri: process.env.DB_URI,
 });
 
 export default pool;

@@ -7,29 +7,22 @@ import seller from "./routes/seller.js";
 import cookieParser from "cookie-parser";
 import env from "dotenv";
 
-env.config();
+env.config({ path: `.env.development` });
+// env.config({ path: `.env.production` });
 
-const port = process.env.PORT || 3000;
+const port = process.env.PORT;
 const app = express();
 
 app.use(express.json());
 
-// app.use(
-//   cors({
-//     origin: process.env.CLIENT, // Must match frontend origin exactly
-//     credentials: true,
-//   })
-// );
-
 const allowedOrigins = [
   "http://localhost:5173",
-  "https://fd2f-190-80-50-108.ngrok-free.app",
   "https://683cd042f84796b445b4c39b--testdeployfrontend.netlify.app",
 ];
 
 app.use(
   cors({
-    origin: function (origin, callback) {
+    origin: (origin, callback) => {
       if (!origin || allowedOrigins.includes(origin)) {
         callback(null, origin);
       } else {
@@ -49,8 +42,6 @@ app.use("/", filters);
 app.get("/", (req, res) => {
   res.send("Hello, form backend!");
 });
-
-// app.get("/:store")
 
 app.listen(port, (err) => {
   if (err) console.log(err);

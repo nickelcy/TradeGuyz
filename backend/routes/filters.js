@@ -1,11 +1,12 @@
-import express from "express";
-import formatArray from "../utils/helper.js";
+import express, { response } from "express";
 import database from "../utils/database.js";
 import {
   category_filter,
   allProducts,
   brand_filter,
   multiParams,
+  getStorCategories,
+  getStorBrands,
 } from "../utils/sql.js";
 
 const router = express.Router();
@@ -14,7 +15,6 @@ const router = express.Router();
 router.get("/:store", async (req, res) => {
   try {
     const [products] = await database.query(allProducts, [req.params.store]);
-    // const formatted = await formatArray(products);
     res.json(products);
   } catch (error) {
     console.error(error);
@@ -22,62 +22,94 @@ router.get("/:store", async (req, res) => {
   }
 });
 
-// Category Filter
-router.get("/:store/category/:parameter", async (req, res) => {
+// Get all categories by store
+router.get("/:store/c", async (req, res) => {
+  const response = [];
+  try {
+    const [storeCategories] = await database.query(getStorCategories, [
+      req.params.store,
+    ]);
+    storeCategories.map((category) => {
+      response.push(category.cat_name);
+    });
+    res.json(response);
+  } catch (error) {
+    console.error(error);
+    res.status(500);
+  }
+});
+
+// Get all categories by store and name
+router.get("/:store/c/:category", async (req, res) => {
   try {
     const [filteredProducts] = await database.query(category_filter, [
       req.params.store,
-      req.params.parameter,
+      req.params.category,
     ]);
-    const formatted = await formatArray(filteredProducts);
-    res.json(formatted);
+    res.json(filteredProducts);
   } catch (error) {
     console.error(error);
     res.status(500);
   }
 });
 
-// Brand Filter
-router.get("/:store/brand/:parameter", async (req, res) => {
+// Get all brands by store
+router.get("/:store/b", async (req, res) => {
+  const response = [];
+  try {
+    const [storeBrands] = await database.query(getStorBrands, [
+      req.params.store,
+    ]);
+    storeBrands.map((brand) => {
+      response.push(brand.brand_name);
+    });
+    res.json(response);
+  } catch (error) {
+    console.error(error);
+    res.status(500);
+  }
+});
+
+// Get all brands by store and name
+router.get("/:store/b/:brand", async (req, res) => {
   try {
     const [filteredProducts] = await database.query(brand_filter, [
       req.params.store,
-      req.params.parameter,
+      req.params.brand,
     ]);
-    const formatted = await formatArray(filteredProducts);
-    res.json(formatted);
+    res.json(filteredProducts);
   } catch (error) {
     console.error(error);
     res.status(500);
   }
 });
 
-// Search by Name
-router.get("/:store/search/:parameter", async (req, res) => {
+// Filter products by name and tags
+router.get("/:store/s/:parameter", async (req, res) => {
   try {
     let results = [];
     const search = req.params.parameter.toLowerCase();
     const [products] = await database.query(allProducts, [req.params.store]);
 
-    products.map((product, index) => {
+    products.map((product) => {
       const product_name = product.product_name.toLowerCase();
-      if (product_name.includes(search)) {
+      const product_tags = product.tags;
+      if (product_name.includes(search) || Array.isArray(product_tags)  && product_tags.includes(search)) {
         results = [...results, product];
       }
     });
-    const formatted = await formatArray(results);
-    res.json(formatted);
+    res.json(results);
   } catch (error) {
     console.error(error);
     res.status(500);
   }
 });
 
-// Multi Filter
+// Filter products by a combination of brand, category and price range
 router.get("/:store/multi/:brand/:category/:range", async (req, res) => {
-  const { brand, category, range } = req.params;
+  const { store, brand, category, range } = req.params;
   let sql = multiParams;
-  const params = [];
+  const params = [store];
 
   if (brand !== "$") {
     sql += " AND b.name = ?";
@@ -93,8 +125,7 @@ router.get("/:store/multi/:brand/:category/:range", async (req, res) => {
   }
   try {
     const [filteredProducts] = await database.query(sql, params);
-    const formatted = await formatArray(filteredProducts);
-    res.json(formatted);
+    res.json(filteredProducts);
   } catch (error) {
     console.error(error);
     res.status(500).send("Error fetching filtered products");

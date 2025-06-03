@@ -1,34 +1,4 @@
 /**
- * Formats an array of product entries by grouping multiple image URLs
- * under a single product object based on the product ID (pid).
- *
- * @param {Promise<Array>} products - A promise that resolves to an array of product objects,
- *                                    where each product may have duplicate entries due to multiple images.
- * @returns {Promise<Array>} - A promise that resolves to a deduplicated array of product objects,
- *                              each containing an `imgUrl` array of associated image URLs.
- */
-const formatArray = async (products) => {
-  const formatted = [];
-  const allProducts = await products;
-
-  allProducts.forEach((product) => {
-    // Check if product with same pid already exists in formatted list
-    const existing = formatted.find((p) => p.pid === product.pid);
-
-    if (existing) {
-      // If found, add image URL to its imgUrl array
-      existing.imgUrl.push(product.imgUrl);
-    } else {
-      // If not found, create new product entry with imgUrl as an array
-      formatted.push({ ...product, imgUrl: [product.imgUrl] });
-    }
-  });
-
-  return formatted;
-};
-export default formatArray;
-
-/**
  * Middleware factory for JWT authentication using a cookie-based token.
  *
  * @param {string} [cookieName='user_token'] - The name of the cookie containing the JWT.
@@ -41,13 +11,15 @@ export default formatArray;
  * - Returns a 401 if the token is missing.
  * - Returns a 403 if the token is invalid or expired.
  */
+import { setAdminActivity } from "../utils/sql.js";
+
 import jwt from "jsonwebtoken";
 export const authenticateToken = (cookieName = "user_token") => {
   return (req, res, next) => {
     const token = req.cookies?.[cookieName];
 
     if (!token)
-      return res.status(401).json({ message: "Access Denied: No token" });
+      return res.status(401).json({ message: "Please login and try again." });
 
     try {
       const verified = jwt.verify(token, process.env.ACCESS_SECRET);
@@ -71,12 +43,8 @@ export const removeToken = (res, cookieName) => {
     secure: true,
     sameSite: "Strict",
   });
-  res.status(200).json({ message: "Cookie cleared" });
+  res.status(200).json({ message: "You logged out." });
 };
-
-
-
-
 
 // Middleware: userExists
 // Purpose: Prevents registration if the username, email, or phone number already exists in the database.
@@ -126,5 +94,3 @@ export const userExists = async (req, res, next) => {
     res.status(500).json({ message: "Internal server error" });
   }
 };
-
-

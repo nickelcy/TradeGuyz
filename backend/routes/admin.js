@@ -3,15 +3,18 @@ const router = express.Router();
 import { getAdmin, setAdminActivity, newProduct } from "../utils/sql.js";
 import database from "../utils/database.js";
 import bcrypt from "bcrypt";
-import env from "dotenv";
-env.config();
 import jwt from "jsonwebtoken";
 import { authenticateToken, removeToken } from "../utils/helper.js";
+import env from "dotenv";
+
+env.config({ path: `.env.development` });
+// env.config({ path: `.env.production` });
 
 // Get route will verify token authenticate
-
-router.get("/", authenticateToken("token"), (req, res) => {
+router.get("/", authenticateToken("token"), async (req, res) => {
   res.json({ message: "You are authorized!" });
+  const [result] = await database.query(setAdminActivity, [req.user.aid]);
+  console.log(result);
 });
 
 router.post("/upload", authenticateToken("token"), async (req, res) => {
@@ -48,6 +51,7 @@ router.post("/login", async (req, res) => {
       const isMatch = await bcrypt.compare(password, admin[0].password);
 
       if (isMatch) {
+        await database.query(setAdminActivity, [admin[0].aid]);
         const payload = { aid: admin[0].aid, role: admin[0].role };
         const token = jwt.sign(payload, process.env.ACCESS_SECRET, {
           expiresIn: "1h",
@@ -55,8 +59,8 @@ router.post("/login", async (req, res) => {
 
         res.cookie("token", token, {
           httpOnly: true,
-          secure: true, 
-          sameSite: "none",
+          secure: process.env.COOKIE_SECURE === "true",
+          sameSite: process.env.COOKIE_SAMESITE,
           maxAge: 3600000,
         });
 
@@ -78,9 +82,7 @@ router.post("/login", async (req, res) => {
 
 router.get("/logout", authenticateToken("token"), async (req, res) => {
   try {
-    const [result] = await database.query(setAdminActivity, [req.user.aid]);
     removeToken(res, "token");
-    console.log(result);
   } catch (error) {
     res.status(500).json({ message: "Internal server error!" });
     console.log(error);
