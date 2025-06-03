@@ -15,20 +15,27 @@ const app = express();
 
 app.use(express.json());
 
-const allowedOrigins = [
-  "http://localhost:5173",
-  "https://683cd042f84796b445b4c39b--testdeployfrontend.netlify.app",
-];
+// const allowedOrigins = [
+//   "http://localhost:5173",
+//   "https://683ebe37db92aeef4ad1f00d--testdeployfrontend.netlify.app",
+// ];
+
+// app.use(
+//   cors({
+//     origin: (origin, callback) => {
+//       if (!origin || allowedOrigins.includes(origin)) {
+//         callback(null, origin);
+//       } else {
+//         callback(new Error("Not allowed by CORS"));
+//       }
+//     },
+//     credentials: true,
+//   })
+// );
 
 app.use(
   cors({
-    origin: (origin, callback) => {
-      if (!origin || allowedOrigins.includes(origin)) {
-        callback(null, origin);
-      } else {
-        callback(new Error("Not allowed by CORS"));
-      }
-    },
+    origin: env.process.CLIENT,
     credentials: true,
   })
 );
