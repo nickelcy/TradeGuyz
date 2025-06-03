@@ -71,10 +71,11 @@ const UploadPage = (props) => {
       style={{ minWidth: "100%", minHeight: "100vh" }}
     >
       <form
-        className="container m-1 text-bg-secondary p-2 p-xl-5 rounded overflow-y-auto"
-        style={{ maxWidth: "500px", maxHeight: "95vh" }}
+        className="container m-1 text-bg-secondary px-5 py-4 p-xl-5 rounded overflow-y-auto"
+        style={{ maxWidth: "500px", maxHeight: "97vh" }}
         // onSubmit={handleSubmit}
       >
+        <h1>Product Upload Form</h1>
         <div className="mb-3">
           <label htmlFor="Product" className="form-label">
             Name of Product
@@ -97,12 +98,10 @@ const UploadPage = (props) => {
             className="form-control"
             id="description"
             name="description"
-            rows="3"
-            data-bs-toggle="Please provide a minimum of 100 words."
-            data-bs-placement="top"
+            rows="1"
             value={description}
             onChange={(e) => setDescription(e.target.value)}
-            placeholder="Describe your product..."
+            placeholder="Describe your product in 50 words or more."
             required
           />
         </div>
@@ -122,6 +121,7 @@ const UploadPage = (props) => {
               placeholder="0"
               value={price}
               onChange={(e) => setPrice(e.target.value)}
+              required
             />
           </div>
         </div>
@@ -131,12 +131,11 @@ const UploadPage = (props) => {
           </label>
           <select
             className="form-select"
-            // value={selectedValue}
-            // onChange={handleChange}
             onChange={(e) => setStore(e.target.value)}
             value={store}
             name="store"
             id="store"
+            required
           >
             <option value="" disabled>
               choose a Store
@@ -157,6 +156,7 @@ const UploadPage = (props) => {
           filteredArray={filteredCategory}
           setFilteredArray={setFilteredCategory}
           data={data.category}
+          required
         />
         <CustomSearch
           label={"Product Brand"}
@@ -166,6 +166,7 @@ const UploadPage = (props) => {
           setFilteredArray={setFilteredBrand}
           filteredArray={filteredBrand}
           data={data.brand}
+          required
         />
         <div className="mb-3">
           <label htmlFor="tags" className="form-label">
@@ -192,6 +193,7 @@ const UploadPage = (props) => {
             type="button"
             className="btn btn-danger mx-2"
             onClick={() => cancel()}
+            disabled={media.length !== 0}
           >
             Cancel
           </button>

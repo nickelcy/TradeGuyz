@@ -1,11 +1,14 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 
-const UploadWidget = ({ setImageUrl }) => {
+// Solution one: Button is not found 
+export const UploadWidgetV1 = ({ setImageUrl }) => {
   const [images, setImages] = useState([]);
   const cloudName = import.meta.env.VITE_CLOUDINARY_NAME;
   const uploadPreset = import.meta.env.VITE_CLOUDINARY_PRESET;
-
+  
   useEffect(() => {
+    const button = document.getElementById("upload-button");
+    if (!button) return
     if (!window.cloudinary) return;
 
     const widget = window.cloudinary.createUploadWidget(
@@ -21,7 +24,6 @@ const UploadWidget = ({ setImageUrl }) => {
       }
     );
 
-    const button = document.getElementById("upload-button");
     if (button) {
       button.addEventListener("click", () => widget.open());
     }
@@ -59,6 +61,48 @@ const UploadWidget = ({ setImageUrl }) => {
         ))}
       </div>
     </>
+  );
+};
+
+
+
+const UploadWidget = ({ setImageUrl }) => {
+  const buttonRef = useRef(null);
+  const cloudName = import.meta.env.VITE_CLOUDINARY_NAME;
+  const uploadPreset = import.meta.env.VITE_CLOUDINARY_PRESET;
+
+  useEffect(() => {
+    if (!window.cloudinary || !buttonRef.current) return;
+
+    const widget = window.cloudinary.createUploadWidget(
+      {
+        cloudName,
+        uploadPreset,
+        multiple: true,
+        sources: ["local", "url", "camera", "image_search", "google_drive"],
+        maxFiles: 5,
+      },
+      (error, result) => {
+        if (!error && result.event === "success") {
+          setImageUrl((prev) => [...prev, result.info.secure_url]);
+        }
+      }
+    );
+
+    const handler = () => widget.open()
+
+    const button = buttonRef.current;
+    button.addEventListener("click", handler);
+
+    return () => {
+      button.removeEventListener("click", handler);
+    };
+  }, [setImageUrl]);
+
+  return (
+    <button ref={buttonRef} className="btn btn-primary">
+      Upload Images
+    </button>
   );
 };
 
