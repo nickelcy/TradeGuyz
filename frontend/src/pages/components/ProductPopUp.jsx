@@ -3,7 +3,7 @@ import "./components.css";
 import InfoEditCard from "./InfoEditCard.jsx";
 import { useEffect, useState } from "react";
 const serverUrl = import.meta.env.VITE_SERVER_URL;
-const defaultIMG = import.meta.env.DEFAULT_PRODUCT_IMAGE;
+const defaultIMG = import.meta.env.VITE_DEFAULT_PRODUCT_IMAGE;
 
 const ProductPopUp = ({ clicked, setClick, chosenProduct, addToCart }) => {
   const [images, setImages] = useState([]);
