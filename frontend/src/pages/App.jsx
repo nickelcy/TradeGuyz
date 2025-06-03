@@ -11,9 +11,7 @@ import AdminDashboard from "./components/admin/AdminDashboard";
 import AdminLogin from "./components/admin/AdminLogin";
 import UserLogin from "./components/user/UserLogin"
 import User from "./User";
-// import { MdDashboard } from "react-icons/md";
-
-const serverUrl = import.meta.env.VITE_SERVER_URL;
+import UploadPage from "./components/admin/UploadPage";
 
 const App = () => {
   const [products, setProducts] = useState([]);
@@ -57,6 +55,7 @@ const App = () => {
       <Route path="/admin/login" element={<AdminLogin />} />
       <Route path="/admin" element={<Admin />}>
         <Route index element={<AdminDashboard />} />
+        <Route path="uploads" element={<UploadPage />} />
       </Route>
     </Routes>
   );

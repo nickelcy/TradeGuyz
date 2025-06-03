@@ -18,7 +18,7 @@ const AdminLogin = () => {
         withCredentials: true,
       })
       .then((response) => {
-        alert(`Welcome Back, ${response.data.admin.username}!`);
+        alert(`Welcome back, ${response.data.admin.username}!`);
         navigate("/admin");
       })
       .catch((error) => {
