@@ -11,7 +11,8 @@ const BestSeller = ({ productsProp, addToCart }) => {
 
   useEffect(() => {
     if (Array.isArray(productsProp) && productsProp.length > 0) {
-      setProducts(productsProp.slice(0, 9));
+      // setProducts(productsProp.slice(0, 9));
+      setProducts(productsProp);
       setLoading(false);
     }
   }, [productsProp]);
@@ -43,7 +44,7 @@ const BestSeller = ({ productsProp, addToCart }) => {
         addToCart={addToCart}
       />
       <div className="container mt-5">
-        <h2 className="mb-0 mb-md-2 text-center">BEST SELLERS</h2>
+        <h2 className="mb-0 mb-md-2 text-center">Our Products</h2>
         <ProductCardsMap
           productsArr={products}
           setClick={setClick}

@@ -14,11 +14,26 @@ const UploadPage = (props) => {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [price, setPrice] = useState(0);
-  const [store, setStore] = useState("ea");
+  const [store, setStore] = useState("ea"); // Default added so an initial get request can be ran
   const [categoryValue, setCategoryValue] = useState([]);
   const [brandValue, setBrandValue] = useState([]);
   const [tags, setTags] = useState([]);
   const [media, setMedia] = useState([]);
+
+  const [uploadData, setUploadData] = useState({});
+
+  useEffect(() => {
+    setUploadData({
+      name: name,
+      description: description,
+      price: parseInt(price),
+      store: store,
+      category: categoryValue,
+      brand: brandValue,
+      tags: tags,
+      media: media,
+    });
+  }, [name, description, price, store, categoryValue, brandValue, tags, media]);
 
   useEffect(() => {
     if (!store) return;
@@ -42,6 +57,18 @@ const UploadPage = (props) => {
     fetchData();
   }, [store]);
 
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const res = await axios.post(`${serverUrl}/admin/upload`, uploadData, {withCredentials: true});
+      console.log(res.data);
+      alert(res.data.message)
+      window.location.reload()
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   const cancel = () => {
     setName("");
     setDescription("");
@@ -54,30 +81,30 @@ const UploadPage = (props) => {
     navigate("/admin");
   };
 
-  console.log({
-    product_name: name,
-    description: description,
-    price: price,
-    store: store,
-    category: categoryValue,
-    brand: brandValue,
-    tags: tags,
-    media: media,
-  });
+  const clear = () => {
+    setName("");
+    setDescription("");
+    setPrice(0);
+    setStore("");
+    setCategoryValue([]);
+    setBrandValue([]);
+    setTags([]);
+    setMedia([]);
+  };
 
   return (
     <div
-      className="w-100 h-100 d-flex justify-content-center align-items-center"
+      className="w-100 h-100 d-flex justify-content-center align-items-start"
       style={{ minWidth: "100%", minHeight: "100vh" }}
     >
       <form
-        className="container m-1 text-bg-secondary px-5 py-4 p-xl-5 rounded overflow-y-auto"
-        style={{ maxWidth: "500px", maxHeight: "97vh" }}
-        // onSubmit={handleSubmit}
+        className="container m-0 text-bg-secondary px-5 py-4 p-xl-5 rounded overflow-y-auto"
+        style={{ maxWidth: "500px", maxHeight: "100vh" }}
+        onSubmit={(e) => handleSubmit(e)}
       >
         <h1>Product Upload Form</h1>
         <div className="mb-3">
-          <label htmlFor="Product" className="form-label">
+          <label htmlFor="product" className="form-label">
             Name of Product
           </label>
           <input
@@ -87,6 +114,7 @@ const UploadPage = (props) => {
             value={name}
             onChange={(e) => setName(e.target.value)}
             placeholder="Enter name of Product"
+            autoComplete="off"
             required
           />
         </div>
@@ -177,6 +205,7 @@ const UploadPage = (props) => {
             className="form-control"
             id="tags"
             placeholder="Enter tags, separated by commas"
+            autoComplete="off"
             onChange={(e) => {
               const input = e.target.value;
               const tagArray = input
@@ -188,22 +217,32 @@ const UploadPage = (props) => {
           />
         </div>
         <UploadWidget setImageUrl={setMedia} />
-        <div className="w-100 d-flex flex-row justify-content-end">
+        <div className="w-100 d-flex flex-row justify-content-between">
           <button
             type="button"
-            className="btn btn-danger mx-2"
-            onClick={() => cancel()}
+            className="btn btn-light me-2"
+            onClick={() => clear()}
             disabled={media.length !== 0}
           >
-            Cancel
+            Clear
           </button>
-          <button
-            type="submit"
-            className="btn btn-success"
-            disabled={media.length === 0}
-          >
-            Submit
-          </button>
+          <div>
+            <button
+              type="button"
+              className="btn btn-danger me-2"
+              onClick={() => cancel()}
+              disabled={media.length !== 0}
+            >
+              Cancel
+            </button>
+            <button
+              type="submit"
+              className="btn btn-success"
+              disabled={media.length === 0}
+            >
+              Submit
+            </button>
+          </div>
         </div>
       </form>
     </div>

@@ -1,6 +1,12 @@
 import express from "express";
 const router = express.Router();
-import { getAdmin, setAdminActivity, newProduct } from "../utils/sql.js";
+import {
+  getAdmin,
+  setAdminActivity,
+  newProduct,
+  getCategoryId,
+  getBrandId,
+} from "../utils/sql.js";
 import database from "../utils/database.js";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
@@ -19,14 +25,17 @@ router.get("/", authenticateToken("token"), async (req, res) => {
 
 router.post("/upload", authenticateToken("token"), async (req, res) => {
   try {
-    const { name, price, description, category, brand, tags, media } = req.body;
+    const { name, description, price, store, category, brand, tags, media } = req.body;
     const { aid, role } = req.user;
+    const [catId] = await database.query(getCategoryId, [category, store]);
+    const [brandId] = await database.query(getBrandId, [brand, store]);
+
     const data = [
       name,
       price,
       description,
-      category,
-      brand,
+      catId[0][0].cid,
+      brandId[0][0].bid,
       JSON.stringify(tags),
       "official",
       aid,

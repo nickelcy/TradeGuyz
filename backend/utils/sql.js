@@ -28,26 +28,30 @@ export const allProducts = `
     where store_code = ?;
     `;
 
-
 // Admin Queries
 export const getAdmin = `
     SELECT * FROM b8w1gajprsr1nxd2mryd.admin
     WHERE BINARY username = ?;
-    `; 
+    `;
 export const setAdminActivity = `
     CALL setAdminActivity(?)
-    `; 
+    `;
 export const newProduct = `
     INSERT INTO products(name, price, description, category, brand, tags, productType, creatorId, creatorRole, media)
     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
     `;
-
+export const getCategoryId = `
+    call GetOrInsertCategory( ?, ?);
+`;
+export const getBrandId = `
+    call getOrInsertBrand( ?, ?);
+`;
 
 // User Queries
 export const getUser = `
     SELECT * FROM b8w1gajprsr1nxd2mryd.user
     WHERE BINARY username = ?;
-    `; 
+    `;
 export const setUserActivity = `
     CALL setUserActivity(?)
     `;
@@ -60,20 +64,20 @@ export const insertUser = `
     password,
     telephone
     ) VALUES (?, ?, ?, ?, ?, ?);
-    `; 
-    export const emailExists = `
+    `;
+export const emailExists = `
     SELECT * FROM b8w1gajprsr1nxd2mryd.user
     WHERE email = ?;
     `;
-    export const usernameExists = `
+export const usernameExists = `
     SELECT * FROM b8w1gajprsr1nxd2mryd.user
     WHERE username = ?;
     `;
-    export const phoneExists = `
+export const phoneExists = `
     SELECT * FROM b8w1gajprsr1nxd2mryd.user
     WHERE telephone = ?;
-    `;        
-    export const getOrdersById = `
+    `;
+export const getOrdersById = `
     CALL getUserOrders(?)
     `;
 
@@ -82,6 +86,4 @@ export const getSeller = `
     SELECT * FROM b8w1gajprsr1nxd2mryd.seller
     WHERE BINARY username = ?;
     `;
-export const setSellerActivity = `CALL setSellerActivity(?)`
-
-  
+export const setSellerActivity = `CALL setSellerActivity(?)`;

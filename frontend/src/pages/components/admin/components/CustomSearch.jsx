@@ -10,7 +10,6 @@ const CustomSearch = ({
   data,
 }) => {
   const [focus, setFocus] = useState(false);
-  const [clicked, setClicked] = useState(false);
 
   const updateOptions = (value) => {
     const filtered =
@@ -18,7 +17,7 @@ const CustomSearch = ({
         values?.toLowerCase()?.includes(value?.toLowerCase())
       ) || [];
     setFilteredArray(filtered.length === 0 ? [value] : filtered);
-    // setFocus(filtered.length !== 0);
+    setFocus(filtered.length !== 0);
   };
 
   return (
@@ -41,7 +40,6 @@ const CustomSearch = ({
           setValue(e.target.value);
         }}
         onFocus={() => setFocus(true)}
-        // onBlur={() => clicked? () => {setClicked(false); setFocus(false)}: setTimeout(() => {setFocus(false)}, 1000)}
         autoComplete="off"
       />
 
@@ -64,7 +62,6 @@ const CustomSearch = ({
               onClick={() => {
                 setFocus(false);
                 setValue(option);
-                setClicked(true)
               }}
               tabIndex="0"
             >
