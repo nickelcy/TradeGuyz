@@ -66,7 +66,7 @@ export const UploadWidgetV1 = ({ setImageUrl }) => {
 
 
 
-const UploadWidget = ({ setImageUrl }) => {
+export const UploadWidgetV2 = ({ setImageUrl }) => {
   const buttonRef = useRef(null);
   const cloudName = import.meta.env.VITE_CLOUDINARY_NAME;
   const uploadPreset = import.meta.env.VITE_CLOUDINARY_PRESET;
@@ -106,4 +106,44 @@ const UploadWidget = ({ setImageUrl }) => {
   );
 };
 
+
+const UploadWidget = ({ setImageUrl }) => {
+  useEffect(() => {
+    const script = document.createElement("script");
+    script.src = "https://upload-widget.cloudinary.com/global/all.js";
+    script.async = true;
+
+    script.onload = () => {
+      const widget = window.cloudinary.createUploadWidget(
+        {
+          cloudName: import.meta.env.VITE_CLOUDINARY_NAME,
+          uploadPreset: import.meta.env.VITE_CLOUDINARY_PRESET,
+        },
+        (error, result) => {
+          if (!error && result.event === "success") {
+            setImageUrl((prev) => [...prev, result.info.secure_url]);
+          }
+        }
+      );
+
+      const btn = document.getElementById("upload-button");
+      if (btn) {
+        btn.addEventListener("click", () => widget.open());
+      }
+    };
+
+    document.body.appendChild(script);
+
+    return () => {
+      const btn = document.getElementById("upload-button");
+      if (btn) {
+        btn.removeEventListener("click", () => widget.open());
+      }
+    };
+  }, [setImageUrl]);
+
+  return <button id="upload-button">Upload Image</button>;
+};
+
 export default UploadWidget;
+
