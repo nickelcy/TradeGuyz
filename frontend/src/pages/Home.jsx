@@ -1,4 +1,4 @@
-import Banner from "./components/Banner";
+import Banner from "./components/homepage/Banner";
 import Navbar from "./components/Navbar";
 import Category from "./components/sections/Category";
 import BestSeller from "./components/sections/BestSeller";

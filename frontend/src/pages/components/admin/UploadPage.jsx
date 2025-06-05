@@ -98,7 +98,7 @@ const UploadPage = (props) => {
       style={{ minWidth: "100%", minHeight: "100vh" }}
     >
       <form
-        className="container m-0 text-bg-secondary px-5 py-4 p-xl-5 rounded overflow-y-auto"
+        className="container m-0 text-bg-secondary px-5 py-4 overflow-y-auto"
         style={{ maxWidth: "500px", maxHeight: "100vh" }}
         onSubmit={(e) => handleSubmit(e)}
       >
