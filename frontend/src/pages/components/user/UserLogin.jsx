@@ -19,7 +19,7 @@ const AdminLogin = () => {
       })
       .then((response) => {
         alert(response?.data?.message || "Invalid Username or Password!");
-        navigate("/cart");
+        navigate(-1)
       })
       .catch((error) => {
         alert(JSON.parse(error.request.response).message);
@@ -32,6 +32,14 @@ const AdminLogin = () => {
       className="row m-0 d-flex justify-content-center align-items-center text-bg-dark"
       style={{ minHeight: "100vh" }}
     >
+      <button
+        className="btn btn-secondary position-absolute top-0 start-0 mx-2 my-3"
+        onClick={() => navigate(-1)}
+        style={{ maxWidth: "200px" }}
+      >
+        ← Back to Home
+      </button>
+
       <LoginForm
         source={"User"}
         handleSubmit={handleSubmit}

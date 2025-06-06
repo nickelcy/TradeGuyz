@@ -18,7 +18,6 @@ const Payment = ({ cart, addToCart }) => {
 
   useEffect(() => {
     setOrder([guest, { ...collectionDetails, ...paymentMethod }, cart]);
-    console.log(order);
   }, [guest, collectionDetails, paymentMethod, cart]);
 
   const submitForm = (e) => {

@@ -18,11 +18,11 @@ const BestSeller = ({ productsProp, addToCart }) => {
   }, [productsProp]);
 
   // Developer Code
-  if (Array.isArray(products) && products.length !== 0) {
-    console.log("Best sellers:", products);
-  } else {
-    console.log("No best sellers yet...");
-  }
+  // if (Array.isArray(products) && products.length !== 0) {
+  //   console.log("Best sellers:", products);
+  // } else {
+  //   console.log("No best sellers yet...");
+  // }
 
   if (loading) {
     return (

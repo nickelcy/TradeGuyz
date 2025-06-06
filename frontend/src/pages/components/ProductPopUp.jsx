@@ -18,11 +18,11 @@ const ProductPopUp = ({ clicked, setClick, chosenProduct, addToCart }) => {
   }, [chosenProduct]);
 
   // Developer Code
-  if (Array.isArray(chosenProduct) && chosenProduct.length == 0) {
-    console.log("No chosen product yet...");
-  } else {
-    console.log("Chosen Product:", chosenProduct);
-  }
+  // if (Array.isArray(chosenProduct) && chosenProduct.length == 0) {
+  //   console.log("No chosen product yet...");
+  // } else {
+  //   console.log("Chosen Product:", chosenProduct);
+  // }
 
   return (
     <div

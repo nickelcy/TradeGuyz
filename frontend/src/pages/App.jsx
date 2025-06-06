@@ -12,14 +12,13 @@ import AdminLogin from "./components/admin/AdminLogin";
 import UserLogin from "./components/user/UserLogin"
 import User from "./User";
 import UploadPage from "./components/admin/UploadPage";
+import UserInfo from "./components/user/UserInfo"
+import UserRegister from "./components/user/UserRegister";
 
 const App = () => {
   const [products, setProducts] = useState([]);
   const [cart, addToCart] = useState([]);
   const [chosenProduct, setChosenProduct] = useState(false);
-
-  // console.log(cart);
-  // localStorage.removeItem('cart')
 
   return (
     <Routes>
@@ -42,15 +41,13 @@ const App = () => {
         path="/cart"
         element={<MyCart cart={cart} addToCart={addToCart} />}
       />
-      {/* <Route
-        path="/payment"
-        element={<Payment cart={cart} addToCart={addToCart} />}
-      /> */}
 
       <Route path="/user/login" element={<UserLogin />} />
-      <Route path="/payment" element={<User />}>
-        <Route index element={<Payment cart={cart} addToCart={addToCart} />} />
+      <Route path="/user" element={<User />}>
+        <Route path="payment" element={<Payment cart={cart} addToCart={addToCart} />} />
+        <Route path="about" element={<UserInfo  />} />
       </Route>
+      <Route path="/user/register" element={<UserRegister />} />
 
       <Route path="/admin/login" element={<AdminLogin />} />
       <Route path="/admin" element={<Admin />}>

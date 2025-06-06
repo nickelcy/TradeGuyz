@@ -1,8 +1,12 @@
 import ProductCard from "./ProductCard";
-import {useState, useEffect} from "react"
+import { useState, useEffect } from "react";
 
-const ProductCardsMap = ({ productsArr, setClick, setChosenProduct, addToCart }) => {
-
+const ProductCardsMap = ({
+  productsArr,
+  setClick,
+  setChosenProduct,
+  addToCart,
+}) => {
   return (
     <div className="row g-5 text-center bestSellerCon">
       {productsArr.map((product, index) => (

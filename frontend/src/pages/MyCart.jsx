@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import Navbar from "./components/Navbar";
+import Navbar from "./components/navbar/Navbar";
 import RenderCart from "./components/RenderCart";
 import { formatPrice, calculateGrandTotal } from "./components/helpers";
 import { useEffect } from "react"
@@ -17,7 +17,7 @@ const MyCart = ({ cart, addToCart, setMonetaryTotal }) => {
     <>
       <Navbar cart={cart} />
       <div className="container mt-3">
-        <button className="btn btn-secondary" onClick={() => navigate("/ea")}>
+        <button className="btn btn-secondary" onClick={() => navigate(-1)}>
           ← Back to Home
         </button>
       </div>

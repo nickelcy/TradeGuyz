@@ -1,5 +1,5 @@
 import { useParams } from "react-router-dom";
-import Navbar from "./components/Navbar";
+import Navbar from "./components/navbar/Navbar";
 import Footer from "./components/Footer";
 import GroupedFilters from "./components/GroupedFilters";
 import axios from "axios";

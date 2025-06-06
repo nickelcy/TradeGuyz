@@ -19,7 +19,7 @@ const Button = ({ cart }) => {
             type="button"
             onClick={() => {
               alert("Payment Processing Cancelled.")
-              navigate("/");
+              navigate(-1);
             }}
             className="btn btn-secondary w-100 w-sm-25"
           >

@@ -1,5 +1,5 @@
 import Banner from "./components/homepage/Banner";
-import Navbar from "./components/Navbar";
+import Navbar from "./components/navbar/Navbar";
 import Category from "./components/sections/Category";
 import BestSeller from "./components/sections/BestSeller";
 import "./components/components.css";
@@ -28,11 +28,11 @@ const Home = ({ products, addToCart, cart, setProducts }) => {
   }, []);
 
   // Developer Code
-  if (Array.isArray(products) && products.length == 0) {
-    console.log("No products received from backend yet...");
-  } else {
-    console.log("Store Products: ", products);
-  }
+  // if (Array.isArray(products) && products.length == 0) {
+  //   console.log("No products received from backend yet...");
+  // } else {
+  //   console.log("Store Products: ", products);
+  // }
 
   return (
     <div className="position-relative " style={{ paddingBottom: "7rem" }}>
