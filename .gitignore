@@ -24,5 +24,5 @@ dist-ssr
 *.sln
 *.sw?
 archive/
-Documentation/
+_playground/
 snippets.js
