@@ -39,7 +39,8 @@ const AdminNav = () => {
             className="navbar-brand m-0 text-center"
             style={{ cursor: "pointer" }}
           >
-            LOCALLY ADMIN
+            <img src="/favicon.png" alt="logo" width={27} className="mx-2 pb-1"/>
+            TradeGuyz / Admin
           </h5>
         </div>
 
@@ -63,6 +64,11 @@ const AdminNav = () => {
           <ul className="navbar-nav ms-auto mt-2 mt-lg-0">
             <li className="nav-item">
               <a className="nav-link active" href="#">
+                Dashboard
+              </a>
+            </li>
+            <li className="nav-item">
+              <a className="nav-link" href="#">
                 Orders
               </a>
             </li>

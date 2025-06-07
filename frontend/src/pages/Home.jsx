@@ -18,11 +18,7 @@ const Home = ({ products, addToCart, cart, setProducts }) => {
     const storedCart = JSON.parse(localStorage.getItem("cart") || "[]");
     addToCart(storedCart);
     axios
-      .get(`${serverUrl}/${store.code}`,{
-        headers: {
-          "ngrok-skip-browser-warning": "true",
-        },
-      })
+      .get(`${serverUrl}/${store.code}`)
       .then((response) => setProducts(response.data))
       .catch((error) => console.log(error));
   }, []);

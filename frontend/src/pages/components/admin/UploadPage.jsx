@@ -94,15 +94,15 @@ const UploadPage = (props) => {
 
   return (
     <div
-      className="w-100 h-100 d-flex justify-content-center align-items-start"
+      className="w-100 h-100 d-flex justify-content-center align-items-center "
       style={{ minWidth: "100%", minHeight: "100vh" }}
     >
       <form
-        className="container m-0 text-bg-secondary px-5 py-4 overflow-y-auto"
-        style={{ maxWidth: "500px", maxHeight: "100vh" }}
+        className="container m-0 text-bg-secondary px-5 py-3 overflow-y-auto rounded-5"
+        style={{ maxWidth: "500px", maxHeight: "98vh" }}
         onSubmit={(e) => handleSubmit(e)}
       >
-        <h1>Product Upload Form</h1>
+        <h3>Product Upload Form</h3>
         <div className="mb-3">
           <label htmlFor="product" className="form-label">
             Name of Product
@@ -233,7 +233,7 @@ const UploadPage = (props) => {
               onClick={() => cancel()}
               disabled={media.length !== 0}
             >
-              Cancel
+              Back
             </button>
             <button
               type="submit"
