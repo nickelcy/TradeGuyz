@@ -64,7 +64,7 @@ const UserRegister = (props) => {
       style={{ minHeight: "100vh" }}
     >
       <button
-        className="btn btn-secondary position-absolute top-0 start-0 mx-0 my-0 mx-sm-2 my-sm-2 overflow-y-auto opacity"
+        className="btn btn-secondary position-absolute top-0 start-0 mx-2 my-3 overflow-y-auto opacity"
         onClick={() => navigate(`/${basePosition}`)}
         style={{ maxWidth: "125px" }}
       >
