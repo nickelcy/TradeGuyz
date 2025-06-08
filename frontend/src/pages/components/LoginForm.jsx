@@ -1,3 +1,5 @@
+import { useNavigate } from "react-router-dom";
+
 const LoginForm = ({
   source,
   handleSubmit,
@@ -6,11 +8,12 @@ const LoginForm = ({
   username,
   password,
 }) => {
+  const navigate = useNavigate();
   return (
     <form
       onSubmit={handleSubmit}
       className="col-10 col-sm-4 text-bg-secondary text-center pb-4 px-0 rounded"
-      style={{ transform: "translateY(-10%)" , maxWidth: "500px"}}
+      style={{ transform: "translateY(-10%)", maxWidth: "500px" }}
     >
       <h2 className="mt-4 mb-4">{source} Login</h2>
       <div className="form-floating mb-2 w-75 m-auto">
@@ -44,11 +47,15 @@ const LoginForm = ({
       </button>
 
       {source === "User" ? (
-        <p className="mt-4">
+        <p className="mt-4 mx-4">
           Don't have an account?{" "}
-          <a href="/user/register" className="text-warning ">
+          <span
+            className="text-warning"
+            style={{ cursor: "pointer" }}
+            onClick={() => navigate("/user/register", { replace: true })}
+          >
             Click here.
-          </a>
+          </span>
         </p>
       ) : (
         <></>

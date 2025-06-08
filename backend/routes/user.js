@@ -22,15 +22,15 @@ router.post("/register", userExists, async (req, res) => {
     req.body;
 
   try {
-    const hashedPassword = await bcrypt.hash(password, 12);
+    const hashedPassword = await bcrypt.hash(password.trim(), 12);
 
     await database.query(insertUser, [
-      firstname,
-      lastname,
-      username,
-      email,
+      firstname.trim(),
+      lastname.trim(),
+      username.trim(),
+      email.trim(),
       hashedPassword,
-      telephone,
+      telephone.trim().replace(" ", "-"),
     ]);
 
     res.status(201).json({ message: "Successfully created account." });

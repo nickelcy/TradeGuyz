@@ -1,13 +1,15 @@
 import axios from "axios";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import LoginForm from "../LoginForm";
+import { PositionContext } from "../../App";
 
 const AdminLogin = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const serverUrl = import.meta.env.VITE_SERVER_URL;
   const navigate = useNavigate();
+  const {basePosition} = useContext(PositionContext)
 
   const handleSubmit = (e) => {
     e.preventDefault(); // prevent form reload
@@ -19,14 +21,14 @@ const AdminLogin = () => {
       })
       .then((response) => {
         alert(response?.data?.message || "Invalid Username or Password!");
-        navigate(-1)
+        navigate(`/${basePosition}`)
       })
       .catch((error) => {
         alert(JSON.parse(error.request.response).message);
         alert("Invalid Username or Password!");
       });
   };
-
+console.log(basePosition)
   return (
     <div
       className="row m-0 d-flex justify-content-center align-items-center text-bg-dark"
@@ -34,10 +36,10 @@ const AdminLogin = () => {
     >
       <button
         className="btn btn-secondary position-absolute top-0 start-0 mx-2 my-3"
-        onClick={() => navigate(-1)}
-        style={{ maxWidth: "200px" }}
+        onClick={() => navigate(`/${basePosition}`)}
+        style={{ maxWidth: "125px" }}
       >
-        ← Back to Home
+        ← Go back
       </button>
 
       <LoginForm

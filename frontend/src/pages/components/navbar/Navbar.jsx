@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, replace } from "react-router-dom";
 import { BsCart2 } from "react-icons/bs";
 import { useNavigate } from "react-router-dom";
 import Search from "./Search";
@@ -13,6 +13,8 @@ const Navbar = ({ cart }) => {
   const [visible, setVisibility] = useState("d-none");
   const serverUrl = import.meta.env.VITE_SERVER_URL;
   const [loggedIn, setLoggedIn] = useState(false);
+
+  
 
   useEffect(() => {
     setNumberOfProducts(cart.length);
@@ -75,7 +77,7 @@ const Navbar = ({ cart }) => {
                     prev === "d-block" ? "d-none" : "d-block"
                   );
                 } else {
-                  navigate("/user/login");
+                  navigate("/user/login", {replace: true});
                 }
               }}
             />
@@ -85,9 +87,10 @@ const Navbar = ({ cart }) => {
                 className={`py-3 px-2 bg-dark position-absolute end-0 mt-4 shadow rounded ${visible}`}
                 style={{ minWidth: "180px" }}
               >
-                <li className="btn btn-secondary w-100 rounded-0 fw-semibold mb-2 pop" onClick={() => navigate("/user/about")}>
+                {/* Future Implement */}
+                {/* <li className="btn btn-secondary w-100 rounded-0 fw-semibold mb-2 pop" onClick={() => navigate("/user/about")}>
                   Your information
-                </li>
+                </li> */}
                 <li
                   className="btn btn-danger w-100 rounded-0 fw-semibold pop"
                   onClick={logoutUser}

@@ -1,6 +1,16 @@
-import React from "react";
+import { useContext } from "react";
+import { PositionContext } from "./App";
+import { useNavigate } from "react-router-dom";
 
 const LandingPage = () => {
+  const navigate = useNavigate();
+  const { basePosition, setBasePosition } = useContext(PositionContext);
+  console.log(basePosition);
+  const handleClick = (position, route) => {
+    setBasePosition(position);
+    navigate(route);
+  };
+
   return (
     <div className="min-h-screen bg-gray-100 text-gray-900">
       {/* Header */}
@@ -62,24 +72,36 @@ const LandingPage = () => {
         <h2 className="text-3xl font-bold mb-8">Stores</h2>
         <ul className="space-y-4 text-lg">
           <li>
-            <a href="/ea" className="text-blue-600 hover:underline">
+            <button
+              onClick={() => handleClick("ea", "/ea")}
+              className="text-blue-600 hover:underline"
+            >
               Electronics & Accessories
-            </a>
+            </button>
           </li>
           <li>
-            <a href="/ps" className="text-blue-600 hover:underline">
+            <button
+              onClick={() => handleClick("ps", "/ps")}
+              className="text-blue-600 hover:underline"
+            >
               Parts & Spares
-            </a>
+            </button>
           </li>
           <li>
-            <a href="/bs" className="text-blue-600 hover:underline">
-              Books & Stationery
-            </a>
+            <button
+              onClick={() => handleClick("bt", "/bs")}
+              className="text-blue-600 hover:underline"
+            >
+              Books & Textbooks
+            </button>
           </li>
           <li>
-            <a href="/cs" className="text-blue-600 hover:underline">
-              Clothing & Wearables
-            </a>
+            <button
+              onClick={() => handleClick("cf", "/cs")}
+              className="text-blue-600 hover:underline"
+            >
+              Clothing & Fashion
+            </button>
           </li>
         </ul>
       </section>
