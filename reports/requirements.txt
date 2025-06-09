@@ -1,0 +1,6 @@
+flask
+flask-cors
+matplotlib
+mysql-connector-python
+dotenv
+numpy
