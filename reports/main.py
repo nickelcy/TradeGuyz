@@ -2,13 +2,16 @@ from flask import Flask, request, jsonify
 from database import get_connection, getProductDemographic
 from flask_cors import CORS
 from dotenv import load_dotenv
+from waitress import serve 
 import os
-
 load_dotenv()
-print("CLIENT origin is:", os.getenv("CLIENT"))
 
 app = Flask(__name__)
 CORS(app, resources={r"/api/*": {"origins": os.getenv("CLIENT")}})
+
+@app.route("/")
+def home():
+    return "Hello from TradeGuyz report API"
 
 @app.route("/user/<uid>")
 def getUser(uid):
@@ -35,5 +38,10 @@ def demographicByStore(store):
         return jsonify({"error": "No products found for that store"}), 404
     return jsonify(result), 200
 
-if __name__ == "__main__":
-    app.run(debug=True)
+mode = "notDev"
+
+if __name__ == '__main__':
+    if mode == "dev":
+        app.run(host='0.0.0.0', port=50100, debug=True)
+    else:
+        serve(app, host='0.0.0.0', port=50100, threads=4)

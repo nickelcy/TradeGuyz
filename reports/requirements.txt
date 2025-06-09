@@ -4,3 +4,4 @@ matplotlib
 mysql-connector-python
 dotenv
 numpy
+waitress
