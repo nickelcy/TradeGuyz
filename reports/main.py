@@ -39,7 +39,7 @@ def demographicByStore(store):
         return jsonify({"error": "No products found for that store"}), 404
     return jsonify(result), 200
 
-devMode = True
+devMode = False
 
 if __name__ == '__main__':
     try:
