@@ -7,31 +7,12 @@ import seller from "./routes/seller.js";
 import cookieParser from "cookie-parser";
 import env from "dotenv";
 
-env.config({ path: `.env.development` });
-// env.config({ path: `.env.production` });
+env.config();
 
 const port = process.env.PORT;
 const app = express();
 
 app.use(express.json());
-
-// const allowedOrigins = [
-//   "http://localhost:5173",
-//   "https://683ebe37db92aeef4ad1f00d--testdeployfrontend.netlify.app",
-// ];
-
-// app.use(
-//   cors({
-//     origin: (origin, callback) => {
-//       if (!origin || allowedOrigins.includes(origin)) {
-//         callback(null, origin);
-//       } else {
-//         callback(new Error("Not allowed by CORS"));
-//       }
-//     },
-//     credentials: true,
-//   })
-// );
 
 app.use(
   cors({
