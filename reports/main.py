@@ -12,6 +12,7 @@ CORS(app, resources={r"/api/*": {"origins": os.getenv("CLIENT")}})
 @app.route("/")
 def home():
     return "Hello from TradeGuyz report API"
+print(os.getenv("CLIENT"))
 
 @app.route("/user/<uid>")
 def getUser(uid):
@@ -38,7 +39,7 @@ def demographicByStore(store):
         return jsonify({"error": "No products found for that store"}), 404
     return jsonify(result), 200
 
-devMode = False
+devMode = True
 
 if __name__ == '__main__':
     try:
