@@ -41,7 +41,12 @@ def demographicByStore(store):
 mode = "notDev"
 
 if __name__ == '__main__':
-    if mode == "dev":
-        app.run(host='0.0.0.0', port=50100, debug=True)
-    else:
-        serve(app, host='0.0.0.0', port=50100, threads=4)
+    try:
+        if mode == "dev":
+            print("Running development server.")
+            app.run(host='0.0.0.0', port=50100, debug=True)
+        else:
+            print("Running production server.")   
+            serve(app, host='0.0.0.0', port=50100, threads=4)
+    except error: 
+        print("There was an error.")
