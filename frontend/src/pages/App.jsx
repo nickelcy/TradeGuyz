@@ -1,8 +1,7 @@
 import { Route, Routes } from "react-router-dom";
 import Home from "./Home";
 import MyCart from "./MyCart";
-import axios from "axios";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Payment from "./Payment";
 import FilterRoutes from "./components/routes/FilterRoutes";
 import LandingPage from "./LandingPage";
@@ -15,7 +14,12 @@ import UploadPage from "./components/admin/UploadPage";
 import UserInfo from "./components/user/UserInfo";
 import UserRegister from "./components/user/UserRegister";
 import { createContext } from "react";
+import About from "./components/LandingPage/pages/About";
+import Referrer from "./components/LandingPage/pages/Referrer";
+import Seller from "./components/LandingPage/pages/Seller";
+import Business from "./components/LandingPage/pages/Business";
 export const PositionContext = createContext();
+export const CartContext = createContext();
 
 const App = () => {
   const [products, setProducts] = useState([]);
@@ -24,45 +28,51 @@ const App = () => {
   const [basePosition, setBasePosition] = useState("");
 
   return (
-    <PositionContext.Provider value={{basePosition, setBasePosition}}>
-      <Routes>
-        <Route path="/" element={<LandingPage />} />
-        <Route
-          path="/:code"
-          element={
-            <Home
-              products={products}
-              addToCart={addToCart}
-              cart={cart}
-              setProducts={setProducts}
-            />
-          }
-        />
-
-        {FilterRoutes({ addToCart, cart, chosenProduct, setChosenProduct })}
-
-        <Route
-          path="/cart"
-          element={<MyCart cart={cart} addToCart={addToCart} />}
-        />
-
-        <Route path="/user/login" element={<UserLogin />} />
-        <Route path="/user" element={<User />}>
+    <CartContext.Provider value={{cart, addToCart}}>
+      <PositionContext.Provider value={{ basePosition, setBasePosition }}>
+        <Routes>
+          <Route path="/" element={<LandingPage />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/referrer" element={<Referrer />} />
+          <Route path="/seller" element={<Seller />} />
+          <Route path="/business" element={<Business />} />
           <Route
-            path="payment"
-            element={<Payment cart={cart} addToCart={addToCart} />}
+            path="/:code"
+            element={
+              <Home
+                products={products}
+                addToCart={addToCart}
+                cart={cart}
+                setProducts={setProducts}
+              />
+            }
           />
-          <Route path="about" element={<UserInfo />} />
-        </Route>
-        <Route path="/user/register" element={<UserRegister />} />
 
-        <Route path="/admin/login" element={<AdminLogin />} />
-        <Route path="/admin" element={<Admin />}>
-          <Route index element={<AdminDashboard />} />
-          <Route path="uploads" element={<UploadPage />} />
-        </Route>
-      </Routes>
-    </PositionContext.Provider>
+          {FilterRoutes({ addToCart, cart, chosenProduct, setChosenProduct })}
+
+          <Route
+            path="/cart"
+            element={<MyCart cart={cart} addToCart={addToCart} />}
+          />
+
+          <Route path="/user/login" element={<UserLogin />} />
+          <Route path="/user" element={<User />}>
+            <Route
+              path="payment"
+              element={<Payment cart={cart} addToCart={addToCart} />}
+            />
+            <Route path="about" element={<UserInfo />} />
+          </Route>
+          <Route path="/user/register" element={<UserRegister />} />
+
+          <Route path="/admin/login" element={<AdminLogin />} />
+          <Route path="/admin" element={<Admin />}>
+            <Route index element={<AdminDashboard />} />
+            <Route path="uploads" element={<UploadPage />} />
+          </Route>
+        </Routes>
+      </PositionContext.Provider>
+    </CartContext.Provider>
   );
 };
 

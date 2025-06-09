@@ -1,0 +1,39 @@
+.showContent {
+  animation: show both;
+  animation-timeline: view(54% 50%);
+}
+.showContent2 {
+  animation: show both;
+  animation-timeline: view(90% 5%);
+}
+
+@keyframes show {
+  from{
+    opacity: 0;
+    transform: translateY(200px);
+    scale: 0.09;
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0px);
+    scale: 1;
+  }
+  
+}
+
+.background {
+  background: linear-gradient(135deg, #ff00c8, #8a2be2);
+  animation: backgroundc 1s ease-in-out forwards;
+  animation-timeline: view(50% 8%);
+}
+
+@keyframes backgroundc {
+  from {
+    background-position: 0% 50%;
+    background: linear-gradient(135deg, #ff00c8, #8a2be2); /* Neon Pink to Purple */
+  }
+  to {
+    background-position: 100% 50%;
+    background: linear-gradient(135deg, #8a2be2, #ff66cc); /* Purple to Soft Neon Pink */
+  }
+}
