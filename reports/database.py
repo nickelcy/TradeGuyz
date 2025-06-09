@@ -2,8 +2,6 @@ from mysql.connector import pooling
 import os
 from dotenv import load_dotenv
 load_dotenv()
-print("User:", os.getenv("DB_USER"))
-
 
 dbconfig = {
     "host": os.getenv("DB_HOST"),
