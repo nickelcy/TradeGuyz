@@ -13,12 +13,11 @@ const serverUrl = import.meta.env.VITE_SERVER_URL;
 
 const Home = ({ products, addToCart, cart, setProducts }) => {
   const store = useParams();
-  const { basePosition, setBasePosition } = useContext(PositionContext);
+  const { setBasePosition } = useContext(PositionContext);
 
   useEffect(() => {
     setBasePosition(store.code);
-    const storedCart = JSON.parse(localStorage.getItem("cart") || "[]");
-    addToCart(storedCart);
+    addToCart(JSON.parse(localStorage.getItem("cart") || "[]"));
     axios
       .get(`${serverUrl}/${store.code}`)
       .then((response) => setProducts(response.data))

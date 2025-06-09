@@ -16,13 +16,6 @@ const ProductPopUp = ({ clicked, setClick, chosenProduct, addToCart }) => {
     } else setImages([defaultIMG]);
   }, [chosenProduct]);
 
-  // Developer Code
-  // if (Array.isArray(chosenProduct) && chosenProduct.length == 0) {
-  //   console.log("No chosen product yet...");
-  // } else {
-  //   console.log("Chosen Product:", chosenProduct);
-  // }
-
   return (
     <div
       className={`position-fixed top-0 start-0 p-0 m-0 w-100 h-100 d-flex align-items-center justify-content-center text-bg-dark bg-opacity-75 z-3 ${

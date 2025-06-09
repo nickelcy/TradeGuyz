@@ -11,18 +11,11 @@ const BestSeller = ({ productsProp, addToCart }) => {
 
   useEffect(() => {
     if (Array.isArray(productsProp) && productsProp.length > 0) {
-      // setProducts(productsProp.slice(0, 9));
+      setProducts(productsProp.slice(0, 20)); // Reminder: query the data base to to order by purchase number
       setProducts(productsProp);
       setLoading(false);
     }
   }, [productsProp]);
-
-  // Developer Code
-  // if (Array.isArray(products) && products.length !== 0) {
-  //   console.log("Best sellers:", products);
-  // } else {
-  //   console.log("No best sellers yet...");
-  // }
 
   if (loading) {
     return (
@@ -40,7 +33,6 @@ const BestSeller = ({ productsProp, addToCart }) => {
         clicked={clicked}
         setClick={setClick}
         chosenProduct={chosenProduct}
-        setChosenProduct={setChosenProduct}
         addToCart={addToCart}
       />
       <div className="container mt-5">
