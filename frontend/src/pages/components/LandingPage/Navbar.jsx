@@ -1,4 +1,4 @@
-import MainNavBtn from "../MainNavBtn";
+import MainNavBtn from "../shared/navbar/components/MainNavBtn";
 import { Link } from "react-router-dom";
 import logo from "../../../assets/logo/logo1.svg";
 

@@ -1,9 +1,9 @@
 import { Route, Routes } from "react-router-dom";
 import Home from "./Home";
-import MyCart from "./MyCart";
+import Cart from "./Cart";
 import { useState } from "react";
 import Payment from "./Payment";
-import FilterRoutes from "./components/routes/FilterRoutes";
+import FilterRoutes from "./components/filter/FilterRoutes";
 import LandingPage from "./LandingPage";
 import Admin from "./Admin";
 import AdminDashboard from "./components/admin/AdminDashboard";
@@ -18,6 +18,7 @@ import About from "./components/LandingPage/pages/About";
 import Referrer from "./components/LandingPage/pages/Referrer";
 import Seller from "./components/LandingPage/pages/Seller";
 import Business from "./components/LandingPage/pages/Business";
+import "./components/shared/styles/components.css"
 export const PositionContext = createContext();
 export const CartContext = createContext();
 
@@ -52,10 +53,11 @@ const App = () => {
 
           <Route
             path="/cart"
-            element={<MyCart cart={cart} addToCart={addToCart} />}
+            element={<Cart cart={cart} addToCart={addToCart} />}
           />
 
           <Route path="/user/login" element={<UserLogin />} />
+          <Route path="/user/register" element={<UserRegister />} />
           <Route path="/user" element={<User />}>
             <Route
               path="payment"
@@ -63,7 +65,6 @@ const App = () => {
             />
             <Route path="about" element={<UserInfo />} />
           </Route>
-          <Route path="/user/register" element={<UserRegister />} />
 
           <Route path="/admin/login" element={<AdminLogin />} />
           <Route path="/admin" element={<Admin />}>

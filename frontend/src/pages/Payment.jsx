@@ -1,10 +1,13 @@
 import { useState } from "react";
-import Contact from "./components/Payment/Contact";
-import Button from "./components/Payment/Button";
-import OrderMethod from "./components/Payment/OrderMethod";
-import PaymentMethod from "./components/Payment/PaymentMethod";
+import Contact from "./components/payment/Contact";
+import Button from "./components/payment/Button";
+import OrderMethod from "./components/payment/OrderMethod";
+import PaymentMethod from "./components/payment/PaymentMethod";
 import { useNavigate } from "react-router-dom";
-import { calculateGrandTotal, formatPrice } from "./components/helpers";
+import {
+  calculateGrandTotal,
+  formatPrice,
+} from "./components/shared/utils/helpers";
 import { useEffect } from "react";
 import axios from "axios";
 const serverUrl = import.meta.env.VITE_SERVER_URL;

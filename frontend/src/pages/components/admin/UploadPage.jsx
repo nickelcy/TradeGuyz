@@ -2,7 +2,7 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import CustomSearch from "./components/CustomSearch";
 import { useNavigate } from "react-router-dom";
-import UploadWidget from "../UploadWidget";
+import UploadWidget from "../shared/components/UploadWidget";
 
 const UploadPage = (props) => {
   const serverUrl = import.meta.env.VITE_SERVER_URL;

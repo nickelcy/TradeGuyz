@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { formatPrice, calculateGrandTotal } from "../helpers";
+import { formatPrice, calculateGrandTotal } from "../shared/utils/helpers";
 
 const Button = ({ cart }) => {
   const navigate = useNavigate();
@@ -18,7 +18,7 @@ const Button = ({ cart }) => {
           <button
             type="button"
             onClick={() => {
-              alert("Payment Processing Cancelled.")
+              alert("Payment Processing Cancelled.");
               navigate(-1);
             }}
             className="btn btn-secondary w-100 w-sm-25"

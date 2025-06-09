@@ -14,24 +14,6 @@ def home():
     return "Hello from TradeGuyz report API"
 print(os.getenv("CLIENT"))
 
-@app.route("/user/<uid>")
-def getUser(uid):
-    connection = get_connection()
-    cursor = connection.cursor(dictionary=True)
-    cursor.execute("SELECT * FROM user WHERE uid = %s", (uid,))
-    res = cursor.fetchall()
-    cursor.close()
-    connection.close()
-    if not res:
-        return jsonify({"error": "User not found"}), 404
-    return jsonify(res[0])
-
-@app.route("/post", methods=["POST"])
-def post():
-    data = request.get_json()
-    print(data.get("data"))
-    return jsonify(data), 201
-
 @app.route("/api/product-inventory/<store>")
 def demographicByStore(store):
     result = getProductDemographic(store)
@@ -39,7 +21,7 @@ def demographicByStore(store):
         return jsonify({"error": "No products found for that store"}), 404
     return jsonify(result), 200
 
-devMode = False
+devMode = os.getenv("DEV_MODE")
 
 if __name__ == '__main__':
     try:

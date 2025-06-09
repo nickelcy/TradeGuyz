@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
-import LoginForm from "../LoginForm";
+import LoginForm from "../shared/components/LoginForm";
 import { PositionContext } from "../../App";
 
 const AdminLogin = () => {
@@ -9,7 +9,7 @@ const AdminLogin = () => {
   const [password, setPassword] = useState("");
   const serverUrl = import.meta.env.VITE_SERVER_URL;
   const navigate = useNavigate();
-  const {basePosition} = useContext(PositionContext)
+  const { basePosition } = useContext(PositionContext);
 
   const handleSubmit = (e) => {
     e.preventDefault(); // prevent form reload
@@ -21,14 +21,14 @@ const AdminLogin = () => {
       })
       .then((response) => {
         alert(response?.data?.message || "Invalid Username or Password!");
-        navigate(`/${basePosition}`)
+        navigate(`/${basePosition}`);
       })
       .catch((error) => {
         alert(JSON.parse(error.request.response).message);
         alert("Invalid Username or Password!");
       });
   };
-console.log(basePosition)
+  console.log(basePosition);
   return (
     <div
       className="row m-0 d-flex justify-content-center align-items-center text-bg-dark"
