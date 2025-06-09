@@ -3,7 +3,6 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import IncrementBtn from "./IncrementBtn.jsx";
 import { IoMdLink } from "react-icons/io";
-const baseUrl = import.meta.env.VITE_THIS_BASE_URL;
 
 const InfoEditCard = ({
   chosenProduct,
