@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import Contact from "./components/payment/Contact";
-import Button from "./components/payment/Button";
+import Button from "./components/payment/Button.jsx";
 import OrderMethod from "./components/payment/OrderMethod";
 import PaymentMethod from "./components/payment/PaymentMethod";
 import axios from "axios";
