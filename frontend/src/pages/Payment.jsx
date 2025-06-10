@@ -48,6 +48,7 @@ const Payment = ({ cart, addToCart }) => {
         style={{ maxWidth: "550px", maxHeight: "95vh" }}
         onSubmit={submitForm}
       >
+        <h1>form</h1>
         {/* <Contact setBuyer={setBuyer} /> */}
         {/* <OrderMethod setCollectionDetails={setCollectionDetails} /> */}
         {/* <PaymentMethod setPaymentMethod={setPaymentMethod} /> */}
