@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
-import Contact from "./components/payment/Contact.jsx";
+// import Contact from "./components/payment/Contact.jsx";
+import Contact from "./components/payment/Contact.jsx"
 import Button from "./components/payment/Button.jsx";
 import OrderMethod from "./components/payment/OrderMethod.jsx";
 import PaymentMethod from "./components/payment/PaymentMethod.jsx";
