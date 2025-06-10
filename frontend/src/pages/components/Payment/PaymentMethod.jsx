@@ -1,7 +1,9 @@
 import { useState, useEffect } from "react";
 
 const PaymentMethod = ({ setPaymentMethod }) => {
-  const [payMethodDetails, setPayMethodDetails] = useState({ paymentMethod: "cash" });
+  const [payMethodDetails, setPayMethodDetails] = useState({
+    paymentMethod: "cash",
+  });
 
   useEffect(() => {
     setPaymentMethod(payMethodDetails);
@@ -17,7 +19,7 @@ const PaymentMethod = ({ setPaymentMethod }) => {
           aria-label="Payment Method"
         >
           <input
-            onChange={() => setPayMethodDetails({ payment: "mmg" })}
+            onChange={() => setPayMethodDetails({ paymentMethod: "mmg" })}
             type="radio"
             className="btn-check"
             name="paymentMethod"
@@ -25,15 +27,12 @@ const PaymentMethod = ({ setPaymentMethod }) => {
             autoComplete="off"
             // disabled
           />
-          <label
-            className="btn btn-outline-primary w-50 w-50"
-            htmlFor="mmg"
-          >
+          <label className="btn btn-outline-primary w-50 w-50" htmlFor="mmg">
             MMG
           </label>
 
           <input
-            onChange={() => setPayMethodDetails({ payment: "visa" })}
+            onChange={() => setPayMethodDetails({ paymentMethod: "visa" })}
             type="radio"
             className="btn-check"
             name="paymentMethod"
@@ -46,7 +45,7 @@ const PaymentMethod = ({ setPaymentMethod }) => {
           </label>
 
           <input
-            onChange={() => setPayMethodDetails({ payment: "cash" })}
+            onChange={() => setPayMethodDetails({ paymentMethod: "cash" })}
             type="radio"
             className="btn-check"
             name="paymentMethod"

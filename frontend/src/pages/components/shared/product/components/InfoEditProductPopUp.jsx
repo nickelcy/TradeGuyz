@@ -4,10 +4,7 @@ import { useNavigate } from "react-router-dom";
 import IncrementBtn from "../../components/IncrementBtn.jsx";
 import { IoMdLink } from "react-icons/io";
 
-const InfoEditProductPopUp = ({
-  chosenProduct,
-  addToCart,
-}) => {
+const InfoEditProductPopUp = ({ chosenProduct, addToCart }) => {
   const [quantity, setQuantity] = useState(chosenProduct.quantity || 1);
   const navigate = useNavigate();
 
@@ -62,10 +59,12 @@ const InfoEditProductPopUp = ({
         </button>
         <button
           onClick={copyLink}
-          className={`btn btn-primary my-3`}
+          className={`btn btn-primary my-auto`}
           //Toast here
         >
-          <IoMdLink />
+          <div className="d-flex justify-content-center align-items-center p-1">
+            <IoMdLink />
+          </div>
         </button>
       </div>
     </div>

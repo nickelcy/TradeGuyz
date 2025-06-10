@@ -24,7 +24,7 @@ const CartCard = ({
   return (
     <div
       className="col-11 col-md-8 text-bg-dark p-3 rounded shadow-sm "
-      style={{ maxWidth: "800px" }}
+      style={{ maxWidth: "500px" }}
     >
       <h3>{chosenProduct.product_name}</h3>
       <div className="container-fluid d-flex justify-content-between align-items-center m-0 p-0">

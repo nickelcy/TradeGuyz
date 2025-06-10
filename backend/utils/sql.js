@@ -80,6 +80,10 @@ export const phoneExists = `
 export const getOrdersById = `
     CALL getUserOrders(?)
     `;
+export const makeOrder = `
+    Insert into orders (pid, quantity, uid, collection, address, paymentMethod )
+    Values(?, ?, ?, ?, ?, ?);
+    `;
 
 // Seller Queries
 export const getSeller = `

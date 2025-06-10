@@ -133,7 +133,7 @@ const UserRegister = (props) => {
               id="telephone"
               name="telephone"
               placeholder="687-1016"
-              pattern="[0-9]{3} [0-9]{4}"
+              pattern="[0-9]{3}-[0-9]{4}"
               required
             />
             <label htmlFor="telephone">(eg: 687 1016)</label>

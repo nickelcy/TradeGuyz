@@ -5,6 +5,7 @@ import {
   getOrdersById,
   insertUser,
   setUserActivity,
+  makeOrder,
 } from "../utils/sql.js";
 import database from "../utils/database.js";
 import bcrypt from "bcrypt";
@@ -30,7 +31,8 @@ router.post("/register", userExists, async (req, res) => {
       username.trim(),
       email.trim(),
       hashedPassword,
-      telephone.trim().replace(" ", "-"),
+      telephone.trim(),
+      // telephone.trim().replace(" ", "-"),
     ]);
 
     res.status(201).json({ message: "Successfully created account." });
@@ -51,12 +53,32 @@ router.get("/orders", authenticateToken("user_token"), async (req, res) => {
 });
 
 router.post("/mk-order", authenticateToken("user_token"), async (req, res) => {
-  // pid quantity uid collection address paymentMethod 
-  const orderDetails = req.body[1]; // everything other than pid and uid
-  const products = req.body[2]; // List of ordered products mainly pid
+  const uid = req.user.uid;
+  const details = req.body[1];
+  const products = req.body[2];
+  console.log(details);
 
+  const orders = products.map((product) => {
+    const order = [
+      product.pid,
+      product.quantity,
+      uid,
+      details.collection,
+      details.address,
+      details.paymentMethod,
+    ];
+    return database.query(makeOrder, order);
+  });
 
-
+  try {
+    const results = await Promise.all(orders);
+    res.status(200).json({ message: "Orders placed", results });
+    // console.log(results)
+    // res.json(req.user)
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Internal server error" });
+  }
 });
 
 router.post("/login", async (req, res) => {
@@ -66,7 +88,7 @@ router.post("/login", async (req, res) => {
     const [user] = await database.query(getUser, [username]);
     if (Array.isArray(user) && user.length == 1) {
       const isMatch = await bcrypt.compare(password, user[0].password);
-
+      console.log(user);
       if (isMatch) {
         const payload = { uid: user[0].uid, role: user[0].role };
         const user_token = jwt.sign(payload, process.env.ACCESS_SECRET, {
@@ -79,8 +101,16 @@ router.post("/login", async (req, res) => {
           sameSite: process.env.COOKIE_SAMESITE,
           maxAge: 3600000,
         });
-
-        res.json({ message: "Logged in successfully!", user: {uid: user[0].uid, username: user[0].username}});
+        res.json({
+          message: "Logged in successfully!",
+          user: {
+            uid: user[0].uid,
+            firstname: user[0].firstname,
+            lastname: user[0].lastname,
+            email: user[0].email,
+            telephone: user[0].telephone,
+          },
+        }); // Todo: Send only necessary information
       } else {
         res.status(401).json({ message: "Invalid password!" });
       }

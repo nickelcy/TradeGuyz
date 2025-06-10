@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
-const Contact = ({ setGuest }) => {
+const Contact = ({ setBuyer }) => {
   const [firstname, setFirstname] = useState("");
   const [lastname, setLastname] = useState("");
   const [email, setEmail] = useState("");
   const [telephone, setNumber] = useState("");
 
-  const guestInformation = {
+  const buyerInformation = {
     firstname,
     lastname,
     email,
@@ -13,12 +13,12 @@ const Contact = ({ setGuest }) => {
   };
 
   useEffect(() => {
-    setGuest(guestInformation);
+    setBuyer(buyerInformation);
   }, [firstname, lastname, email, telephone]);
 
   useEffect(() => {
     try {
-      const storedGuest = JSON.parse(localStorage.getItem("guest"));
+      const storedGuest = JSON.parse(localStorage.getItem("user"));
       if (storedGuest) {
         setFirstname(storedGuest.firstname || "");
         setLastname(storedGuest.lastname || "");
@@ -34,7 +34,7 @@ const Contact = ({ setGuest }) => {
   return (
     <div className="row mt-3 " id="ContactSection">
       <div className="col-12">
-        <h2>Contact</h2>
+        <h2>Confirm Contact Information</h2>
 
         <div className="input-group w-100 mb-1">
           <div className="form-floating">

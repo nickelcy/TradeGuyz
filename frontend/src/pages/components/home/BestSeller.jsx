@@ -1,21 +1,27 @@
 import { FiLoader } from "react-icons/fi";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import ProductCardsMap from "../shared/product/ProductCardsMap";
 import ProductPopUp from "../shared/product/ProductPopUp";
+import { SelectedProductContext } from "../../App";
 
 const BestSeller = ({ productsProp, addToCart }) => {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [clicked, setClick] = useState(false);
-  const [chosenProduct, setChosenProduct] = useState([]);
+  const {chosenProduct, setChosenProduct} = useContext(SelectedProductContext);
 
   useEffect(() => {
     if (Array.isArray(productsProp) && productsProp.length > 0) {
-      setProducts(productsProp.slice(0, 20)); // Reminder: query the data base to to order by purchase number
-      setProducts(productsProp);
+      setProducts(productsProp.slice(0, 15)); // Reminder: query the data base to to order by purchase number
+      // setProducts(productsProp);
       setLoading(false);
     }
   }, [productsProp]);
+
+  const handleProductClick = (product) => {
+    setChosenProduct(product);
+    setClick(true);
+  };
 
   if (loading) {
     return (
@@ -39,8 +45,7 @@ const BestSeller = ({ productsProp, addToCart }) => {
         <h2 className="mb-0 mb-md-2 text-center">Our Products</h2>
         <ProductCardsMap
           productsArr={products}
-          setClick={setClick}
-          setChosenProduct={setChosenProduct}
+          onProductClick={handleProductClick}
           addToCart={addToCart}
         />
       </div>

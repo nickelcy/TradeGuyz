@@ -38,6 +38,7 @@ const MainNavBtn = () => {
       await axios.get(`${serverUrl}/user/logout`, { withCredentials: true });
       alert("You logged out.");
       setLoggedIn(false);
+      localStorage.removeItem("user")
     } catch (error) {
       setLoggedIn(false);
       alert("There was an error logging out.");

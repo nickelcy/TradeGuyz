@@ -1,40 +1,35 @@
-import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { useState, useEffect } from "react";
 import Contact from "./components/payment/Contact";
 import Button from "./components/payment/Button";
 import OrderMethod from "./components/payment/OrderMethod";
 import PaymentMethod from "./components/payment/PaymentMethod";
-import { useNavigate } from "react-router-dom";
-import {
-  calculateGrandTotal,
-  formatPrice,
-} from "./components/shared/utils/helpers";
-import { useEffect } from "react";
 import axios from "axios";
 const serverUrl = import.meta.env.VITE_SERVER_URL;
 
 const Payment = ({ cart, addToCart }) => {
   const navigate = useNavigate();
-  const [guest, setGuest] = useState({});
+  const [buyer, setBuyer] = useState({});
   const [collectionDetails, setCollectionDetails] = useState({});
   const [paymentMethod, setPaymentMethod] = useState({});
   const [order, setOrder] = useState([]);
 
   useEffect(() => {
-    setOrder([guest, { ...collectionDetails, ...paymentMethod }, cart]);
-  }, [guest, collectionDetails, paymentMethod, cart]);
+    setOrder([buyer, { ...collectionDetails, ...paymentMethod }, cart]);
+  }, [buyer, collectionDetails, paymentMethod, cart]);
 
   const submitForm = (e) => {
     e.preventDefault();
     axios
-      .post(`${serverUrl}/user/mk-order`, order)
+      .post(`${serverUrl}/user/mk-order`, order, {withCredentials: true})
       .then((res) => {
         console.log(res.data);
+        console.log(order)
+        localStorage.removeItem("cart");
+        navigate("/cart");
         alert(
           "Your order was successful! Our team will begin processing it shortly. Delivery is expected to be finalized within approximately 3 weeks."
         );
-        localStorage.setItem("guest", JSON.stringify(guest));
-        localStorage.removeItem("cart");
-        // navigate("/cart");
       })
       .catch((err) => {
         console.error(err);
@@ -52,7 +47,7 @@ const Payment = ({ cart, addToCart }) => {
         style={{ maxWidth: "550px", maxHeight: "95vh" }}
         onSubmit={submitForm}
       >
-        <Contact setGuest={setGuest} />
+        <Contact setBuyer={setBuyer} />
         <OrderMethod setCollectionDetails={setCollectionDetails} />
         <PaymentMethod setPaymentMethod={setPaymentMethod} />
         <Button cart={cart} />

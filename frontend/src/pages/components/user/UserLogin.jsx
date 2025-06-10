@@ -3,6 +3,7 @@ import { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import LoginForm from "../shared/components/LoginForm";
 import { PositionContext } from "../../App";
+import { UserContext } from "../../App";
 
 const AdminLogin = () => {
   const [username, setUsername] = useState("");
@@ -10,6 +11,7 @@ const AdminLogin = () => {
   const serverUrl = import.meta.env.VITE_SERVER_URL;
   const navigate = useNavigate();
   const { basePosition } = useContext(PositionContext);
+  const { setUserContact } = useContext(UserContext);
 
   const handleSubmit = (e) => {
     e.preventDefault(); // prevent form reload
@@ -21,14 +23,17 @@ const AdminLogin = () => {
       })
       .then((response) => {
         alert(response?.data?.message || "Invalid Username or Password!");
-        navigate(`/${basePosition}`);
+        navigate(-1);
+        // Set the the collected data to user
+        setUserContact(response.data.user);
+        localStorage.setItem("user", JSON.stringify(response.data.user));
       })
       .catch((error) => {
-        alert(JSON.parse(error.request.response).message);
+        // alert(JSON.parse(error.request.response).message);
+        console.log(error)
         alert("Invalid Username or Password!");
       });
   };
-  console.log(basePosition);
   return (
     <div
       className="row m-0 d-flex justify-content-center align-items-center text-bg-dark"
