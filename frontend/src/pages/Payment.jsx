@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 // import Contact from "./components/payment/Contact.jsx";
 // import Contact from "./components/payment/Contact.jsx"
 // import Button from "./components/payment/Button.jsx";
-import OrderMethod from "./components/payment/OrderMethod.jsx";
+// import OrderMethod from "./components/payment/OrderMethod.jsx";
 import PaymentMethod from "./components/payment/PaymentMethod.jsx";
 import axios from "axios";
 const serverUrl = import.meta.env.VITE_SERVER_URL;
@@ -49,7 +49,7 @@ const Payment = ({ cart, addToCart }) => {
         onSubmit={submitForm}
       >
         {/* <Contact setBuyer={setBuyer} /> */}
-        <OrderMethod setCollectionDetails={setCollectionDetails} />
+        {/* <OrderMethod setCollectionDetails={setCollectionDetails} /> */}
         <PaymentMethod setPaymentMethod={setPaymentMethod} />
         {/* <Button cart={cart} /> */}
       </form>
