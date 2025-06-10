@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 // import Contact from "./components/payment/Contact.jsx";
-import Contact from "./components/payment/Contact.jsx"
+// import Contact from "./components/payment/Contact.jsx"
 import Button from "./components/payment/Button.jsx";
 import OrderMethod from "./components/payment/OrderMethod.jsx";
 import PaymentMethod from "./components/payment/PaymentMethod.jsx";
@@ -48,7 +48,7 @@ const Payment = ({ cart, addToCart }) => {
         style={{ maxWidth: "550px", maxHeight: "95vh" }}
         onSubmit={submitForm}
       >
-        <Contact setBuyer={setBuyer} />
+        {/* <Contact setBuyer={setBuyer} /> */}
         <OrderMethod setCollectionDetails={setCollectionDetails} />
         <PaymentMethod setPaymentMethod={setPaymentMethod} />
         <Button cart={cart} />
