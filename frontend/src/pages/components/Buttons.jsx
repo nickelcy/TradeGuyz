@@ -1,8 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import {
-  formatPrice,
-  calculateGrandTotal,
-} from "./components/shared/utils/helpers.js";
+import { formatPrice, calculateGrandTotal } from "./shared/utils/helpers.js";
 
 const Buttons = ({ cart }) => {
   const navigate = useNavigate();
