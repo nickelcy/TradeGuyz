@@ -1,6 +1,6 @@
 // import Category from "./components/home/components/Category";
 // import Brands from "./components/home/components/Brands";
-import Buttons from "./components/payment/Buttons";
+import Buttons from "./components/payments/Buttons";
 import Banner from "./components/home/Banner";
 import Navbar from "./components/shared/navbar/Navbar";
 import BestSeller from "./components/home/BestSeller";
