@@ -15,7 +15,7 @@ const Navbar = () => {
 
         <div className="d-flex align-items-center gap-4 justify-content-between flex-fill">
           <div className="d-flex flex-fill justify-content-center">
-            <Search />
+            {/* <Search /> */}
           </div>
           <MainNavBtn />
         </div>

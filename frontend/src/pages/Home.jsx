@@ -11,7 +11,7 @@ import { PositionContext } from "./App";
 import "./components/home/sections.css";
 const serverUrl = import.meta.env.VITE_SERVER_URL;
 
-const Home = ({ products, addToCart, cart, setProducts }) => {
+const Home = ({ products, addToCart, setProducts }) => {
   const store = useParams();
   const { setBasePosition } = useContext(PositionContext);
 

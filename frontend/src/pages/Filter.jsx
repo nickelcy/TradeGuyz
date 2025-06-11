@@ -1,3 +1,5 @@
+// This functionality has been put on hold for the time being
+
 import { useParams } from "react-router-dom";
 import Navbar from "./components/shared/navbar/Navbar";
 import Footer from "./components/shared/components/Footer";

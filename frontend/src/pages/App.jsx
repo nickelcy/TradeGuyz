@@ -3,7 +3,7 @@ import Home from "./Home";
 import Cart from "./Cart";
 import { useState } from "react";
 import Payment from "./Payment";
-import FilterRoutes from "./components/filter/FilterRoutes";
+// import FilterRoutes from "./components/filter/FilterRoutes"; // This functionality will be implemented in the future
 import LandingPage from "./LandingPage";
 import Admin from "./Admin";
 import AdminDashboard from "./components/admin/AdminDashboard";
@@ -34,7 +34,7 @@ const App = () => {
   useEffect(() => {
     addToCart(JSON.parse(localStorage.getItem("cart") || "[]"));
     if (localStorage.getItem("user")) {
-      setUserContact(localStorage.getItem("user"))
+      setUserContact(localStorage.getItem("user"));
     }
   }, []);
 
@@ -57,18 +57,17 @@ const App = () => {
                   <Home
                     products={products}
                     addToCart={addToCart}
-                    cart={cart}
                     setProducts={setProducts}
                   />
                 }
               />
 
-              {FilterRoutes({
+              {/* {FilterRoutes({
                 addToCart,
                 cart,
                 chosenProduct,
                 setChosenProduct,
-              })}
+              })} */}
 
               <Route
                 path="/cart"
