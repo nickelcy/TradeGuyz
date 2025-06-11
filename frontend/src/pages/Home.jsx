@@ -1,5 +1,6 @@
 // import Category from "./components/home/components/Category";
 // import Brands from "./components/home/components/Brands";
+import Buttons from "./components/payment/Buttons";
 import Banner from "./components/home/Banner";
 import Navbar from "./components/shared/navbar/Navbar";
 import BestSeller from "./components/home/BestSeller";
@@ -31,6 +32,7 @@ const Home = ({ products, addToCart, cart, setProducts }) => {
     <div className="position-relative " style={{ paddingBottom: "7rem" }}>
       <Navbar />
       <Banner />
+      <Buttons cart={cart} />
       {/* <Category />  */}
       <BestSeller productsProp={products} addToCart={addToCart} />
       {/* <Brands /> */}
