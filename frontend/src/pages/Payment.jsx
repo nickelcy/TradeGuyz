@@ -52,7 +52,7 @@ const Payment = ({ cart, addToCart }) => {
         {/* <Contact setBuyer={setBuyer} /> */}
         {/* <OrderMethod setCollectionDetails={setCollectionDetails} /> */}
         {/* <PaymentMethod setPaymentMethod={setPaymentMethod} /> */}
-        {/* <Button cart={cart} /> */}
+        <Button cart={cart} />
       </form>
     </div>
   );

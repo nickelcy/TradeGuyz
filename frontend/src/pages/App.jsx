@@ -2,7 +2,7 @@ import { Route, Routes } from "react-router-dom";
 import Home from "./Home";
 import Cart from "./Cart";
 import { useState } from "react";
-import Payment from "./Payment.jsx";
+import Payment from "./Payment";
 import FilterRoutes from "./components/filter/FilterRoutes";
 import LandingPage from "./LandingPage";
 import Admin from "./Admin";
