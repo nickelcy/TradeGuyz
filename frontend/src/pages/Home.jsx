@@ -31,7 +31,6 @@ const Home = ({ products, addToCart, cart, setProducts }) => {
     <div className="position-relative " style={{ paddingBottom: "7rem" }}>
       <Navbar />
       <Banner />
-      <Buttons cart={cart} />
       {/* <Category />  */}
       <BestSeller productsProp={products} addToCart={addToCart} />
       {/* <Brands /> */}
