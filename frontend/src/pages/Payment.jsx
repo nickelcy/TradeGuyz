@@ -1,11 +1,9 @@
 import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
-// import Contact from "./components/payment/Contact.jsx";
-// import Contact from "./components/payment/Contact.jsx"
+import Contact from "./components/payments/Contact";
+import OrderMethod from "./components/payments/OrderMethod";
+import PaymentMethod from "./components/payments/PaymentMethod";
 import Buttons from "./components/payments/Buttons";
-
-// import OrderMethod from "./components/payment/OrderMethod.jsx";
-// import PaymentMethod from "./components/payment/PaymentMethod.jsx";
 import axios from "axios";
 const serverUrl = import.meta.env.VITE_SERVER_URL;
 
@@ -49,10 +47,9 @@ const Payment = ({ cart, addToCart }) => {
         style={{ maxWidth: "550px", maxHeight: "95vh" }}
         onSubmit={submitForm}
       >
-        <h1>form</h1>
-        {/* <Contact setBuyer={setBuyer} /> */}
-        {/* <OrderMethod setCollectionDetails={setCollectionDetails} /> */}
-        {/* <PaymentMethod setPaymentMethod={setPaymentMethod} /> */}
+        <Contact setBuyer={setBuyer} />
+        <OrderMethod setCollectionDetails={setCollectionDetails} />
+        <PaymentMethod setPaymentMethod={setPaymentMethod} />
         <Buttons cart={cart} />
       </form>
     </div>
