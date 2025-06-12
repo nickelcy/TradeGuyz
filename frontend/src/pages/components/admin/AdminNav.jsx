@@ -39,8 +39,13 @@ const AdminNav = () => {
             className="navbar-brand m-0 text-center"
             style={{ cursor: "pointer" }}
           >
-            <img src="/favicon.png" alt="logo" width={27} className="mx-2 pb-1"/>
-            TradeGuyz / Admin
+            <img
+              src="/favicon.png"
+              alt="logo"
+              width={27}
+              className="mx-2 pb-1"
+            />
+            TradeGuyz | Admin
           </h5>
         </div>
 
@@ -63,34 +68,52 @@ const AdminNav = () => {
         <div className="collapse navbar-collapse" id="adminNavbar">
           <ul className="navbar-nav ms-auto mt-2 mt-lg-0">
             <li className="nav-item">
-              <a className="nav-link active" href="#">
+              <button
+                className="nav-link active btn btn-link"
+                onClick={() => navigate("#")}
+              >
                 Dashboard
-              </a>
+              </button>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="#">
+              <button
+                className="nav-link btn btn-link"
+                onClick={() => navigate("/admin/orders")}
+              >
                 Orders
-              </a>
+              </button>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="#">
+              <button
+                className="nav-link btn btn-link"
+                onClick={() => navigate("#")}
+              >
                 Products
-              </a>
+              </button>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="/admin/uploads">
+              <button
+                className="nav-link btn btn-link"
+                onClick={() => navigate("/admin/uploads")}
+              >
                 Uploads
-              </a>
+              </button>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="#">
+              <button
+                className="nav-link btn btn-link"
+                onClick={() => navigate("#")}
+              >
                 Approval
-              </a>
+              </button>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="#">
+              <button
+                className="nav-link btn btn-link"
+                onClick={() => navigate("#")}
+              >
                 Reports
-              </a>
+              </button>
             </li>
           </ul>
         </div>

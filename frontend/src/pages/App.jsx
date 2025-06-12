@@ -1,28 +1,34 @@
+import { createContext, useEffect } from "react";
 import { Route, Routes } from "react-router-dom";
-import Home from "./Home";
 import Cart from "./Cart";
 import { useState } from "react";
-import Payment from "./Payment";
-// import FilterRoutes from "./components/filter/FilterRoutes"; // This functionality will be implemented in the future
-import LandingPage from "./LandingPage";
-import Admin from "./Admin";
-import AdminDashboard from "./components/admin/AdminDashboard";
-import AdminLogin from "./components/admin/AdminLogin";
-import UserLogin from "./components/user/UserLogin";
-import User from "./User";
-import UploadPage from "./components/admin/UploadPage";
-import UserInfo from "./components/user/UserInfo";
-import UserRegister from "./components/user/UserRegister";
-import { createContext, useEffect } from "react";
-import About from "./components/LandingPage/pages/About";
-import Referrer from "./components/LandingPage/pages/Referrer";
-import Seller from "./components/LandingPage/pages/Seller";
-import Business from "./components/LandingPage/pages/Business";
-import "./components/shared/styles/components.css";
+
 export const PositionContext = createContext();
 export const CartContext = createContext();
 export const SelectedProductContext = createContext();
 export const UserContext = createContext();
+
+import LandingPage from "./LandingPage";
+import About from "./components/LandingPage/pages/About";
+import Referrer from "./components/LandingPage/pages/Referrer";
+import Seller from "./components/LandingPage/pages/Seller";
+import Business from "./components/LandingPage/pages/Business";
+
+import Admin from "./Admin";
+import AdminDashboard from "./components/admin/AdminDashboard";
+import AdminLogin from "./components/admin/AdminLogin";
+import Orders from "./components/admin/Orders"
+import UploadPage from "./components/admin/UploadPage";
+
+import User from "./User";
+import Home from "./Home";
+import UserLogin from "./components/user/UserLogin";
+import UserInfo from "./components/user/UserInfo";
+import UserRegister from "./components/user/UserRegister";
+import Payment from "./Payment";
+
+import "./components/shared/styles/components.css";
+// import FilterRoutes from "./components/filter/FilterRoutes"; // This functionality will be implemented in the future
 
 const App = () => {
   const [products, setProducts] = useState([]);
@@ -88,6 +94,7 @@ const App = () => {
               <Route path="/admin" element={<Admin />}>
                 <Route index element={<AdminDashboard />} />
                 <Route path="uploads" element={<UploadPage />} />
+                <Route path="orders" element={<Orders />} />
               </Route>
             </Routes>
           </PositionContext.Provider>
