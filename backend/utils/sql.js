@@ -1,36 +1,36 @@
 // Filter Queries
 export const getStorCategories = `
-    SELECT * FROM b8w1gajprsr1nxd2mryd.storeCategory
+    SELECT * FROM storeCategory
     where store_code = ?;
 `;
 export const category_filter = `
-    SELECT * FROM b8w1gajprsr1nxd2mryd.mainProductDetails
+    SELECT * FROM mainProductDetails
     where store_code = ? AND category_name = ?;
 `;
 export const getStorBrands = `
-    SELECT * FROM b8w1gajprsr1nxd2mryd.storeBrand
+    SELECT * FROM storeBrand
     where store_code = ?;
 `;
 export const brand_filter = `
-    SELECT * FROM b8w1gajprsr1nxd2mryd.mainProductDetails
+    SELECT * FROM mainProductDetails
     where store_code = ? AND brand_name = ?;
 `;
 export const multiParams = `
-    SELECT * FROM b8w1gajprsr1nxd2mryd.mainProductDetails
+    SELECT * FROM mainProductDetails
     WHERE store_code = ?
     `;
 export const addOrders = `
-    INSERT INTO b8w1gajprsr1nxd2mryd.orders(pid, quantity, gid, collection, address, paymentMethod) 
+    INSERT INTO orders(pid, quantity, gid, collection, address, paymentMethod) 
     VALUES (?, ?, ?, ?, ?, ?)
     `;
 export const allProducts = `    
-    SELECT * FROM b8w1gajprsr1nxd2mryd.mainProductDetails
+    SELECT * FROM mainProductDetails
     where store_code = ?;
     `;
 
 // Admin Queries
 export const getAdmin = `
-    SELECT * FROM b8w1gajprsr1nxd2mryd.admin
+    SELECT * FROM admin
     WHERE BINARY username = ?;
     `;
 export const setAdminActivity = `
@@ -49,14 +49,14 @@ export const getBrandId = `
 
 // User Queries
 export const getUser = `
-    SELECT * FROM b8w1gajprsr1nxd2mryd.user
+    SELECT * FROM user
     WHERE BINARY username = ?;
     `;
 export const setUserActivity = `
     CALL setUserActivity(?)
     `;
 export const insertUser = `
-    INSERT INTO b8w1gajprsr1nxd2mryd.user (
+    INSERT INTO user (
     firstname,
     lastname,
     username,
@@ -66,15 +66,15 @@ export const insertUser = `
     ) VALUES (?, ?, ?, ?, ?, ?);
     `;
 export const emailExists = `
-    SELECT * FROM b8w1gajprsr1nxd2mryd.user
+    SELECT * FROM user
     WHERE email = ?;
     `;
 export const usernameExists = `
-    SELECT * FROM b8w1gajprsr1nxd2mryd.user
+    SELECT * FROM user
     WHERE username = ?;
     `;
 export const phoneExists = `
-    SELECT * FROM b8w1gajprsr1nxd2mryd.user
+    SELECT * FROM user
     WHERE telephone = ?;
     `;
 export const getOrdersById = `
@@ -87,7 +87,7 @@ export const makeOrder = `
 
 // Seller Queries
 export const getSeller = `
-    SELECT * FROM b8w1gajprsr1nxd2mryd.seller
+    SELECT * FROM seller
     WHERE BINARY username = ?;
     `;
 export const setSellerActivity = `CALL setSellerActivity(?)`;
