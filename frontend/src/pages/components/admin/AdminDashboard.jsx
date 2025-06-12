@@ -55,11 +55,11 @@ const AdminDashboard = (props) => {
         >
           <option value="ea">Electronics & Accessories</option>
           <option value="sp">Spares & Parts</option>
-          <option value="gl">General Store</option>
-          <option value="cf">Clothing & Fashion</option>
-          <option value="hg">Home & Garden</option>
-          <option value="bt">Books & Textbooks</option>
-          <option value="ft">Fitness & Sports</option>
+          {/* <option value="gl">General Store</option> */}
+          {/* <option value="cf">Clothing & Fashion</option> */}
+          {/* <option value="hg">Home & Garden</option> */}
+          {/* <option value="bt">Books & Textbooks</option> */}
+          {/* <option value="ft">Fitness & Sports</option> */}
         </select>
 
         <p className={`fw-bold mt-5 ${storeClass}`}>
