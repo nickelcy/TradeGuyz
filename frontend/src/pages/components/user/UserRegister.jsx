@@ -136,7 +136,7 @@ const UserRegister = (props) => {
               pattern="[0-9]{3}-[0-9]{4}"
               required
             />
-            <label htmlFor="telephone">(eg: 687 1016)</label>
+            <label htmlFor="telephone">(eg: 687-1016)</label>
           </div>
         </div>
         <div className="form-floating mb-2 w-75 m-auto">

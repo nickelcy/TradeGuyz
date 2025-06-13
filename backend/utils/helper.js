@@ -1,3 +1,6 @@
+import database from "./database.js";
+import { usernameExists, emailExists, phoneExists, updateTelephone } from "./sql.js";
+
 /**
  * Middleware factory for JWT authentication using a cookie-based token.
  *
@@ -48,10 +51,6 @@ export const removeToken = (res, cookieName) => {
 
 // Middleware: userExists
 // Purpose: Prevents registration if the username, email, or phone number already exists in the database.
-
-import database from "./database.js";
-import { usernameExists, emailExists, phoneExists } from "./sql.js";
-
 /**
  * Checks if the provided username, email, or telephone already exists in the database.
  * If any of them exist, responds with a message and halts the request.
@@ -92,5 +91,27 @@ export const userExists = async (req, res, next) => {
   } catch (error) {
     console.error("Error in userExists middleware:", error);
     res.status(500).json({ message: "Internal server error" });
+  }
+};
+
+/**
+ * Middleware to update the user's telephone number in the database.
+ *
+ * @param {Object} req - Express request object, expects `req.user.uid` and `req.body.telephone`.
+ * @param {Object} res - Express response object.
+ * @param {Function} next - Express next middleware function.
+ *
+ * @returns {void}
+ */
+export const updateTelephoneFunc = async (req, res, next) => {
+  const uid = req.user.uid;
+
+  try {
+    // Update the telephone number for the user in the database
+    await database.query(updateTelephone, [req.body.telephone, uid]);
+    next(); // Proceed to the next middleware or route handler
+  } catch (error) {
+    console.error("Error in updateTelephone middleware:", error);
+    res.status(500).json({ message: "Error updating telephone." });
   }
 };

@@ -25,7 +25,7 @@ devMode = os.getenv("DEV_MODE")
 
 if __name__ == '__main__':
     try:
-        if devMode:
+        if devMode == "true":
             print("Running development server.")
             app.run(host='0.0.0.0', port=5000, debug=True)
         else:

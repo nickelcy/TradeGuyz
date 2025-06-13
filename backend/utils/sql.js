@@ -81,8 +81,11 @@ export const getOrdersById = `
     CALL getUserOrders(?)
     `;
 export const makeOrder = `
-    Insert into orders (pid, quantity, uid, collection, address, paymentMethod )
-    Values(?, ?, ?, ?, ?, ?);
+    Insert into orders (pid, quantity, uid, collection, address, paymentMethod, type, code )
+    Values(?, ?, ?, ?, ?, ?, ?, ?);
+    `;
+export const updateTelephone = `
+    call updateTelephone(?, ?);
     `;
 
 // Seller Queries

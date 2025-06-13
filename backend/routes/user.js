@@ -12,7 +12,12 @@ import bcrypt from "bcrypt";
 import env from "dotenv";
 env.config();
 import jwt from "jsonwebtoken";
-import { authenticateToken, removeToken, userExists } from "../utils/helper.js";
+import {
+  authenticateToken,
+  removeToken,
+  userExists,
+  updateTelephoneFunc,
+} from "../utils/helper.js";
 
 router.get("/", authenticateToken("user_token"), (req, res) => {
   res.json({ message: "You are authorized!" });
@@ -52,10 +57,21 @@ router.get("/orders", authenticateToken("user_token"), async (req, res) => {
   }
 });
 
+router.patch(
+  "/update-tel",
+  authenticateToken("user_token"),
+  updateTelephoneFunc,
+  async (req, res) => {
+    res.status(201).json({ message: "Updated contact information." });
+  }
+);
+
 router.post("/mk-order", authenticateToken("user_token"), async (req, res) => {
   const uid = req.user.uid;
   const details = req.body[1];
   const products = req.body[2];
+  const type = "normal";
+  const code = "000";
   console.log(details);
 
   const orders = products.map((product) => {
@@ -66,6 +82,8 @@ router.post("/mk-order", authenticateToken("user_token"), async (req, res) => {
       details.collection,
       details.address,
       details.paymentMethod,
+      type,
+      code,
     ];
     return database.query(makeOrder, order);
   });
@@ -88,7 +106,7 @@ router.post("/login", async (req, res) => {
     const [user] = await database.query(getUser, [username]);
     if (Array.isArray(user) && user.length == 1) {
       const isMatch = await bcrypt.compare(password, user[0].password);
-      console.log(user);
+      // console.log(user);
       if (isMatch) {
         const payload = { uid: user[0].uid, role: user[0].role };
         const user_token = jwt.sign(payload, process.env.ACCESS_SECRET, {
