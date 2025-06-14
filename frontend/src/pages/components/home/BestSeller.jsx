@@ -12,8 +12,8 @@ const BestSeller = ({ productsProp, addToCart }) => {
 
   useEffect(() => {
     if (Array.isArray(productsProp) && productsProp.length > 0) {
-      setProducts(productsProp.slice(0, 15)); // Reminder: query the data base to to order by purchase number
-      // setProducts(productsProp);
+      // setProducts(productsProp.slice(0, 15)); // Reminder: query the data base to to order by purchase number
+      setProducts(productsProp);
       setLoading(false);
     }
   }, [productsProp]);

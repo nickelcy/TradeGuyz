@@ -42,6 +42,13 @@ export const formatPrice = (price) => {
     currency: "USD",
   }).format(price);
 };
+
+export const formatDate = (date) => {
+  return new Date(date).toDateString()
+}
+
+
+
 /**
  * Calculates the grand total cost of items in a cart.
  *

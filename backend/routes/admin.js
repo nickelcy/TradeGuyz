@@ -6,6 +6,11 @@ import {
   newProduct,
   getCategoryId,
   getBrandId,
+  getAllOrders,
+  getAllOrdersByType,
+  getAllOrdersByStatus,
+  updateStatus,
+  updateDescription,
 } from "../utils/sql.js";
 import database from "../utils/database.js";
 import bcrypt from "bcrypt";
@@ -13,8 +18,7 @@ import jwt from "jsonwebtoken";
 import { authenticateToken, removeToken } from "../utils/helper.js";
 import env from "dotenv";
 
-env.config({ path: `.env.development` });
-// env.config({ path: `.env.production` });
+env.config();
 
 // Get route will verify token authenticate
 router.get("/", authenticateToken("token"), async (req, res) => {
@@ -25,7 +29,8 @@ router.get("/", authenticateToken("token"), async (req, res) => {
 
 router.post("/upload", authenticateToken("token"), async (req, res) => {
   try {
-    const { name, description, price, store, category, brand, tags, media } = req.body;
+    const { name, description, price, store, category, brand, tags, media } =
+      req.body;
     const { aid, role } = req.user;
     const [catId] = await database.query(getCategoryId, [category, store]);
     const [brandId] = await database.query(getBrandId, [brand, store]);
@@ -86,6 +91,51 @@ router.post("/login", async (req, res) => {
   } catch (error) {
     res.status(500).json({ message: "Internal server error!" });
     console.log(error);
+  }
+});
+
+router.get("/orders", authenticateToken("token"), async (req, res) => {
+  const param = req.query.param;
+  let result = [];
+  try {
+    if (param == "official") {
+      [result] = await database.query(getAllOrdersByType, [param]);
+    } else if (param == "delivered") {
+      [result] = await database.query(getAllOrdersByStatus, [param]);
+    } else {
+      [result] = await database.query(getAllOrders);
+    }
+    res.json(result);
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ message: "Internal server error!" });
+  }
+});
+
+router.patch("/status", authenticateToken("token"), async (req, res) => {
+  const oid = req.body.oid;
+  const status = req.body.status;
+  try {
+    const result = await database.query(updateStatus, [oid, status]);
+    res.json(result);
+    console.log(result)
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ message: "Internal server error!" });
+  }
+});
+
+router.patch("/description", authenticateToken("token"), async (req, res) => {
+  const oid = req.body.oid;
+  const description = req.body.description;
+  console.log([oid, description])
+  try {
+    const result = await database.query(updateDescription, [oid, description]);
+    res.json(result);
+    console.log(result);
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ message: "Internal server error!" });
   }
 });
 

@@ -12,7 +12,6 @@ CORS(app, resources={r"/api/*": {"origins": os.getenv("CLIENT")}})
 @app.route("/")
 def home():
     return "Hello from TradeGuyz report API"
-print(os.getenv("CLIENT"))
 
 @app.route("/api/product-inventory/<store>")
 def demographicByStore(store):

@@ -1,4 +1,4 @@
-import AdminNav from "./AdminNav";
+import Navbar from "./AdminNav";
 import axios from "axios";
 import { useState, useEffect } from "react";
 import Pie from "./components/PieCharts";
@@ -8,7 +8,7 @@ const AdminDashboard = (props) => {
   const [stat1, setStat1] = useState({});
   const [store, setStore] = useState("ea");
   const [storeClass, setStoreClass] = useState(
-    "text-dark text-decoration-none"
+    "text-light text-decoration-none"
   );
 
   useEffect(() => {
@@ -19,7 +19,7 @@ const AdminDashboard = (props) => {
     try {
       const response = await axios.get(`${reportApi}/${endPoint}`);
       setStat1(response.data);
-      setStoreClass("text-dark text-decoration-none");
+      setStoreClass("text-light text-decoration-none");
     } catch (error) {
       console.error(error.response.data.error);
       alert(error.response.data.error);
@@ -30,14 +30,14 @@ const AdminDashboard = (props) => {
 
   return (
     <div>
-      <AdminNav />
+      <Navbar source={"dashboard"}/>
       <h5 className="container-fluid text-center mt-5">
         Admin Pages:{" "}
         <span className="text-success">Development in progress</span>
       </h5>
       <br />
       <div
-        className="container p-5 d-flex flex-column justify-content-center align-items-center position-relative"
+        className="container p-5 d-flex flex-column justify-content-center align-items-center position-relative text-bg-dark"
         style={{
           maxHeight: "fit-content",
           maxWidth: "500px",
@@ -62,7 +62,7 @@ const AdminDashboard = (props) => {
           {/* <option value="ft">Fitness & Sports</option> */}
         </select>
 
-        <p className={`fw-bold mt-5 ${storeClass}`}>
+        <p className={`fw-bold mt-5 ${storeClass} `}>
           {store.toLocaleUpperCase()}'s Product Demographic
         </p>
         <Pie propData={stat1} />

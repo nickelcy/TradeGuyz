@@ -54,11 +54,12 @@ const PieCharts = ({ propData }) => {
           "#9966FF", // Purple
           "#FF9F40", // Orange
           "#00A36C", // Jade
-          "#C9CBCF",  // Grey
+          "#C9CBCF", // Grey
           "crimson",
-        ],        
+        ],
         borderWidth: 1,
-        hoverOffset: 10
+        borderColor: "transparent",
+        hoverOffset: 10,
       },
     ],
   };

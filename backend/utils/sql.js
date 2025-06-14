@@ -46,6 +46,28 @@ export const getCategoryId = `
 export const getBrandId = `
     call getOrInsertBrand( ?, ?);
 `;
+export const getAllOrders = `
+    SELECT * FROM orderDetails
+    where status <> "delivered"
+    order by initialized ASC;
+`;
+export const getAllOrdersByType = `
+    SELECT * FROM orderDetails
+    where productType = ?
+    order by initialized ASC;
+`;
+export const getAllOrdersByStatus = `
+    SELECT * FROM orderDetails
+    where status = ?
+    order by initialized ASC;
+`;
+export const updateStatus = `
+    call updateOrderStatus(?, ?);
+`;
+export const updateDescription = `
+    call updateOrderDescription(?, ?);
+`;
+
 
 // User Queries
 export const getUser = `
