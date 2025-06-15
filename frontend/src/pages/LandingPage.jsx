@@ -20,13 +20,7 @@ const LandingPage = () => {
         <button onClick={() => handleClick("ea", "/ea")}>
           Electronics & Accessories
         </button>
-        <button onClick={() => handleClick("ps", "/ps")}>Parts & Spares</button>
-        <button onClick={() => handleClick("bt", "/bs")}>
-          Books & Textbooks
-        </button>
-        <button onClick={() => handleClick("cf", "/cs")}>
-          Clothing & Fashion
-        </button>
+        <button onClick={() => handleClick("sp", "/sp")}>Parts & Spares</button>
       </section>
     </div>
   );

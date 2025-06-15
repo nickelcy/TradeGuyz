@@ -1,8 +1,8 @@
-import { FiLoader } from "react-icons/fi";
 import { useEffect, useState, useContext } from "react";
 import ProductCardsMap from "../shared/product/ProductCardsMap";
 import ProductPopUp from "../shared/product/ProductPopUp";
 import { SelectedProductContext } from "../../App";
+import { LuLoaderCircle } from "react-icons/lu";
 
 const BestSeller = ({ productsProp, addToCart }) => {
   const [products, setProducts] = useState([]);
@@ -27,8 +27,9 @@ const BestSeller = ({ productsProp, addToCart }) => {
     return (
       <div className="container-fluid d-flex flex-column justify-content-center align-items-center">
         <h2 className="mt-5 mb-0 mb-md-2 text-center">BEST SELLERS</h2>
-        <h5 className="text-dark text-center mt-5 mb-0">Loading</h5>
-        <FiLoader size={50} className="mb-5 mt-0 loader" />
+        <br />
+        <h4 className="text-muted">Nothing here... T-T</h4>
+        {/* <LuLoaderCircle size={50} className="mb-5 mt-5 loader" /> */}
       </div>
     );
   }

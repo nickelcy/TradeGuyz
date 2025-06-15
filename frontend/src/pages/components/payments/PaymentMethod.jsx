@@ -38,7 +38,7 @@ const PaymentMethod = ({ setPaymentMethod }) => {
             name="paymentMethod"
             id="visa"
             autoComplete="off"
-            // disabled
+            disabled
           />
           <label className="btn btn-outline-primary w-50 w-50" htmlFor="visa">
             Visa
@@ -52,14 +52,14 @@ const PaymentMethod = ({ setPaymentMethod }) => {
             id="cash"
             autoComplete="off"
             defaultChecked
-            // checked
+            checked
           />
           <label className="btn btn-outline-primary w-50" htmlFor="cash">
             Cash
           </label>
         </div>
         <div className="form-text text-light mt-0 px-2">
-          <s>We Currently only accept cash payments.</s>
+          <s className="text-danger">We Currently only accept cash payments.</s>
         </div>
       </div>
     </div>

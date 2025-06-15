@@ -72,7 +72,8 @@ const Orders = () => {
       <FilterContext.Provider value={{ filter, setFilter }}>
         <Navbar source={"order"} />
         <OrderFilter getData={getData} />
-        <div className="container-fluid mt-2 my-2">
+        <div className="container-fluid mt-2 my-2 overflow-y-auto" 
+        style={{height: "80vh", maxWidth: "550px"}}>
           {
             <OrderSection
               data={data}

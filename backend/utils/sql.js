@@ -53,7 +53,7 @@ export const getAllOrders = `
 `;
 export const getAllOrdersByType = `
     SELECT * FROM orderDetails
-    where productType = ?
+    where productType = ? AND status <> "delivered"
     order by initialized ASC;
 `;
 export const getAllOrdersByStatus = `
