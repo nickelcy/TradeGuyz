@@ -78,16 +78,19 @@ const OrderCard = ({ order, disabled, setData, index, getData }) => {
           </p>
         </div>
         {/* Address only if set */}
-        {order.Address ? (
-          <p className="p-0 m-0">
-            Address:{" "}
-            <span className="text-secondary fw-bold">
-              {order.address ? order.address : "not-set"}
-            </span>
-          </p>
+        {order.address ? (
+          <div className="d-flex flex-column flex-sm-row justify-content-center justify-content-sm-between align-items-start align-items-sm-center my-2 my-sm-0  p-2">
+            <p className="p-0 m-0">
+              Address:{" "}
+              <span className="text-secondary fw-bold">
+                {order.address ? order.address : "not-set"}
+              </span>
+            </p>
+          </div>
         ) : (
           <></>
         )}
+
         {/* Created & Finalized */}
         <div className="d-flex flex-column flex-sm-row justify-content-center justify-content-sm-between align-items-start align-items-sm-center my-2 my-sm-0  p-2">
           <p className="p-0 m-0">
@@ -159,7 +162,7 @@ const OrderCard = ({ order, disabled, setData, index, getData }) => {
           }`}
           onClick={() => {
             setVisibility(false);
-            setDBDescription()
+            setDBDescription();
           }}
         >
           Save comment
