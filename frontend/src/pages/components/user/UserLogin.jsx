@@ -15,7 +15,7 @@ const AdminLogin = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault(); // prevent form reload
-    const userInfo = { username, password };
+    const userInfo = { username: username.trim(), password };
 
     axios
       .post(`${serverUrl}/user/login`, userInfo, {
