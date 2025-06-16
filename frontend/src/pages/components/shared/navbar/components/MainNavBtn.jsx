@@ -75,7 +75,7 @@ const MainNavBtn = ({size}) => {
 
         {loggedIn ? (
           <ul
-            className={`py-3 px-2 bg-dark position-absolute end-0 mt-4 shadow rounded ${visible}`}
+            className={`py-3 px-2 bg-dark position-absolute end-0 mt-4 shadow rounded ${visible} `}
             style={{ minWidth: "180px" }}
           >
             {/* Future Implement */}

@@ -30,7 +30,7 @@ router.post("/register", userExists, async (req, res) => {
   try {
     const hashedPassword = await bcrypt.hash(password.trim(), 12);
 
-    await database.query(insertUser, [
+    const [result] = await database.query(insertUser, [
       firstname.trim(),
       lastname.trim(),
       username.trim(),
@@ -39,6 +39,18 @@ router.post("/register", userExists, async (req, res) => {
       telephone.trim(),
       // telephone.trim().replace(" ", "-"),
     ]);
+
+    const payload = { uid: result.insertId, role: "user" };
+    const user_token = jwt.sign(payload, process.env.ACCESS_SECRET, {
+      expiresIn: "1h",
+    });
+
+    res.cookie("user_token", user_token, {
+      httpOnly: true,
+      secure: process.env.COOKIE_SECURE === "true",
+      sameSite: process.env.COOKIE_SAMESITE,
+      maxAge: 3600000,
+    });
 
     res.status(201).json({ message: "Successfully created account." });
   } catch (error) {
@@ -128,7 +140,7 @@ router.post("/login", async (req, res) => {
             email: user[0].email,
             telephone: user[0].telephone,
           },
-        }); // Todo: Send only necessary information
+        }); 
       } else {
         res.status(401).json({ message: "Invalid password!" });
       }

@@ -48,10 +48,10 @@ const UserRegister = (props) => {
     }
 
     try {
-      const res = await axios.post(`${serverUrl}/user/register`, uploadData);
+      const res = await axios.post(`${serverUrl}/user/register`, uploadData, {withCredentials: true});
       console.log(res);
-      alert("Account created. Go to login.");
-      navigate("/user/login", {replace: true});
+      alert("Account created. You are Logged In.");
+      // navigate("/", {replace: true});
     } catch (error) {
       console.error(error);
       alert(error.response.data.message || "There was an error registering.")
@@ -65,7 +65,7 @@ const UserRegister = (props) => {
     >
       <button
         className="btn btn-secondary position-absolute top-0 start-0 mx-2 my-3 overflow-y-auto opacity"
-        onClick={() => navigate(`/${basePosition}`)}
+        onClick={() => navigate(`/`)}
         style={{ maxWidth: "125px" }}
       >
         ← Go back

@@ -12,7 +12,7 @@ const Carousel = () => {
         id="carouselExampleCaptions"
         className="carousel slide mx-auto overflow-hidden w-100 mt-1 h-50 w-md-75 carousel-container position-relative showContent3"
         data-bs-ride="carousel"
-        style={{ maxHeight: "60vh", minHeight: "40vh" }}
+        style={{ maxHeight: "60vh", minHeight: "40vh", zIndex: "-1" }}
       >
         <div className="carousel-indicators">
           <button

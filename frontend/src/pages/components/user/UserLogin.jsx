@@ -23,7 +23,7 @@ const AdminLogin = () => {
       })
       .then((response) => {
         alert(response?.data?.message || "Invalid Username or Password!");
-        navigate(-1);
+        navigate("/");
         // Set the the collected data to user
         setUserContact(response.data.user);
         localStorage.setItem("user", JSON.stringify(response.data.user));
@@ -41,7 +41,7 @@ const AdminLogin = () => {
     >
       <button
         className="btn btn-secondary position-absolute top-0 start-0 mx-2 my-3"
-        onClick={() => navigate(`/${basePosition}`)}
+        onClick={() => navigate(`/`, {replace: true})}
         style={{ maxWidth: "125px" }}
       >
         ← Go back
