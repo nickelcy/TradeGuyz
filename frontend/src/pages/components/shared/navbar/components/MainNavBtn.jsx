@@ -36,7 +36,7 @@ const MainNavBtn = ({size}) => {
   const logoutUser = async () => {
     try {
       await axios.get(`${serverUrl}/user/logout`, { withCredentials: true });
-      alert("You logged out.");
+      alert("You are logged out.");
       setLoggedIn(false);
       localStorage.removeItem("user")
     } catch (error) {

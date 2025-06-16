@@ -50,6 +50,7 @@ router.post("/register", userExists, async (req, res) => {
       secure: process.env.COOKIE_SECURE === "true",
       sameSite: process.env.COOKIE_SAMESITE,
       maxAge: 3600000,
+      path: "/",
     });
 
     res.status(201).json({ message: "Successfully created account." });
@@ -130,6 +131,7 @@ router.post("/login", async (req, res) => {
           secure: process.env.COOKIE_SECURE === "true",
           sameSite: process.env.COOKIE_SAMESITE,
           maxAge: 3600000,
+          path: "/",
         });
         res.json({
           message: "Logged in successfully!",

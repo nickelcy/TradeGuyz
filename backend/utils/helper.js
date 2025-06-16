@@ -3,27 +3,27 @@ import { usernameExists, emailExists, phoneExists, updateTelephone } from "./sql
 
 /**
  * Middleware factory for JWT authentication using a cookie-based token.
- *
- * @param {string} [cookieName='user_token'] - The name of the cookie containing the JWT.
- * @returns {Function} Express middleware function that authenticates the request.
- *
- * The middleware:
- * - Extracts a JWT from the specified cookie.
- * - Verifies the token using the secret in `process.env.ACCESS_SECRET`.
- * - Attaches the decoded user payload to `req.user` if valid.
- * - Returns a 401 if the token is missing.
- * - Returns a 403 if the token is invalid or expired.
- */
+*
+* @param {string} [cookieName='user_token'] - The name of the cookie containing the JWT.
+* @returns {Function} Express middleware function that authenticates the request.
+*
+* The middleware:
+* - Extracts a JWT from the specified cookie.
+* - Verifies the token using the secret in `process.env.ACCESS_SECRET`.
+* - Attaches the decoded user payload to `req.user` if valid.
+* - Returns a 401 if the token is missing.
+* - Returns a 403 if the token is invalid or expired.
+*/
 import { setAdminActivity } from "../utils/sql.js";
 
 import jwt from "jsonwebtoken";
 export const authenticateToken = (cookieName = "user_token") => {
   return (req, res, next) => {
     const token = req.cookies?.[cookieName];
-
+    
     if (!token)
       return res.status(401).json({ message: "Please login and try again." });
-
+    
     try {
       const verified = jwt.verify(token, process.env.ACCESS_SECRET);
       req.user = verified;
@@ -36,15 +36,25 @@ export const authenticateToken = (cookieName = "user_token") => {
 
 /**
  * Clears a specific cookie and sends a JSON confirmation response.
- *
- * @param {Object} res - Express response object.
- * @param {string} cookieName - Name of the cookie to clear.
- */
+*
+* @param {Object} res - Express response object.
+* @param {string} cookieName - Name of the cookie to clear.
+*/
+// export const removeToken = (res, cookieName) => {
+//   res.clearCookie(cookieName, {
+//     httpOnly: true,
+//     secure: true,
+//     sameSite: "Strict",
+//   });
+//   res.status(200).json({ message: "You logged out." });
+// };
+
 export const removeToken = (res, cookieName) => {
   res.clearCookie(cookieName, {
     httpOnly: true,
-    secure: true,
-    sameSite: "Strict",
+    secure: process.env.COOKIE_SECURE === "true", // match original
+    sameSite: process.env.COOKIE_SAMESITE || "None", // match original
+    path: "/", // match original path
   });
   res.status(200).json({ message: "You logged out." });
 };
@@ -115,3 +125,6 @@ export const updateTelephoneFunc = async (req, res, next) => {
     res.status(500).json({ message: "Error updating telephone." });
   }
 };
+
+
+
