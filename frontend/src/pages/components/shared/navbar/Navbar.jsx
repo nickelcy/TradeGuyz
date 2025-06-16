@@ -17,7 +17,7 @@ const Navbar = () => {
           <div className="d-flex flex-fill justify-content-center">
             {/* <Search /> */}
           </div>
-          <MainNavBtn />
+          <MainNavBtn size={23}/>
         </div>
       </nav>
     </>

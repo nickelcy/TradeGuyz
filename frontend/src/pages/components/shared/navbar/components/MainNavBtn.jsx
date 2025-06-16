@@ -8,7 +8,7 @@ import { FaUserCircle } from "react-icons/fa";
 import axios from "axios";
 import { CartContext } from "../../../../App";
 
-const MainNavBtn = () => {
+const MainNavBtn = ({size}) => {
   const { cart, setCart } = useContext(CartContext);
 
   const navigate = useNavigate();
@@ -49,7 +49,7 @@ const MainNavBtn = () => {
   return (
     <>
       <Link to="/cart" className="position-relative text-light">
-        <BsCart2 size={26} />
+        <BsCart2 size={size} />
         {numberOfProducts > 0 && (
           <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
             {numberOfProducts}
@@ -58,7 +58,7 @@ const MainNavBtn = () => {
       </Link>
       <div className="position-relative">
         <FaUserCircle
-          size={26}
+          size={size}
           className="text-light"
           role="button"
           onClick={async () => {

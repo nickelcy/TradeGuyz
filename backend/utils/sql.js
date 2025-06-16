@@ -27,6 +27,9 @@ export const allProducts = `
     SELECT * FROM mainProductDetails
     where store_code = ?;
     `;
+export const allStores = `
+    SELECT * FROM store;
+`;
 
 // Admin Queries
 export const getAdmin = `

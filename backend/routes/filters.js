@@ -7,9 +7,23 @@ import {
   multiParams,
   getStorCategories,
   getStorBrands,
+  allStores
 } from "../utils/sql.js";
 
 const router = express.Router();
+
+
+
+// All stores for display on landing page
+router.get("/stores", async (req, res) => {
+  try {
+    const [stores] = await database.query(allStores);
+    res.json(stores);
+  } catch (error) {
+    console.error(error);
+    res.status(500).send("Server error");
+  }
+});
 
 // All Products By Store
 router.get("/:store", async (req, res) => {

@@ -1,3 +1,5 @@
+
+
 .showContent {
   animation: show both;
   animation-timeline: view(54% 50%);
@@ -6,6 +8,27 @@
   animation: show both;
   animation-timeline: view(90% 5%);
 }
+.showContent3 {
+  animation: show2 0.6s ease-in-out forwards ;
+}
+
+.showContent4 {
+  animation: show3 0.7s ease-in-out forwards ;
+}
+
+.showContent5 {
+  animation: show2 1s ease-in-out forwards  ;
+}
+
+
+@media (min-width: 768px) {
+  .carousel-container {
+    max-width: 80vw ;
+    border-radius: 5px;
+  }
+}
+
+
 
 @keyframes show {
   from{
@@ -20,6 +43,32 @@
   }
   
 }
+@keyframes show2 {
+  from{
+    opacity: 0;
+    scale: 0.9;
+  }
+  to {
+    opacity: 1;
+    scale: 1;
+  }
+  
+}
+@keyframes show3 {
+  from{
+    opacity: 0;
+    transform: translateY(-50px);
+    /* scale: 0.9; */
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0px);
+    /* scale: 1; */
+  }
+  
+}
+
+
 
 .background {
   background: linear-gradient(135deg, #ff00c8, #8a2be2);
