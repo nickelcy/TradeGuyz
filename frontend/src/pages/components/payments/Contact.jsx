@@ -74,7 +74,7 @@ const Contact = ({ setBuyer }) => {
               id="firstname"
               placeholder="First Name"
               required
-              disabled
+              readOnly
             />
             <label htmlFor="firstname">First Name</label>
           </div>
@@ -90,7 +90,7 @@ const Contact = ({ setBuyer }) => {
               id="lastname"
               placeholder="Last Name"
               required
-              disabled
+              readOnly
             />
             <label htmlFor="lastname">Last Name</label>
           </div>
@@ -110,7 +110,7 @@ const Contact = ({ setBuyer }) => {
               placeholder="email"
               aria-describedby="emailHelp"
               required
-              disabled
+              readOnly
             />
             <label htmlFor="email">Email</label>
           </div>

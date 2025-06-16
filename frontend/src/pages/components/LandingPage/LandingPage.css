@@ -21,7 +21,7 @@
 }
 
 
-@media (min-width: 768px) {
+@media (min-width: 992px) {
   .carousel-container {
     max-width: 80vw ;
     border-radius: 5px;

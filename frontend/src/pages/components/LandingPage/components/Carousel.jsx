@@ -10,9 +10,9 @@ const Carousel = () => {
     <>
       <div
         id="carouselExampleCaptions"
-        className="carousel slide mx-auto overflow-hidden w-100 mt-1 h-50  carousel-container position-relative showContent3"
+        className="carousel slide carousel-container mx-auto overflow-hidden w-100 mt-1 position-relative showContent3"
         data-bs-ride="carousel"
-        style={{ maxHeight: "60vh", minHeight: "40vh"}}
+        style={{ maxHeight: "60vh", minHeight: "40vh", width:"100%" }}
       >
         <div className="carousel-indicators">
           <button
@@ -211,7 +211,9 @@ const Carousel = () => {
               <h2 className="m-0 text-center fs-4 fs-sm-3 fs-md-2">
                 Delivered Right to Your Doorstep
               </h2>
-              <b className="mt-2">Delivery & pickup available in and around Georgetown</b>
+              <b className="mt-2">
+                Delivery & pickup available in and around Georgetown
+              </b>
               <p className="mt-2 text-light w-75 fs-6 fs-md-5 text-center d-none d-md-block">
                 From imported items to local favorites, get your products
                 delivered straight to your home in Georgetown. Fast, reliable
@@ -252,7 +254,9 @@ const Carousel = () => {
               <h2 className="m-0 text-center fs-4 fs-sm-3 fs-md-2">
                 Worried About the Cost? We Keep It Affordable
               </h2>
-              <b className="mt-2">Product cost + Shipping & Handling + Delivery if requested</b>
+              <b className="mt-2">
+                Product cost + Shipping & Handling + Delivery if requested
+              </b>
               <p className="mt-2 text-light w-75 fs-6 fs-md-5 text-center d-none d-md-block">
                 Think importing is expensive? Not here. We keep pricing
                 transparent and affordable so you know exactly what you're
