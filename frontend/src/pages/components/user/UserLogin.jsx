@@ -2,7 +2,7 @@ import axios from "axios";
 import { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import LoginForm from "../shared/components/LoginForm";
-import { PositionContext } from "../../App";
+// import { PositionContext } from "../../App";
 import { UserContext } from "../../App";
 
 const AdminLogin = () => {
@@ -10,7 +10,7 @@ const AdminLogin = () => {
   const [password, setPassword] = useState("");
   const serverUrl = import.meta.env.VITE_SERVER_URL;
   const navigate = useNavigate();
-  const { basePosition } = useContext(PositionContext);
+  // const { basePosition } = useContext(PositionContext);
   const { setUserContact } = useContext(UserContext);
 
   const handleSubmit = (e) => {

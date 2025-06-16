@@ -8,7 +8,11 @@ const Navbar = () => {
   return (
     <>
       <nav className="navbar navbar-dark bg-dark sticky-top px-3 py-2 shadow-sm">
-        <Link className="navbar-brand d-flex align-items-center gap-2" to="/">
+        <Link className="navbar-brand d-flex align-items-center gap-2 d-lg-none" to="/">
+          <img src={logo} height={30} alt="TradeGuyz" />
+          <span className="fs-6 fw-semibold">TradeGuyz</span>
+        </Link>
+        <Link className="navbar-brand d-none align-items-center gap-2 d-lg-flex" to="/">
           <img src={logo} height={40} alt="TradeGuyz" />
           <span className="fs-5 fw-semibold">TradeGuyz</span>
         </Link>

@@ -25,7 +25,7 @@ const PaymentMethod = ({ setPaymentMethod }) => {
             name="paymentMethod"
             id="mmg"
             autoComplete="off"
-            // disabled
+            disabled
           />
           <label className="btn btn-outline-primary w-50 w-50" htmlFor="mmg">
             MMG

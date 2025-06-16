@@ -21,9 +21,9 @@ const Cart = ({ cart, addToCart, setMonetaryTotal }) => {
       <div className="container mt-3">
         <button
           className="btn btn-secondary"
-          onClick={() => navigate(`/${basePosition}`)}
+          onClick={() => navigate(-1)}
         >
-          ← Back to Home
+          ← Go back
         </button>
       </div>
       <RenderCart cart={cart} addToCart={addToCart} grandTotal={grandTotal} />

@@ -10,16 +10,16 @@ const ProductCard = (props) => {
 
   return (
     <>
-      <div className="container text-bg-dark py-3 px-4 pop">
+      <div className="container text-bg-dark py-3 px-4 pop" style={{maxWidth: "300px"}}>
         <div
           className="d-flex flex-column justify-content-start align-items-start"
           onClick={() => onProductClick(thisProduct)}
         >
-          <img src={img[0]} alt={name} className="productImage pt-2" />
-          <h4 className="ps-2 mt-3 text-start m-0">{name}</h4>
-          <h5 className="ps-2 mt-3 text-start mb-4">
+          <img src={img[0]} alt={name} className="productImage pt-2" style={{maxHeight: "250px"}}/>
+          <h5 className="ps-2 mt-2 text-start m-0">{name}</h5>
+          <p className="ps-2 mt-1 text-start">
             Price:&nbsp;{formatPrice(price)}
-          </h5>
+          </p>
         </div>
 
         <button

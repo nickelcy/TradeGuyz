@@ -36,8 +36,7 @@ router.post("/register", userExists, async (req, res) => {
       username.trim(),
       email.trim(),
       hashedPassword,
-      telephone.trim(),
-      // telephone.trim().replace(" ", "-"),
+      telephone.trim()
     ]);
 
     const payload = { uid: result.insertId, role: "user" };
@@ -53,7 +52,22 @@ router.post("/register", userExists, async (req, res) => {
       path: "/",
     });
 
-    res.status(201).json({ message: "Successfully created account." });
+    const [user] = await database.query(
+      "SELECT uid, firstname, lastname, email, telephone FROM user WHERE uid = ?",
+      [result.insertId]
+    );
+
+    res.status(201).json({
+      message: "Account created & logged in successfully!",
+      user: {
+        uid: user[0].uid,
+        firstname: user[0].firstname,
+        lastname: user[0].lastname,
+        email: user[0].email,
+        telephone: user[0].telephone,
+      },
+    }); 
+
   } catch (error) {
     console.error("Error during registration:", error);
     res.status(500).json({ message: "Internal server error" });

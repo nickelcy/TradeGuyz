@@ -12,6 +12,10 @@
   ;
 }
 
+.top {
+  z-index: 1000 !important;
+}
+
 @media (min-width: 576px) {
   .btn-to-w-576 {
     top: 0 !important;

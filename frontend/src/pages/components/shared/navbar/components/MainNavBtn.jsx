@@ -75,8 +75,8 @@ const MainNavBtn = ({size}) => {
 
         {loggedIn ? (
           <ul
-            className={`py-3 px-2 bg-dark position-absolute end-0 mt-4 shadow rounded ${visible} `}
-            style={{ minWidth: "180px" }}
+            className={`py-3 px-2 bg-dark position-absolute end-0 mt-4 shadow rounded ${visible} top`}
+            style={{ minWidth: "180px", zIndex: "10000" }}
           >
             {/* Future Implement */}
             {/* <li className="btn btn-secondary w-100 rounded-0 fw-semibold mb-2 pop" onClick={() => navigate("/user/about")}>

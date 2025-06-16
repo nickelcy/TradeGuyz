@@ -35,10 +35,10 @@ const RenderCart = ({ cart, addToCart, grandTotal }) => {
       {cart.length !== 0 ? (
         <div className="container mt-5 mb-3">
           <div className="row justify-content-center">
-            <div className="col-12 col-md-7">
-              <div className="card shadow-sm p-4 bg-light">
+            <div className="col-12 col-md-7" style={{maxWidth: "400px"}}>
+              {/* <div className="card shadow-sm p-4 bg-light"> */}
                 <h4 className="text-center text-dark mb-4">
-                  Grand Total:{" "}
+                  Product totals:{" "}
                   <span className="text-success">
                     {formatPrice(grandTotal)}
                   </span>
@@ -57,14 +57,14 @@ const RenderCart = ({ cart, addToCart, grandTotal }) => {
                     Checkout
                   </button>
                 </div>
-              </div>
+              {/* </div> */}
             </div>
           </div>
         </div>
       ) : (
         <div className="row m-0 d-flex justify-content-center">
-          <div className="col-6 text-center">
-            <h1>No Items in Cart</h1>
+          <div className="col-6 fs-4 fs-sm-3 fs-md-2 mt-4 text-center">
+            <h3>Cart empty</h3>
           </div>
         </div>
       )}

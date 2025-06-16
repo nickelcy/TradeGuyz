@@ -10,7 +10,11 @@ const Store = ({ index, store }) => {
   return (
     <div
       className="text-bg-dark px-3 py-2 rounded"
-      style={{ maxWidth: "320px", maxHeight: "" }}
+      style={{ maxWidth: "320px", cursor: "pointer" }}
+      onClick={() => {
+        navigate(store.link);
+        // setBasePosition(store.link);
+      }}
     >
       <p className="px-1 pt-2 fs-6">{store.name}</p>
       <div className="row gx-1 gy-1 m-0 p-0 ">
@@ -86,7 +90,7 @@ const Store = ({ index, store }) => {
         style={{ cursor: "pointer" }}
         onClick={() => {
           navigate(store.link);
-          setBasePosition(store.link);
+          // setBasePosition(store.link);
         }}
       >
         Visit store{" "}

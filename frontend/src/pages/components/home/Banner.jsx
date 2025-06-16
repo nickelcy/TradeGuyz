@@ -9,7 +9,7 @@ const Banner = (props) => {
   return (
     <div
       id="carousel"
-      className="carousel slide w-100 h-100 overflow-hidden"
+      className="carousel slide w-100 h-100 overflow-hidden mt-1"
       data-bs-ride="carousel"
       style={{ maxHeight: "60vh" }}
     >

@@ -2,7 +2,8 @@ import { replace, useNavigate } from "react-router-dom";
 import { useState, useEffect, useContext } from "react";
 import axios from "axios";
 const serverUrl = import.meta.env.VITE_SERVER_URL;
-import { PositionContext } from "../../App";
+// import { PositionContext } from "../../App";
+import { UserContext } from "../../App";
 
 const UserRegister = (props) => {
   const navigate = useNavigate();
@@ -18,7 +19,8 @@ const UserRegister = (props) => {
   const [uploadData, setUploadData] = useState();
   const [error1, setError1] = useState(false);
 
-  const { basePosition } = useContext(PositionContext);
+  // const { basePosition } = useContext(PositionContext);
+  const { setUserContact } = useContext(UserContext);
 
   useEffect(() => {
     setUploadData({
@@ -48,10 +50,15 @@ const UserRegister = (props) => {
     }
 
     try {
-      const res = await axios.post(`${serverUrl}/user/register`, uploadData, {withCredentials: true});
+      const res = await axios.post(`${serverUrl}/user/register`, uploadData, {
+        withCredentials: true,
+      });
       console.log(res);
       alert("Account created. You are Logged In.");
-      // navigate("/", {replace: true});
+      navigate("/", { replace: true });
+      // Set the the collected data to user
+      setUserContact(res.data.user);
+      localStorage.setItem("user", JSON.stringify(res.data.user));
     } catch (error) {
       console.error(error);
       alert(error.response.data.message || "There was an error registering.")
