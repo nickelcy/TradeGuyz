@@ -53,7 +53,7 @@ const BestSeller = ({ productsProp, addToCart }) => {
           ← Back to Home
         </button>
       </div>
-      <div className="container mt-5 w" style={{ maxWidth: "1000px" }}>
+      <div className="container mt-5 mb-5" style={{ maxWidth: "1000px" }}>
         <h2 className="mb-0 mb-md-2 text-center">BEST SELLERS</h2>
         <ProductCardsMap
           productsArr={products}
