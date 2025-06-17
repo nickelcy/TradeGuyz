@@ -31,13 +31,15 @@ const Home = ({ products, addToCart, setProducts }) => {
   // Add functionality of best seller for now render all products
 
   return (
-    <div className="position-relative " style={{ paddingBottom: "7rem" }}>
+    <div className="position-relative " 
+    // style={{ paddingBottom: "7rem" }}
+    >
       <Navbar />
       {/* <Banner /> */}
       {/* <Category />  */}
       <BestSeller productsProp={products} addToCart={addToCart} />
       {/* <Brands /> */}
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 };

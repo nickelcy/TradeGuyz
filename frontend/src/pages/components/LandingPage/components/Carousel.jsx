@@ -1,18 +1,23 @@
-import banner1 from "../Images/b5/2.png";
-import banner2 from "../Images/b4/2.png";
-import banner3 from "../Images/b3/2.png";
-import banner4 from "../Images/b2/2.png";
-import banner5 from "../Images/b1/11.png";
 import { FaArrowDownLong } from "react-icons/fa6";
+import { useNavigate } from "react-router-dom";
+
+const banner = [
+  "https://res.cloudinary.com/dssflbzdi/image/upload/v1750187939/2_ydsezn.png",
+  "https://res.cloudinary.com/dssflbzdi/image/upload/v1750187932/2_mzyvs9.png",
+  "https://res.cloudinary.com/dssflbzdi/image/upload/v1750187924/2_j79uvw.png",
+  "https://res.cloudinary.com/dssflbzdi/image/upload/v1750187915/2_yjkahd.png",
+  "https://res.cloudinary.com/dssflbzdi/image/upload/v1750187898/11_kwljuw.png",
+];
 
 const Carousel = () => {
+  const navigate = useNavigate();
   return (
     <>
       <div
         id="carouselExampleCaptions"
         className="carousel slide carousel-container mx-auto overflow-hidden w-100 mt-1 position-relative showContent3"
         data-bs-ride="carousel"
-        style={{ maxHeight: "60vh", minHeight: "40vh", width:"100%" }}
+        style={{ maxHeight: "60vh", minHeight: "40vh", width: "100%" }}
       >
         <div className="carousel-indicators">
           <button
@@ -56,7 +61,7 @@ const Carousel = () => {
             style={{ maxHeight: "60vh", minHeight: "40vh", width: "100%" }}
           >
             <img
-              src={banner1}
+              src={banner[0]}
               alt="banner1"
               style={{
                 width: "100%",
@@ -99,7 +104,7 @@ const Carousel = () => {
             style={{ maxHeight: "60vh", minHeight: "40vh", width: "100%" }}
           >
             <img
-              src={banner2}
+              src={banner[1]}
               alt="banner2"
               style={{
                 width: "100%",
@@ -132,7 +137,12 @@ const Carousel = () => {
                 stay-at-home parents, or anyone looking for extra income.
               </p>
               <b>Do you have an eye for opportunities?</b>
-              <button className="mt-3 btn btn-success">
+              <button
+                className="mt-3 btn btn-success"
+                onClick={() => {
+                  navigate("/form/1");
+                }}
+              >
                 Join the waitlist
               </button>
             </div>
@@ -143,7 +153,7 @@ const Carousel = () => {
             style={{ maxHeight: "60vh", minHeight: "40vh", width: "100%" }}
           >
             <img
-              src={banner3}
+              src={banner[2]}
               alt="banner3"
               style={{
                 width: "100%",
@@ -176,7 +186,14 @@ const Carousel = () => {
                 our platform helps you scale.
               </p>
               <b>Have a small business? Advertise online for free!</b>
-              <button className="mt-2 btn btn-danger">Get started</button>
+              <button
+                className="mt-2 btn btn-danger"
+                onClick={() => {
+                  navigate("/form/1");
+                }}
+              >
+                Get started
+              </button>
             </div>
           </div>
           {/* ---------------------------------------- */}
@@ -185,7 +202,7 @@ const Carousel = () => {
             style={{ maxHeight: "60vh", minHeight: "40vh", width: "100%" }}
           >
             <img
-              src={banner4}
+              src={banner[3]}
               alt="banner4"
               style={{
                 width: "100%",
@@ -228,7 +245,7 @@ const Carousel = () => {
             style={{ maxHeight: "60vh", minHeight: "40vh", width: "100%" }}
           >
             <img
-              src={banner5}
+              src={banner[4]}
               alt="banner5"
               style={{
                 width: "100%",

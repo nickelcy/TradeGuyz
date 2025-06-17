@@ -1,7 +1,7 @@
 const Form = (props) => {
   const submitForm = (e) => {
     e.preventDefault();
-    console.log(linkSubmitted);
+    console.log("linkSubmitted");
   };
 
   return (

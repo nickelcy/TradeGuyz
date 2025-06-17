@@ -13,6 +13,7 @@ import About from "./components/LandingPage/pages/About";
 import Referrer from "./components/LandingPage/pages/Referrer";
 import Seller from "./components/LandingPage/pages/Seller";
 import Business from "./components/LandingPage/pages/Business";
+import Waitlist from "./components/LandingPage/forms/Waitlist";
 
 import Admin from "./Admin";
 import AdminDashboard from "./components/admin/AdminDashboard";
@@ -57,6 +58,7 @@ const App = () => {
               <Route path="/referrer" element={<Referrer />} />
               <Route path="/seller" element={<Seller />} />
               <Route path="/business" element={<Business />} />
+              <Route path="/form/:formId" element={<Waitlist />} />
               <Route
                 path="/:code"
                 element={

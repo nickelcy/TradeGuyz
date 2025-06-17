@@ -5,6 +5,8 @@ import Store from "./components/LandingPage/components/Store";
 import { useState, useEffect } from "react";
 import Form from "./components/LandingPage/components/Form";
 const serverUrl = import.meta.env.VITE_SERVER_URL;
+import Waitlist from "./components/LandingPage/forms/Waitlist";
+import Footer from "./components/shared/components/Footer";
 
 const LandingPage = () => {
   const [stores, setStores] = useState([]);
@@ -38,7 +40,11 @@ const LandingPage = () => {
           <></>
         )}
       </section>
+      <Waitlist />
+      
+      <Footer />
     </div>
+
   );
 };
 
