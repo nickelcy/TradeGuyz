@@ -1,7 +1,7 @@
-import banner1 from './images/ea/banner1.jpg';
-import banner2 from './images/ea/banner2.jpg';
-import banner3 from './images/ea/banner3.jpg';
-import banner4 from './images/ea/banner4.jpg';
+// import banner1 from './images/ea/banner1.jpg';
+// import banner2 from './images/ea/banner2.jpg';
+// import banner3 from './images/ea/banner3.jpg';
+// import banner4 from './images/ea/banner4.jpg';
 
 // Store banners on database in the store table in an array using cloudinary
 

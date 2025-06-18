@@ -1,6 +1,6 @@
 // import Category from "./components/home/components/Category";
 // import Brands from "./components/home/components/Brands";
-import Banner from "./components/home/Banner";
+// import Banner from "./components/home/Banner";
 import Navbar from "./components/shared/navbar/Navbar";
 import BestSeller from "./components/home/BestSeller";
 import { useParams } from "react-router-dom";
@@ -37,7 +37,7 @@ const Home = ({ products, addToCart, setProducts }) => {
       <Navbar />
       {/* <Banner /> */}
       {/* <Category />  */}
-      <BestSeller productsProp={products} addToCart={addToCart} />
+      <BestSeller productsProp={products} addToCart={addToCart} store={store.code}/>
       {/* <Brands /> */}
       {/* <Footer /> */}
     </div>
