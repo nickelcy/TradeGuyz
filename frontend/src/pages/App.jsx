@@ -18,7 +18,7 @@ import Waitlist from "./components/LandingPage/forms/Waitlist";
 import Admin from "./Admin";
 import AdminDashboard from "./components/admin/AdminDashboard";
 import AdminLogin from "./components/admin/AdminLogin";
-import Orders from "./components/admin/Orders"
+import Orders from "./components/admin/Orders";
 import UploadPage from "./components/admin/UploadPage";
 
 import User from "./User";
@@ -29,6 +29,7 @@ import UserRegister from "./components/user/UserRegister";
 import Payment from "./Payment";
 
 import "./components/shared/styles/components.css";
+import Import from "./components/LandingPage/components/Import";
 // import FilterRoutes from "./components/filter/FilterRoutes"; // This functionality will be implemented in the future
 
 const App = () => {
@@ -39,10 +40,11 @@ const App = () => {
   const [userContact, setUserContact] = useState({});
 
   useEffect(() => {
-    addToCart(JSON.parse(localStorage.getItem("cart") || "[]"));
-    if (localStorage.getItem("user")) {
-      setUserContact(localStorage.getItem("user"));
-    }
+    const cart = JSON.parse(localStorage.getItem("cart")) || [];
+    const user = JSON.parse(localStorage.getItem("user")) || {};
+
+    addToCart(cart);
+    setUserContact(user);
   }, []);
 
   return (
@@ -89,6 +91,7 @@ const App = () => {
                   path="payment"
                   element={<Payment cart={cart} addToCart={addToCart} />}
                 />
+                <Route path="import" element={<Import />} />
                 <Route path="about" element={<UserInfo />} />
               </Route>
 

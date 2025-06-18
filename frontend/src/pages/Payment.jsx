@@ -23,12 +23,12 @@ const Payment = ({ cart, addToCart }) => {
     axios
       .post(`${serverUrl}/user/mk-order`, order, {withCredentials: true})
       .then((res) => {
-        console.log(res.data);
-        console.log(order)
+        // console.log(res.data);
+        // console.log(order)
         localStorage.removeItem("cart");
         navigate("/cart");
         alert(
-          "Your order was successful! Our team will begin processing it shortly. Delivery is expected to be finalized within approximately 3 weeks."
+          "Order successful! We'll contact you to confirm. Delivery in ~3 weeks."
         );
       })
       .catch((err) => {
@@ -43,8 +43,8 @@ const Payment = ({ cart, addToCart }) => {
       style={{ height: "100vh", width: "100vw" }}
     >
       <form
-        className="container text-bg-dark px-5 mx-2 rounded overflow-y-auto shadow-lg"
-        style={{ maxWidth: "550px", maxHeight: "95vh" }}
+        className="container text-bg-dark px-5 mx-2 py-4 rounded overflow-y-auto shadow-lg"
+        style={{ maxWidth: "500px", maxHeight: "95vh" }}
         onSubmit={submitForm}
       >
         <Contact setBuyer={setBuyer} />

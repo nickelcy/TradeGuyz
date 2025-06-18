@@ -56,7 +56,7 @@ export const getAllOrders = `
 `;
 export const getAllOrdersByType = `
     SELECT * FROM orderDetails
-    where productType = ? AND status <> "delivered"
+    where (productType = ? OR type = "special") AND status <> "delivered"
     order by initialized ASC;
 `;
 export const getAllOrdersByStatus = `
@@ -108,6 +108,10 @@ export const getOrdersById = `
 export const makeOrder = `
     Insert into orders (pid, quantity, uid, collection, address, paymentMethod, type, code )
     Values(?, ?, ?, ?, ?, ?, ?, ?);
+    `;
+export const makeSpecialOrder = `
+    INSERT INTO orders(uid, collection, address, paymentMethod, type, code, link, description)
+    VALUE (?, ?, ?, ?, ?, ?, ?, ?);
     `;
 export const updateTelephone = `
     call updateTelephone(?, ?);

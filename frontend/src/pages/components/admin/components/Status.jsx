@@ -9,7 +9,7 @@ const Status = ({ order, disabled, setData, index }) => {
   const updateStatus = (orderId, newStatus) => {
     const updated = { oid: orderId, status: newStatus };
     setStatus(updated);
-    console.log(updated);
+    // console.log(updated);
   };
 
   useEffect(() => {

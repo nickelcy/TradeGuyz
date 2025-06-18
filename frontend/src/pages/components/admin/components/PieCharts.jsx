@@ -21,8 +21,8 @@ const PieCharts = ({ propData }) => {
     
   }, [propData]);
   
-  console.log(pieData)
-  console.log(pieLabel)
+  // console.log(pieData)
+  // console.log(pieLabel)
 
   const options = {
     responsive: true,

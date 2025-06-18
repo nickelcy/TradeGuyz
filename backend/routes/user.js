@@ -6,6 +6,7 @@ import {
   insertUser,
   setUserActivity,
   makeOrder,
+  makeSpecialOrder
 } from "../utils/sql.js";
 import database from "../utils/database.js";
 import bcrypt from "bcrypt";
@@ -36,7 +37,7 @@ router.post("/register", userExists, async (req, res) => {
       username.trim(),
       email.trim(),
       hashedPassword,
-      telephone.trim()
+      telephone.trim(),
     ]);
 
     const payload = { uid: result.insertId, role: "user" };
@@ -66,8 +67,7 @@ router.post("/register", userExists, async (req, res) => {
         email: user[0].email,
         telephone: user[0].telephone,
       },
-    }); 
-
+    });
   } catch (error) {
     console.error("Error during registration:", error);
     res.status(500).json({ message: "Internal server error" });
@@ -98,8 +98,8 @@ router.post("/mk-order", authenticateToken("user_token"), async (req, res) => {
   const details = req.body[1];
   const products = req.body[2];
   const type = "normal";
-  const code = "000";
-  console.log(details);
+  const code = details.code || "000";
+  // console.log(details);
 
   const orders = products.map((product) => {
     const order = [
@@ -117,6 +117,35 @@ router.post("/mk-order", authenticateToken("user_token"), async (req, res) => {
 
   try {
     const results = await Promise.all(orders);
+    res.status(200).json({ message: "Orders placed", results });
+    // console.log(results)
+    // res.json(req.user)
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Internal server error" });
+  }
+});
+
+router.post("/sp-order", authenticateToken("user_token"), async (req, res) => {
+  const uid = req.user.uid;
+  const details = req.body[1];
+  const special = req.body[2];
+  const type = "special";
+  const code = details.code;
+
+  const order = [
+    uid,
+    details.collection,
+    details.address,
+    details.paymentMethod,
+    type,
+    code,
+    special.link,
+    special.description,
+  ];
+
+  try {
+    const results = await database.query(makeSpecialOrder, order);
     res.status(200).json({ message: "Orders placed", results });
     // console.log(results)
     // res.json(req.user)
@@ -156,7 +185,7 @@ router.post("/login", async (req, res) => {
             email: user[0].email,
             telephone: user[0].telephone,
           },
-        }); 
+        });
       } else {
         res.status(401).json({ message: "Invalid password!" });
       }
@@ -172,7 +201,7 @@ router.post("/login", async (req, res) => {
 router.get("/logout", authenticateToken("user_token"), async (req, res) => {
   try {
     const [result] = await database.query(setUserActivity, req.user.uid);
-    console.log(result);
+    // console.log(result);
     removeToken(res, "user_token");
   } catch (error) {
     console.log(error);

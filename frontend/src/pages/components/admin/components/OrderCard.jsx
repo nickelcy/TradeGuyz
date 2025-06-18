@@ -27,7 +27,10 @@ const OrderCard = ({ order, disabled, setData, index, getData }) => {
   return (
     <>
       <div className="d-flex justify-content-between align-items-center">
-        <div>{`Id#${order.oid} (${order.quantity}) ${order.name}`}</div>
+        <div>
+          Id#{order.oid} ({order.quantity}){" "}
+          {order.name ? order.name : <a href={order.link} target="blank">Link to product to be imported</a>}
+        </div>
         <div className="dropdown">
           <button
             disabled={disabled}
@@ -115,16 +118,27 @@ const OrderCard = ({ order, disabled, setData, index, getData }) => {
           <p className="p-0 m-0">
             Telephone:{" "}
             <span className="text-secondary fw-bold">
-              592 {order.telephone}
+              {order.telephone}
             </span>
           </p>
         </div>
         {/* Product & Order */}
         <div className="d-flex flex-column flex-sm-row justify-content-center justify-content-sm-between align-items-start align-items-sm-center my-2 my-sm-0  p-2">
-          <p className="p-0 m-0">
-            Product:{" "}
-            <span className="text-secondary fw-bold">{order.productType}</span>
-          </p>
+          {order.productType ? (
+            <p className="p-0 m-0">
+              Product:{" "}
+              <span className="text-secondary fw-bold">
+                {order.productType}
+              </span>
+            </p>
+          ) : (
+            <span className="p-0 m-0">
+              Link:{" "}
+              <a href={order.link} target="blank">
+                Link to product
+              </a>
+            </span>
+          )}
           <p className="p-0 m-0">
             Order: <span className="text-secondary fw-bold">{order.type}</span>
           </p>
@@ -148,7 +162,7 @@ const OrderCard = ({ order, disabled, setData, index, getData }) => {
             placeholder="Leave a comment here"
             id="floatingTextarea"
             style={{ height: "100px" }}
-            value={description}
+            value={description || ""}
             onChange={(e) => {
               setVisibility(true);
               setDescription(e.target.value);

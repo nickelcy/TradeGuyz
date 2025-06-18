@@ -1,18 +1,16 @@
 import { useNavigate } from "react-router-dom";
-import { formatPrice, calculateGrandTotal } from "../shared/utils/helpers.js";
 
-const Buttons = ({ cart }) => {
+const CheckoutBtn = () => {
   const navigate = useNavigate();
 
   return (
     <div className="mt-2">
       <div className="row mt-1 mb-3">
-        <div className="col-12 d-flex flex-row flex-sm-row justify-content-between ">
-          <p className="fs-5 text-start w-100">
-            <span className="text-white">Product(s) Total: </span>
-            <span className="text-warning">
-              {formatPrice(calculateGrandTotal(cart))}
-            </span>
+        <div className="col-12 d-flex flex-row flex-sm-row justify-content-center text-secondary">
+          <p className="fs-6">
+            <b className="text-white">Total:</b> Product <span className="text-warning">(100%)</span> + Service{" "}
+            <span className="text-warning">(10%)</span> + Delivery{" "}
+            <span className="text-warning">($1,500)</span>
           </p>
         </div>
       </div>
@@ -23,7 +21,7 @@ const Buttons = ({ cart }) => {
             type="button"
             onClick={() => {
               alert("Payment Processing Cancelled.");
-              navigate(-1);
+              navigate("/");
             }}
             className="btn btn-secondary w-100 w-sm-25"
           >
@@ -33,11 +31,11 @@ const Buttons = ({ cart }) => {
             type="submit"
             className="btn btn-success ms-sm-2 mt-2 mt-sm-0 w-100 w-sm-25"
           >
-            Order
+            Import
           </button>
         </div>
       </div>
     </div>
   );
 };
-export default Buttons;
+export default CheckoutBtn;

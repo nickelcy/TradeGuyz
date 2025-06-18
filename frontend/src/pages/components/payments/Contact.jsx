@@ -44,7 +44,7 @@ const Contact = ({ setBuyer }) => {
             { telephone },
             { withCredentials: true }
           );
-          console.log(res);
+          // console.log(res);
         } catch (error) {
           console.log(error);
           alert("Error updating your information.");
@@ -57,9 +57,12 @@ const Contact = ({ setBuyer }) => {
   }, [update, telephone, serverUrl]);
 
   return (
-    <div className="row mt-3 " id="ContactSection">
+    <div className="row" id="ContactSection">
       <div className="col-12">
-        <h2>Confirm Contact Information</h2>
+        <h5>Contact Information</h5>
+        <div className="form-text text-light">
+          Your info is private and only used to contact you.
+        </div>
 
         <div className="input-group w-100 mb-1">
           <div className="form-floating">
@@ -132,15 +135,11 @@ const Contact = ({ setBuyer }) => {
               id="telephone"
               name="telephone"
               placeholder="687-1016"
-              pattern="[0-9]{3}-[0-9]{4}"
+              // pattern="[0-9]{3}[0-9]{4}"
               required
             />
-            <label htmlFor="telephone">Telephone (Example: 687-1016)</label>
+            <label htmlFor="telephone">Telephone (Example: 6871016)</label>
           </div>
-        </div>
-        <div className="form-text text-light px-2">
-          Your information will only be used to contact you and will not be
-          shared with others.
         </div>
       </div>
     </div>

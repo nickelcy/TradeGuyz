@@ -9,7 +9,7 @@ import jwt from "jsonwebtoken";
 import { authenticateToken, removeToken } from "../utils/helper.js";
 
 router.get("/", authenticateToken("seller_token"), (req, res) => {
-  console.log(req.user)
+  // console.log(req.user)
   res.json({ message: "You are authorized!" });
 });
 

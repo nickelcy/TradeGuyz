@@ -64,7 +64,7 @@ const UploadPage = (props) => {
       const res = await axios.post(`${serverUrl}/admin/upload`, uploadData, {
         withCredentials: true,
       });
-      console.log(res.data);
+      // console.log(res.data);
       alert(res.data.message);
       window.location.reload();
     } catch (error) {

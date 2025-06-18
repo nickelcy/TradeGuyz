@@ -16,7 +16,6 @@ const LandingPage = () => {
       .get(`${serverUrl}/stores`)
       .then((response) => {
         setStores(response.data);
-        console.log(stores);
       })
       .catch((error) => console.log(error));
   }, []);

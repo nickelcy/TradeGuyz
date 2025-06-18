@@ -3,17 +3,47 @@ import { useState, useEffect } from "react";
 const OrderMethod = ({ setCollectionDetails }) => {
   const [collectionMethod, setCollectionMethod] = useState("pickup");
   const [address, setAddress] = useState("");
+  const [code, setCode] = useState("")
 
-  const collectionDetails = { collection: collectionMethod, address: address };
+  const collectionDetails = { collection: collectionMethod, address, code };
 
   useEffect(() => {
     setCollectionDetails(collectionDetails);
-  }, [collectionMethod, address]);
+  }, [collectionMethod, address, code]);
 
   return (
-    <div className="row mt-3">
+    <div className="row mt-2">
       <div className="col-12">
-        <h2>Order Method</h2>
+        <h5 className="">Order Details</h5>
+        <small className="form-text text-light">
+          Enter code for 30% discount on delivery.
+        </small>
+        <div className="form-floating mb-1">
+          <input
+            onChange={(e) => setCode(e.target.value)}
+            id="code"
+            type="text"
+            className="form-control"
+            placeholder="Purchase Code"
+            value={code}
+          />
+          <label htmlFor="code">Purchase Code</label>
+        </div>
+
+        {collectionMethod == "delivery" ? (
+          <small className="form-text text-light">
+            Delivery is only available in Georgetown.
+          </small>
+        ) : (
+          <></>
+        )}
+        {collectionMethod == "pickup" ? (
+          <div className="form-text text-light">
+            Pickup available only in Georgetown. Location arranged after order.
+          </div>
+        ) : (
+          <></>
+        )}
         {/* --------------------------------------------------------- */}
         <div
           className="btn-group w-100 mt-0 mb-1"
@@ -48,33 +78,20 @@ const OrderMethod = ({ setCollectionDetails }) => {
         </div>
         {/* --------------------------------------------------------------------- */}
 
-        {collectionMethod=="delivery" ? (
-          <>
-            <div className="form-floating mb-1">
-              <input
-                onChange={(e) => setAddress(e.target.value)}
-                value={address}
-                className="form-control"
-                type="text"
-                name="address"
-                id="address"
-                placeholder="Delivery Address"
-                disabled={!delivery}
-                required
-              />
-              <label htmlFor="address">Delivery Address</label>
-            </div>
-            <small className="form-text text-light px-2">
-              Delivery is only available in Georgetown, Guyana.
-            </small>
-          </>
-        ) : (
-          <></>
-        )}
-        {collectionMethod == "pickup" ? (
-          <div className="form-text text-light mt-0 px-2">
-            Pickup is only available in Georgetown, Guyana. A convenient pickup
-            location will be arranged with you after your order is processed.
+        {collectionMethod == "delivery" ? (
+          <div className="form-floating mb-1">
+            <input
+              onChange={(e) => setAddress(e.target.value)}
+              value={address}
+              className="form-control"
+              type="text"
+              name="address"
+              id="address"
+              placeholder="Delivery Address"
+              disabled={!delivery}
+              required
+            />
+            <label htmlFor="address">Delivery Address</label>
           </div>
         ) : (
           <></>

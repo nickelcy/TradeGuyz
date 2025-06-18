@@ -10,11 +10,14 @@ const PaymentMethod = ({ setPaymentMethod }) => {
   }, [payMethodDetails]);
 
   return (
-    <div className="row mt-3" style={{ marginBottom: "2rem" }}>
+    <div className="row mt-2" >
       <div className="col-12">
-        <h2>Payment Method</h2>
+        <h5>Payment Method</h5>
+        <div className="form-text text-light mb-1">
+          <b className="text-danger">We Currently only accept cash payments.</b>
+        </div>
         <div
-          className="btn-group w-100 mt-0 mb-1"
+          className="btn-group w-100 mb-1"
           role="group"
           aria-label="Payment Method"
         >
@@ -52,14 +55,10 @@ const PaymentMethod = ({ setPaymentMethod }) => {
             id="cash"
             autoComplete="off"
             defaultChecked
-            checked
           />
           <label className="btn btn-outline-primary w-50" htmlFor="cash">
             Cash
           </label>
-        </div>
-        <div className="form-text text-light mt-0 px-2">
-          <s className="text-danger">We Currently only accept cash payments.</s>
         </div>
       </div>
     </div>

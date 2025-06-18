@@ -22,7 +22,7 @@ const Home = ({ products, addToCart, setProducts }) => {
     .get(`${serverUrl}/${store.code? store.code: "ea"}`)
     .then((response) => {
       setProducts(response.data)
-      console.log(store.code)
+      // console.log(store.code)
       })
       .catch((error) => console.log(error));
   }, []);

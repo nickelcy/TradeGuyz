@@ -53,7 +53,7 @@ const UserRegister = (props) => {
       const res = await axios.post(`${serverUrl}/user/register`, uploadData, {
         withCredentials: true,
       });
-      console.log(res);
+      // console.log(res);
       alert("Account created. You are Logged In.");
       navigate("/", { replace: true });
       // Set the the collected data to user

@@ -118,7 +118,7 @@ router.patch("/status", authenticateToken("token"), async (req, res) => {
   try {
     const result = await database.query(updateStatus, [oid, status]);
     res.json(result);
-    console.log(result)
+    // console.log(result)
   } catch (error) {
     console.log(error);
     res.status(500).json({ message: "Internal server error!" });
@@ -128,7 +128,7 @@ router.patch("/status", authenticateToken("token"), async (req, res) => {
 router.patch("/description", authenticateToken("token"), async (req, res) => {
   const oid = req.body.oid;
   const description = req.body.description;
-  console.log([oid, description])
+  // console.log([oid, description])
   try {
     const result = await database.query(updateDescription, [oid, description]);
     res.json(result);
