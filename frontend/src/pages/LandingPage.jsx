@@ -31,8 +31,8 @@ const LandingPage = () => {
       <Form />
 
      <div>
-       <h4 className="text-center mt-2 text-muted">Buy and Sell from our local Stores</h4>
-        <section className="mt-4 mb-5 mx-2 d-flex flex-column flex-sm-row gap-4 justify-content-center align-items-center showContent5">
+       {/* <h4 className="text-center mt-2 text-muted">Buy and Sell from our local Stores</h4> */}
+        {/* <section className="mt-4 mb-5 mx-2 d-flex flex-column flex-sm-row gap-4 justify-content-center align-items-center showContent5">
           {stores ? (
             stores.map((store, index) => (
               <Store key={store.name} index={index} store={store} />
@@ -40,7 +40,7 @@ const LandingPage = () => {
           ) : (
             <></>
           )}
-        </section>
+        </section> */}
      </div>
       <Waitlist />
       

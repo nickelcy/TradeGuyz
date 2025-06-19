@@ -40,8 +40,8 @@ export const setAdminActivity = `
     CALL setAdminActivity(?)
     `;
 export const newProduct = `
-    INSERT INTO products(name, price, description, category, brand, tags, productType, creatorId, creatorRole, media)
-    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
+    INSERT INTO products(name, price, description, category, brand, tags, productType, creatorId, creatorRole, media, source)
+    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
     `;
 export const getCategoryId = `
     call GetOrInsertCategory( ?, ?);

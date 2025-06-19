@@ -7,6 +7,7 @@ import { BsCart2 } from "react-icons/bs";
 import { FaUserCircle } from "react-icons/fa";
 import axios from "axios";
 import { CartContext } from "../../../../App";
+import { IoMdLogIn } from "react-icons/io";
 
 const MainNavBtn = ({size}) => {
   const { cart, setCart } = useContext(CartContext);
@@ -16,6 +17,7 @@ const MainNavBtn = ({size}) => {
   const [visible, setVisibility] = useState("d-none");
   const serverUrl = import.meta.env.VITE_SERVER_URL;
   const [loggedIn, setLoggedIn] = useState(false);
+  const [style, setStyle ] = useState("text-light")
 
   useEffect(() => {
     setNumberOfProducts(cart.length);
@@ -48,26 +50,29 @@ const MainNavBtn = ({size}) => {
 
   return (
     <>
-      <Link to="/cart" className="position-relative text-light">
+      {/* <Link to="/cart" className="position-relative text-light">
         <BsCart2 size={size} />
         {numberOfProducts > 0 && (
           <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
             {numberOfProducts}
           </span>
         )}
-      </Link>
+      </Link> */}
       <div className="position-relative">
-        <FaUserCircle
+        <IoMdLogIn
           size={size}
-          className="text-light"
+          className={`${style} text-danger rounded `}
           role="button"
           onClick={async () => {
             const isLoggedIn = await loginStatus();
             if (isLoggedIn) {
-              setVisibility((prev) =>
-                prev === "d-block" ? "d-none" : "d-block"
-              );
+              // setVisibility((prev) =>
+                //   prev === "d-block" ? "d-none" : "d-block"
+              // );
+              setStyle('text-danger')
+              logoutUser()
             } else {
+              setStyle("text-light")
               navigate("/user/login", { replace: true });
             }
           }}

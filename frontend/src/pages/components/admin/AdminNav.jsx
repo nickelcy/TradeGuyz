@@ -58,16 +58,16 @@ const AdminNav = ({ source }) => {
         </div>
 
         {/* Right icons */}
-        <div className="d-flex align-items-center mx-3">
+        <div className="d-flex align-items-center mx-3 d-lg-none">
+          <AiOutlineUserAdd
+            size={25}
+            className="text-secondary mx-2"
+            style={{ cursor: "pointer" }}
+          />
           <MdLogout
             size={25}
             onClick={logout}
             className="text-danger mx-2"
-            style={{ cursor: "pointer" }}
-          />
-          <AiOutlineUserAdd
-            size={25}
-            className="text-secondary mx-2"
             style={{ cursor: "pointer" }}
           />
         </div>
@@ -119,6 +119,19 @@ const AdminNav = ({ source }) => {
               </button>
             </li>
           </ul>
+        </div>
+        <div className="d-flex align-items-center mx-3 d-none d-lg-block">
+          <AiOutlineUserAdd
+            size={25}
+            className="text-secondary mx-2"
+            style={{ cursor: "pointer" }}
+          />
+          <MdLogout
+            size={25}
+            onClick={logout}
+            className="text-danger mx-2"
+            style={{ cursor: "pointer" }}
+          />
         </div>
       </div>
     </nav>

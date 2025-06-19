@@ -29,7 +29,7 @@ router.get("/", authenticateToken("token"), async (req, res) => {
 
 router.post("/upload", authenticateToken("token"), async (req, res) => {
   try {
-    const { name, description, price, store, category, brand, tags, media } =
+    const { name, description, price, store, category, brand, tags, media, source } =
       req.body;
     const { aid, role } = req.user;
     const [catId] = await database.query(getCategoryId, [category, store]);
@@ -46,6 +46,7 @@ router.post("/upload", authenticateToken("token"), async (req, res) => {
       aid,
       role,
       JSON.stringify(media),
+      source
     ];
     const [result] = await database.query(newProduct, data);
     console.log(result);

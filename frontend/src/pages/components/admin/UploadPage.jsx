@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import CustomSearch from "./components/CustomSearch";
 import { useNavigate } from "react-router-dom";
 import UploadWidget from "../shared/components/UploadWidget";
-import Navbar from "./AdminNav"
+import Navbar from "./AdminNav";
 
 const UploadPage = (props) => {
   const serverUrl = import.meta.env.VITE_SERVER_URL;
@@ -20,6 +20,7 @@ const UploadPage = (props) => {
   const [brandValue, setBrandValue] = useState([]);
   const [tags, setTags] = useState([]);
   const [media, setMedia] = useState([]);
+  const [productSource, setProductSource] = useState("");
 
   const [uploadData, setUploadData] = useState({});
 
@@ -33,8 +34,19 @@ const UploadPage = (props) => {
       brand: brandValue,
       tags: tags,
       media: media,
+      productSource: productSource,
     });
-  }, [name, description, price, store, categoryValue, brandValue, tags, media]);
+  }, [
+    name,
+    description,
+    price,
+    store,
+    categoryValue,
+    brandValue,
+    tags,
+    media,
+    productSource,
+  ]);
 
   useEffect(() => {
     if (!store) return;
@@ -64,24 +76,12 @@ const UploadPage = (props) => {
       const res = await axios.post(`${serverUrl}/admin/upload`, uploadData, {
         withCredentials: true,
       });
-      // console.log(res.data);
+      console.log(res.data);
       alert(res.data.message);
       window.location.reload();
     } catch (error) {
       console.error(error);
     }
-  };
-
-  const cancel = () => {
-    setName("");
-    setDescription("");
-    setPrice(0);
-    setStore("");
-    setCategoryValue([]);
-    setBrandValue([]);
-    setTags([]);
-    setMedia([]);
-    navigate("/admin");
   };
 
   const clear = () => {
@@ -93,6 +93,12 @@ const UploadPage = (props) => {
     setBrandValue([]);
     setTags([]);
     setMedia([]);
+    setProductSource("");
+  };
+
+  const cancel = () => {
+    clear();
+    navigate("/admin");
   };
 
   return (
@@ -219,6 +225,21 @@ const UploadPage = (props) => {
                   .filter((tag) => tag !== "");
                 setTags(tagArray);
               }}
+            />
+          </div>
+          <div className="mb-3">
+            <label htmlFor="productSource" className="form-label ">
+              Product source
+            </label>
+            <input
+              className="form-control"
+              id="productSource"
+              name="productSource"
+              value={productSource}
+              onChange={(e) => setProductSource(e.target.value)}
+              placeholder="Enter link to product"
+              autoComplete="off"
+              required
             />
           </div>
           <UploadWidget setImageUrl={setMedia} />
