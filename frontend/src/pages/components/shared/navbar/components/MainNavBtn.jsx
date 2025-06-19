@@ -17,7 +17,7 @@ const MainNavBtn = ({size}) => {
   const [visible, setVisibility] = useState("d-none");
   const serverUrl = import.meta.env.VITE_SERVER_URL;
   const [loggedIn, setLoggedIn] = useState(false);
-  const [style, setStyle ] = useState("text-light")
+  const [style, setStyle ] = useState("text-danger")
 
   useEffect(() => {
     setNumberOfProducts(cart.length);
@@ -27,6 +27,7 @@ const MainNavBtn = ({size}) => {
     try {
       await axios.get(`${serverUrl}/user/`, { withCredentials: true });
       setLoggedIn(true);
+      setStyle("text-danger");
       return true;
     } catch (error) {
       console.log(error);
@@ -41,6 +42,7 @@ const MainNavBtn = ({size}) => {
       alert("You are logged out.");
       setLoggedIn(false);
       localStorage.removeItem("user")
+      setStyle("text-light");
     } catch (error) {
       setLoggedIn(false);
       alert("There was an error logging out.");
@@ -61,7 +63,7 @@ const MainNavBtn = ({size}) => {
       <div className="position-relative">
         <IoMdLogIn
           size={size}
-          className={`${style} text-danger rounded `}
+          className={`${style} rounded `}
           role="button"
           onClick={async () => {
             const isLoggedIn = await loginStatus();
@@ -69,10 +71,8 @@ const MainNavBtn = ({size}) => {
               // setVisibility((prev) =>
                 //   prev === "d-block" ? "d-none" : "d-block"
               // );
-              setStyle('text-danger')
               logoutUser()
             } else {
-              setStyle("text-light")
               navigate("/user/login", { replace: true });
             }
           }}
