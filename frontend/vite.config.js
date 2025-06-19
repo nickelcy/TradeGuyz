@@ -6,9 +6,6 @@ export default defineConfig({
   server: {
     host: true, // Allows access via your local network IP (e.g., 192.168.1.64)
     port: 5173, // Optional: specify port (default is 5173)
-    allowedHosts: [
-      "f663-2800-3c0-2090-1be5-e52c-598a-4283-432c.ngrok-free.app",
-      "192.168.1.64",
-    ],
+    allowedHosts: ["fd2f-190-80-50-108.ngrok-free.app", "192.168.1.64"],
   },
 });

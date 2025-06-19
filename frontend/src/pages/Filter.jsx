@@ -1,11 +1,13 @@
+// This functionality has been put on hold for the time being
+
 import { useParams } from "react-router-dom";
-import Navbar from "./components/Navbar";
-import Footer from "./components/Footer";
-import GroupedFilters from "./components/GroupedFilters";
+import Navbar from "./components/shared/navbar/Navbar";
+import Footer from "./components/shared/components/Footer";
+import GroupedFilters from "./components/filter/components/GroupedFilters";
 import axios from "axios";
 import { useEffect, useState } from "react";
-import ProductCardsMap from "./components/ProductCardsMap";
-import ProductPopUp from "./components/ProductPopUp";
+import ProductCardsMap from "./components/shared/product/ProductCardsMap";
+import ProductPopUp from "./components/shared/product/ProductPopUp";
 const server = import.meta.env.VITE_SERVER_URL;
 
 const Filter = ({
@@ -22,7 +24,7 @@ const Filter = ({
   const [clicked, setClick] = useState(false);
 
   useEffect(() => {
-    if (src == "multiFilter" ) {
+    if (src == "multiFilter") {
       axios
         .get(
           `${server}${location}${parameter1 ? `/${parameter1}` : "/none"}${
